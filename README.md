@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
 
-![Portfolio Preview](/public/web3-wallet.png)
+![Portfolio Preview](/public/portfolio.png)
 
 ## 🌟 Features
 
