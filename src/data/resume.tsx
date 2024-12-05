@@ -240,7 +240,7 @@ export const DATA = {
     },
     {
       title: "HackOWASP Intra",
-      dates: "July 13th - 14th, 2018",
+      dates: "July 13th - 14th, 2024",
       location: "Remote",
       description:
         "Developed a web application which informs people about TIET college, and share study resources.",
@@ -251,7 +251,7 @@ export const DATA = {
     },
     {
       title: "Syrinx (CTF Winner)",
-      dates: "July 26th - 27th, 2018",
+      dates: "July 26th - 27th, 2024",
       location: "Remote",
       description:
         "Won the CTF by solving several cybersecurity challenges.",
