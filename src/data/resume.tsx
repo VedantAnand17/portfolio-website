@@ -141,7 +141,7 @@ export const DATA = {
       start: "August 2024",
       end: "November 2024",
       description:
-        "I conducted research in steganography, analyzing multiple algorithms to innovate and create a more efficient method for secure data embedding in images.",
+        "I was selected as a Project Admin at Winter of Blockchain, where I listed my project and guided several hundred contributors in web3 and in contributing to my project.",
     },
   ],
   education: [
