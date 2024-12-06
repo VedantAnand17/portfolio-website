@@ -8,9 +8,8 @@ export const DATA = {
   location: "Punjab, India",
   locationLink: "https://www.google.com/maps/place/patiala",
   description:
-    // "Budding Full Stack & Web3 Developer, Open Source Enthusiast, and a Teacher. I love to learn and share my knowledge with others.",
+    "Budding Full Stack & Web3 Developer, Open Source Enthusiast, and a Teacher. I love to learn and share my knowledge with others.",
   summary:
-    // "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
     "In 2023, I started with my first line of code. Since then, I have been learning and building things.[I am pursuing a degree in Electrical and Computer Engineering](/#education). I have worked on various projects and have been a part of many hackathons. I am currently working at [Mavik Labs as a Full Stack Blockchain Dev](/#work) and contributing to open source.",
   avatarUrl: "/vedantpfp.png",
   skills: [
