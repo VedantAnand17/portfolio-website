@@ -242,7 +242,7 @@ export const DATA = {
       dates: "July 13th - 14th, 2024",
       location: "Remote",
       description:
-        "Developed a web application which informs people about TIET college, and share study resources.",
+        "Developed a web application which informs people about TIET college, and share study resources which impacted more than 800 students.",
       icon: "public",
       image:
         "/hacko.png",
