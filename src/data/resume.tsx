@@ -87,12 +87,24 @@ export const DATA = {
       badges: [],
       href: "https://devrhylme.org/",
       location: "Remote",
+      title: "Chief Management Officer (Leading Board)",
+      logoUrl: "/devrhylme.png",
+      start: "December 2024",
+      end: "Present",
+      description:
+        "I am working as the Chief Management Officer , successfully securing funding for the foundation from prominent organizations like Google, playing a role in collaborating with Indian Blockchain Month (IBM) and contributed to technical aspects of the projects as well, demonstrating a balance of strategic and technical expertise.",
+    },
+    {
+      company: "DevRhylme Foundation",
+      badges: [],
+      href: "https://devrhylme.org/",
+      location: "Remote",
       title: "Marketing Manager (Leading Board)",
       logoUrl: "/devrhylme.png",
       start: "October 2024",
-      end: "Present",
+      end: "December 2024",
       description:
-        "I am working as a Marketing Manager, successfully securing funding for the foundation from prominent organizations like Google, playing a role in collaborating with Indian Blockchain Month (IBM) and contributed to technical aspects of the projects as well, demonstrating a balance of strategic and technical expertise.",
+        "I worked as a Marketing Manager, successfully securing funding for the foundation from prominent organizations like Google, playing a role in collaborating with Indian Blockchain Month (IBM) and contributed to technical aspects of the projects as well, demonstrating a balance of strategic and technical expertise.",
     },
     {
       company: "Owasp (TIET Society)",
