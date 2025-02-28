@@ -15,7 +15,7 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: DATA.name,
+    default: 'Vedant Anand - Full stack Blockchain Developer & Innovator',
     template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
