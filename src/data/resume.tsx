@@ -71,18 +71,6 @@ export const DATA = {
 
   work: [
     {
-      company: "DevRhylme Foundation",
-      badges: [],
-      href: "https://devrhylme.org/",
-      location: "Remote",
-      title: "Chief Management Officer (Leading Board)",
-      logoUrl: "/devrhylme.png",
-      start: "December 2024",
-      end: "Present",
-      description:
-        "I am working as the Chief Management Officer , successfully securing funding for the foundation from prominent organizations like Google, playing a role in collaborating with Indian Blockchain Month (IBM) and contributed to technical aspects of the projects as well, demonstrating a balance of strategic and technical expertise.",
-    },
-    {
       company: "Mavik Labs",
       href: "https://www.maviklabs.com/",
       badges: [],
@@ -105,6 +93,18 @@ export const DATA = {
       end: "Present",
       description:
         "As a core member at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
+    },
+    {
+      company: "DevRhylme Foundation",
+      badges: [],
+      href: "https://devrhylme.org/",
+      location: "Remote",
+      title: "Ex CMO",
+      logoUrl: "/devrhylme.png",
+      start: "December 2024",
+      end: "May 2025",
+      description:
+        "I am working as the Chief Management Officer , successfully securing funding for the foundation from prominent organizations like Google, playing a role in collaborating with Indian Blockchain Month (IBM) and contributed to technical aspects of the projects as well, demonstrating a balance of strategic and technical expertise.",
     },
     {
       company: "DevRhylme Foundation",
