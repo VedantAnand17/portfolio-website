@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   },
   description: DATA.description,
   keywords: [
+    "Vedant",
     "Vedant Anand",
     "Full Stack Developer",
     "Blockchain Developer",
