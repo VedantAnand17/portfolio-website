@@ -8,9 +8,9 @@ export const DATA = {
   location: "Punjab, India",
   locationLink: "https://www.google.com/maps/place/patiala",
   description:
-    "Budding Full Stack & Web3 Developer, Open Source Enthusiast, and a Teacher. I love to learn and share my knowledge with others.",
+    "Full Stack & Web3 Developer, Open Source Enthusiast, and a Teacher. I love to learn and share my knowledge with others.",
   summary:
-    "In 2023, I started with my first line of code. Since then, I have been learning and building things.[I am pursuing a degree in Electrical and Computer Engineering](/#education). I have worked on various projects and have been a part of many hackathons. I am currently working at [Mavik Labs as a Full Stack Blockchain Dev](/#work) and contributing to open source.",
+    "In 2023, I started with my first line of code. Since then, I have been learning and building impactful projects. [I am pursuing a degree in Electrical and Computer Engineering](/#education). I have worked on various real world projects and have been a part of many hackathons. I am currently working at [Mavik Labs as a Full Stack Blockchain Dev](/#work) and contributing to open source.",
   avatarUrl: "/vedantpfp.png",
   skills: [
     "React",
@@ -71,6 +71,17 @@ export const DATA = {
 
   work: [
     {
+      company: "Veri Doc",
+      href: "https://www.veri-doc.vercel.com/",
+      badges: ["Founder"],
+      title: "Full Stack Blockchain Developer",
+      logoUrl: "/veri-doc.webp",
+      start: "May 2025",
+      end: "Present",
+      description:
+        "Building a decentralized document verification system using zero-knowledge proofs to reduce maintenance costs and improve verification efficiency by significantly decreasing verification time compared to standard methods.",
+    },
+    {
       company: "Mavik Labs",
       href: "https://www.maviklabs.com/",
       badges: [],
@@ -129,18 +140,6 @@ export const DATA = {
       end: "December 2024",
       description:
         "I conducted research on different YOLO models for detecting badminton shuttles, analyzing and comparing their metrics to determine the best model for enhancing sports applications.",
-    },
-    {
-      company: "Thapar Institute of Engineering and Technology",
-      href: "https://thapar.edu/",
-      badges: [],
-      location: "Patiala, Punjab",
-      title: "Research Intern",
-      logoUrl: "/thapar.png",
-      start: "June 2024",
-      end: "November 2024",
-      description:
-        "I conducted research in steganography, analyzing multiple algorithms to innovate and create a more efficient method for secure data embedding in images.",
     },
     {
       company: "Winter of Blockchain",
@@ -229,24 +228,24 @@ export const DATA = {
   ],
   hackathons: [
     {
-      title: "HackTU 6.0",
-      dates: "February 7th - 9th, 2024",
-      location: "TIET, Patiala",
+      title: "Smart India Hackathon (Waitlisted)",
+      dates: "December 12th - 13th 2024",
+      location: "Bhubaneswar, Odisha",
       description:
-        "Made an app that helps students to find the best study material, scholarships for their courses.",
+      "Got shortlisted in intra college round of this national hackathon(9,00,000+ participation) and waitlisted in the finals. Problem Statement: Development of a software solution to follow the cryptocurrency transaction trial associated with a wallet id/ transaction to find out the real reciever of the funds in a drug related transaction.",
       image:
-        "/hacktu.png",
-      links: [],
+      "/sih.png",
+      links: [ ],
     },
     {
-      title: "Hacklipse (Winner)",
-      dates: "April 6th - 7th, 2024",
-      location: "TIET, Patiala",
+      title: "Syrinx (CTF Winner)",
+      dates: "July 26th - 27th, 2024",
+      location: "Remote",
       description:
-        "Won this hackathon by making a web app that predicts the chance of winning a hackathon by using your idea as a parameter.",
+        "Won the CTF by solving several cybersecurity challenges.",
       image:
-        "/hacklipse.png",
-      links: [],
+        "/syrinx.png",
+      links: [ ],
     },
     {
       title: "HackOWASP Intra",
@@ -260,24 +259,24 @@ export const DATA = {
       links: [],
     },
     {
-      title: "Syrinx (CTF Winner)",
-      dates: "July 26th - 27th, 2024",
-      location: "Remote",
+      title: "Hacklipse (Winner)",
+      dates: "April 6th - 7th, 2024",
+      location: "TIET, Patiala",
       description:
-        "Won the CTF by solving several cybersecurity challenges.",
+        "Won this hackathon by making a web app that predicts the chance of winning a hackathon by using your idea as a parameter.",
       image:
-        "/syrinx.png",
-      links: [ ],
+        "/hacklipse.png",
+      links: [],
     },
     {
-      title: "Smart India Hackathon (Waitlisted)",
-      dates: "December 12th - 13th 2024",
-      location: "Bhubaneswar, Odisha",
+      title: "HackTU 6.0",
+      dates: "February 7th - 9th, 2024",
+      location: "TIET, Patiala",
       description:
-        "Got shortlisted in intra college round of this national hackathon(9,00,000+ participation) and waitlisted in the finals. Problem Statement: Development of a software solution to follow the cryptocurrency transaction trial associated with a wallet id/ transaction to find out the real reciever of the funds in a drug related transaction.",
+        "Made an app that helps students to find the best study material, scholarships for their courses.",
       image:
-        "/sih.png",
-      links: [ ],
+        "/hacktu.png",
+      links: [],
     },
   ],
 } as const;
