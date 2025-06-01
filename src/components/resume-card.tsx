@@ -51,6 +51,9 @@ export const ResumeCard = ({
               src={logoUrl}
               alt={altText}
               className="object-contain"
+              width={48} // Add width
+              height={48} // Add height
+              loading="lazy" // Add lazy loading
             />
             <AvatarFallback>{altText[0]}</AvatarFallback>
           </Avatar>

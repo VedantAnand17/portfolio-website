@@ -26,8 +26,10 @@ export default function Navbar() {
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "size-12"
                   )}
+                  aria-label={item.label} // Add aria-label
                 >
                   <item.icon className="size-4" />
+                  <span className="sr-only">{item.label}</span>
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
@@ -36,7 +38,10 @@ export default function Navbar() {
             </Tooltip>
           </DockIcon>
         ))}
+
         <Separator orientation="vertical" className="h-full" />
+
+        {/* Social Links */}
         {Object.entries(DATA.contact.social)
           .filter(([_, social]) => social.navbar)
           .map(([name, social]) => (
@@ -49,17 +54,24 @@ export default function Navbar() {
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12"
                     )}
+                    aria-label={`Visit ${name} profile`} // Add descriptive aria-label
+                    target="_blank" // Add target for external links
+                    rel="noopener noreferrer" // Add security attributes
                   >
                     <social.icon className="size-4" />
+                    <span className="sr-only">Visit {name} profile</span>
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{name}</p>
+                  <p>{social.name}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
           ))}
+
         <Separator orientation="vertical" className="h-full py-2" />
+
+        {/* Theme Toggle */}
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
