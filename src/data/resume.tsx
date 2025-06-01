@@ -11,7 +11,7 @@ export const DATA = {
     "Full Stack & Web3 Developer, Open Source Enthusiast, and a Teacher. I love to learn and share my knowledge with others.",
   summary:
     "In 2023, I started with my first line of code. Since then, I have been learning and building impactful projects. [I am pursuing a degree in Electrical and Computer Engineering](/#education). I have worked on various real world projects and have been a part of many hackathons. I am currently working at [Mavik Labs as a Full Stack Blockchain Dev](/#work) and contributing to open source.",
-  avatarUrl: "/vedantpfp.png",
+  avatarUrl: "/vedantpfp.webp",
   skills: [
     "React",
     "Next.js",
@@ -87,7 +87,7 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Full Stack Blockchain Developer",
-      logoUrl: "/maviklabs_logo.png",
+      logoUrl: "/maviklabs_logo.webp",
       start: "October 2024",
       end: "Present",
       description:
@@ -99,7 +99,7 @@ export const DATA = {
       badges: [],
       location: "TIET, Patiala",
       title: "Core Member",
-      logoUrl: "/owasp.png",
+      logoUrl: "/owasp.webp",
       start: "November 2023",
       end: "Present",
       description:
@@ -111,7 +111,7 @@ export const DATA = {
       href: "https://devrhylme.org/",
       location: "Remote",
       title: "Ex CMO",
-      logoUrl: "/devrhylme.png",
+      logoUrl: "/devrhylme.webp",
       start: "December 2024",
       end: "May 2025",
       description:
@@ -123,7 +123,7 @@ export const DATA = {
       href: "https://devrhylme.org/",
       location: "Remote",
       title: "Marketing Manager (Leading Board)",
-      logoUrl: "/devrhylme.png",
+      logoUrl: "/devrhylme.webp",
       start: "October 2024",
       end: "December 2024",
       description:
@@ -135,7 +135,7 @@ export const DATA = {
       badges: [],
       location: "Patiala, Punjab",
       title: "Research Intern",
-      logoUrl: "/thapar.png",
+      logoUrl: "/thapar.webp",
       start: "June 2024",
       end: "December 2024",
       description:
@@ -147,7 +147,7 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Project Admin",
-      logoUrl: "/wob.png",
+      logoUrl: "/wob.webp",
       start: "August 2024",
       end: "November 2024",
       description:
@@ -159,7 +159,7 @@ export const DATA = {
       school: "Thapar Institute of Engineering and Technology",
       href: "https://thapar.edu",
       degree: "Bachelor's in Engineering (B.E.) in Electrical and Computer Engineering",
-      logoUrl: "/thapar.png",
+      logoUrl: "/thapar.webp",
       start: "2023",
       end: "2027",
     },
@@ -192,7 +192,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/web3-wallet.png",
+      image: "/web3-wallet.webp",
       video:
         "",
     },
@@ -222,7 +222,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/web3-faucet.png",
+      image: "/web3-faucet.webp",
       video: "",
     },
   ],
@@ -234,7 +234,7 @@ export const DATA = {
       description:
       "Got shortlisted in intra college round of this national hackathon(9,00,000+ participation) and waitlisted in the finals. Problem Statement: Development of a software solution to follow the cryptocurrency transaction trial associated with a wallet id/ transaction to find out the real reciever of the funds in a drug related transaction.",
       image:
-      "/sih.png",
+      "/sih.webp",
       links: [ ],
     },
     {
@@ -244,7 +244,7 @@ export const DATA = {
       description:
         "Won the CTF by solving several cybersecurity challenges.",
       image:
-        "/syrinx.png",
+        "/syrinx.webp",
       links: [ ],
     },
     {
@@ -255,7 +255,7 @@ export const DATA = {
         "Developed a web application which informs people about TIET college, and share study resources which impacted more than 800 students.",
       icon: "public",
       image:
-        "/hacko.png",
+        "/hacko.webp",
       links: [],
     },
     {
@@ -265,7 +265,7 @@ export const DATA = {
       description:
         "Won this hackathon by making a web app that predicts the chance of winning a hackathon by using your idea as a parameter.",
       image:
-        "/hacklipse.png",
+        "/hacklipse.webp",
       links: [],
     },
     {
@@ -275,7 +275,7 @@ export const DATA = {
       description:
         "Made an app that helps students to find the best study material, scholarships for their courses.",
       image:
-        "/hacktu.png",
+        "/hacktu.webp",
       links: [],
     },
   ],
