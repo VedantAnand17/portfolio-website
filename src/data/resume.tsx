@@ -279,4 +279,48 @@ export const DATA = {
       links: [],
     },
   ],
+
+  tweets: [
+    {
+      id: "1935588888300359901",
+      title: "Learning Journey",
+    },
+    {
+      id: "1935947881854144596",
+      title: "Learning Journey",
+    },
+    {
+      id: "1936304583573172396",
+      title: "Learning Journey",
+    },
+    {
+      id: "1936688020695949350",
+      title: "Learning Journey",
+    },
+    {
+      id: "1937089284965531781",
+      title: "Learning Journey",
+    },
+    {
+      id: "1937452170707710111",
+      title: "Learning Journey",
+    },
+    {
+      id: "1937852887889068492",
+      title: "Learning Journey",
+    },
+    {
+      id: "1938301544782299447",
+      title: "Learning Journey",
+    },
+    {
+      id: "1938661110179369444",
+      title: "Learning Journey",
+    }
+    // Add more tweet IDs here as needed
+    // {
+    //   id: "your_tweet_id",
+    //   title: "Tweet Description",
+    // },
+  ],
 } as const;
