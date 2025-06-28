@@ -80,6 +80,11 @@
     p, span, div, li, td, th, label, input, textarea, select {
       font-weight: 400;
     }
+
+    /* Hide default cursor when custom cursor is active */
+    .smooth-cursor-active * {
+      cursor: none !important;
+    }
   }
 
   h3 code {

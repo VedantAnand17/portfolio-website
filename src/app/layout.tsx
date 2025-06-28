@@ -1,5 +1,6 @@
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -104,6 +105,10 @@ export default function RootLayout({
           <TooltipProvider delayDuration={0}>
             {children}
             <Navbar />
+            {/* Professional smooth cursor - only visible on desktop */}
+            <div className="hidden md:block">
+              <SmoothCursor />
+            </div>
           </TooltipProvider>
         </ThemeProvider>
       </body>
