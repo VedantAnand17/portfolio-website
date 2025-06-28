@@ -72,6 +72,13 @@
     }
     body {
       @apply bg-background text-foreground;
+      font-family: var(--font-sans);
+      font-weight: 400;
+    }
+    
+    /* Ensure Inter Regular is the default for all text */
+    p, span, div, li, td, th, label, input, textarea, select {
+      font-weight: 400;
     }
   }
 
