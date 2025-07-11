@@ -6,6 +6,7 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans, Outfit as FontDisplay } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -125,6 +126,7 @@ export default function RootLayout({
             <div className="hidden md:block">
               <SmoothCursor />
             </div>
+            <Analytics />
           </TooltipProvider>
         </ThemeProvider>
       </body>
