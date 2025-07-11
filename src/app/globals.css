@@ -154,3 +154,13 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent headings from being hidden behind fixed navbar */
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: 80px; /* Adjust if your navbar is taller/shorter */
+}

@@ -71,6 +71,17 @@ export const DATA = {
 
   work: [
     {
+      company: "Timelock Protocol",
+      href: "https://www.timelock.trade/",
+      badges: ["DeFi"],
+      title: "DeFi Developer",
+      logoUrl: "/timelock.jpg",
+      start: "June 2025",
+      end: "Present",
+      description:
+        "Developing smart contracts and DeFi protocols for options trading and yield strategies. Working on innovative DeFi solutions including perpetual options, liquidity provision, and automated market making systems.",
+    },
+    {
       company: "Veri Doc",
       href: "https://www.veri-doc.vercel.com/",
       badges: ["Founder"],
@@ -103,31 +114,7 @@ export const DATA = {
       start: "November 2023",
       end: "Present",
       description:
-        "As a core member at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
-    },
-    {
-      company: "DevRhylme Foundation",
-      badges: [],
-      href: "https://devrhylme.org/",
-      location: "Remote",
-      title: "Ex CMO",
-      logoUrl: "/devrhylme.webp",
-      start: "December 2024",
-      end: "May 2025",
-      description:
-        "I am working as the Chief Management Officer , successfully securing funding for the foundation from prominent organizations like Google, playing a role in collaborating with Indian Blockchain Month (IBM) and contributed to technical aspects of the projects as well, demonstrating a balance of strategic and technical expertise.",
-    },
-    {
-      company: "DevRhylme Foundation",
-      badges: [],
-      href: "https://devrhylme.org/",
-      location: "Remote",
-      title: "Marketing Manager (Leading Board)",
-      logoUrl: "/devrhylme.webp",
-      start: "October 2024",
-      end: "December 2024",
-      description:
-        "I worked as a Marketing Manager, successfully securing funding for the foundation from prominent organizations like Google, playing a role in collaborating with Indian Blockchain Month (IBM) and contributed to technical aspects of the projects as well, demonstrating a balance of strategic and technical expertise.",
+                "As a core member at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
     },
     {
       company: "Thapar Institute of Engineering and Technology",
@@ -166,6 +153,68 @@ export const DATA = {
     
   ],
   projects: [
+    {
+      title: "Timelock Landing",
+      href: "https://timelock-landing.vercel.app/",
+      dates: "June 2025 - Present",
+      active: true,
+      description:
+        "A modern landing page for Timelock Protocol showcasing advanced DeFi trading features with unlimited upside and zero liquidation risk. Features quantum-secured positions and temporal arbitrage across multiple DeFi protocols with enhanced yields.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Framer Motion",
+        "DeFi",
+        "Blockchain",
+        "Shadcn UI",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://timelock-landing.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/VedantAnand17/timelock-landing",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/timelock-landing.png",
+      video: "",
+    },
+    {
+      title: "Veri Doc",
+      href: "https://veri-doc.vercel.app/",
+      dates: "May 2025 - Present",
+      active: true,
+      description:
+        "A decentralized document verification system using zero-knowledge proofs to reduce maintenance costs and improve verification efficiency. The system significantly decreases verification time compared to standard methods while maintaining security and privacy through advanced cryptographic techniques.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Zero-Knowledge Proofs",
+        "Blockchain",
+        "Solidity",
+        "TailwindCSS",
+        "Shadcn UI",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://veri-doc.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/VedantAnand17/Original-Docs-contracts",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/veridoc.png",
+      video: "",
+    },
     {
       title: "Web3 Wallet",
       href: "https://web3-wallet-phi-brown.vercel.app/",
@@ -297,30 +346,5 @@ export const DATA = {
       id: "1936688020695949350",
       title: "Learning Journey",
     },
-    {
-      id: "1937089284965531781",
-      title: "Learning Journey",
-    },
-    {
-      id: "1937452170707710111",
-      title: "Learning Journey",
-    },
-    {
-      id: "1937852887889068492",
-      title: "Learning Journey",
-    },
-    {
-      id: "1938301544782299447",
-      title: "Learning Journey",
-    },
-    {
-      id: "1938661110179369444",
-      title: "Learning Journey",
-    }
-    // Add more tweet IDs here as needed
-    // {
-    //   id: "your_tweet_id",
-    //   title: "Tweet Description",
-    // },
   ],
 } as const;
