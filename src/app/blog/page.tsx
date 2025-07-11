@@ -29,11 +29,11 @@ export default async function BlogPage() {
         .map((post, id) => (
           <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
             <Link
-              className="flex flex-col space-y-1 mb-4"
+              className="flex flex-col space-y-1 mb-4 p-4 rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-900/50 hover:scale-[1.02] hover:shadow-sm"
               href={`/blog/${post.slug}`}
             >
               <div className="w-full flex flex-col">
-                <p className="tracking-tight">{post.metadata.title}</p>
+                <p className="tracking-tight font-medium">{post.metadata.title}</p>
                 <p className="h-6 text-xs text-muted-foreground">
                   {post.metadata.publishedAt}
                 </p>
