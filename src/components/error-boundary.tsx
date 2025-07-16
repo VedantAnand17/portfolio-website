@@ -40,14 +40,22 @@ class ErrorBoundary extends React.Component<
         <div className="flex flex-col items-center justify-center min-h-[200px] p-6 text-center">
           <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
           <p className="text-muted-foreground mb-4">
-            An unexpected error occurred. Please try refreshing the page.
+            An unexpected error occurred. Please try refreshing the page, or return to the home page.
           </p>
-          <button
-            onClick={() => this.setState({ hasError: false })}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
-          >
-            Try again
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => this.setState({ hasError: false })}
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+            >
+              Try again
+            </button>
+            <a
+              href="/"
+              className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80 transition-colors"
+            >
+              Go Home
+            </a>
+          </div>
         </div>
       );
     }

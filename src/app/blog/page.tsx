@@ -17,30 +17,37 @@ export default async function BlogPage() {
       <BlurFade delay={BLUR_FADE_DELAY}>
         <h1 className="font-medium text-2xl mb-8 tracking-tighter">Blogs</h1>
       </BlurFade>
-      {posts
-        .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
-            return -1;
-          }
-          return 1;
-        })
-        .map((post, id) => (
-          <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
-            <Link
-              className="flex flex-col space-y-1 mb-4 p-4 rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-900/50 hover:scale-[1.02] hover:shadow-sm"
-              href={`/blog/${post.slug}`}
-            >
-              <div className="w-full flex flex-col">
-                <p className="tracking-tight font-medium">{post.metadata.title}</p>
-                <p className="h-6 text-xs text-muted-foreground">
-                  {post.metadata.publishedAt}
-                </p>
-              </div>
-            </Link>
-          </BlurFade>
-        ))}
+      {posts.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-8">
+          <p className="text-muted-foreground mb-4">No blog posts yet. Check back soon for updates!</p>
+          <a href="/" className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">Go Home</a>
+        </div>
+      ) : (
+        posts
+          .sort((a, b) => {
+            if (
+              new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
+            ) {
+              return -1;
+            }
+            return 1;
+          })
+          .map((post, id) => (
+            <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
+              <Link
+                className="flex flex-col space-y-1 mb-4 p-4 rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-900/50 hover:scale-[1.02] hover:shadow-sm"
+                href={`/blog/${post.slug}`}
+              >
+                <div className="w-full flex flex-col">
+                  <p className="tracking-tight font-medium">{post.metadata.title}</p>
+                  <p className="h-6 text-xs text-muted-foreground">
+                    {post.metadata.publishedAt}
+                  </p>
+                </div>
+              </Link>
+            </BlurFade>
+          ))
+      )}
     </section>
   );
 }

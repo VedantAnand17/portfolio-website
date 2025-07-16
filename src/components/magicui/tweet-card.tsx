@@ -97,6 +97,15 @@ export const TweetNotFound = ({
     {...props}
   >
     <h3>Tweet not found</h3>
+    <p className="text-muted-foreground text-sm">This tweet may have been deleted or is unavailable. Check back later or follow me for updates!</p>
+    <a
+      href="https://twitter.com/vedantsx"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+    >
+      Follow on Twitter
+    </a>
   </div>
 );
 
