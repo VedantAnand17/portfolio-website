@@ -347,4 +347,4 @@ export const DATA = {
       title: "Learning Journey",
     },
   ],
-} as const;
+}
