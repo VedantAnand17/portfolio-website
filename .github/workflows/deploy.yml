@@ -23,6 +23,8 @@ jobs:
         script: |
           cd portfolio-website
           git pull origin main
+          curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+          sudo apt-get install -y nodejs
           npm install
           npm run build
           npm run start
