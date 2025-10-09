@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Full Stack & Web3 Developer, Open Source Enthusiast, and a Teacher. I love to learn and share my knowledge with others.",
   summary:
-    "In 2023, I started with my first line of code. Since then, I have been learning and building impactful projects. [I am pursuing a degree in Electrical and Computer Engineering](/#education). I have worked on various real world projects and have been a part of many hackathons. I am currently working at [Mavik Labs as a Full Stack Blockchain Dev](/#work) and contributing to open source.",
+    "In 2023, I started with my first line of code. Since then, I have been learning and building impactful projects. [I am pursuing a degree in Electrical and Computer Engineering](/#education). I have worked on various real world projects and have been a part of many hackathons. I am currently working at [Timelock Protocol as a Founding Engineer](/#work) and contributing to open source.",
   avatarUrl: "/vedantpfp.webp",
   skills: [
     "React",
@@ -109,12 +109,12 @@ export const DATA = {
       href: "#",
       badges: [],
       location: "TIET, Patiala",
-      title: "Core Member",
+      title: "Joint Secretary",
       logoUrl: "/owasp.webp",
       start: "November 2023",
       end: "Present",
       description:
-                "As a core member at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
+                "As a Joint Secretary at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
     },
     {
       company: "Thapar Institute of Engineering and Technology",
