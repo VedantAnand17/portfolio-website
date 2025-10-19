@@ -115,7 +115,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
       <a href={tweet.user.url} target="_blank" rel="noreferrer">
         <Image
           title={`Profile picture of ${tweet.user.name}`}
-          alt={tweet.user.screen_name}
+          alt={`${tweet.user.name} profile picture`}
           height={48}
           width={48}
           src={tweet.user.profile_image_url_https}
@@ -211,7 +211,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
               key={photo.url}
               src={photo.url}
               title={"Photo by " + tweet.user.name}
-              alt={tweet.text}
+              alt={`Photo shared by ${tweet.user.name} in their tweet`}
               width={400}
               height={256}
               className="h-64 w-5/6 shrink-0 snap-center snap-always rounded-xl border object-cover shadow-sm"
@@ -232,7 +232,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
             width={400}
             height={256}
             className="h-64 rounded-xl border object-cover shadow-sm"
-            alt={tweet.text}
+            alt={`Link preview image for tweet by ${tweet.user.name}`}
           />
         )}
     </div>

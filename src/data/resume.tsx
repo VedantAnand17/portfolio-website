@@ -76,6 +76,7 @@ export const DATA = {
       badges: ["DeFi"],
       title: "Founding Engineer",
       logoUrl: "/timelock.jpg",
+      altText: "Timelock Protocol logo - DeFi options trading platform",
       start: "June 2025",
       end: "Present",
       description:
@@ -87,6 +88,7 @@ export const DATA = {
       badges: ["Founder"],
       title: "Engineer and Manager",
       logoUrl: "/veri-doc.webp",
+      altText: "Veri Doc logo - decentralized document verification platform",
       start: "May 2025",
       end: "Present",
       description:
@@ -99,6 +101,7 @@ export const DATA = {
       location: "Remote",
       title: "Full Stack Blockchain Developer",
       logoUrl: "/maviklabs_logo.webp",
+      altText: "Mavik Labs logo - blockchain development company",
       start: "October 2024",
       end: "Present",
       description:
@@ -111,6 +114,7 @@ export const DATA = {
       location: "TIET, Patiala",
       title: "Joint Secretary",
       logoUrl: "/owasp.webp",
+      altText: "OWASP TIET Society logo - cybersecurity organization",
       start: "November 2023",
       end: "Present",
       description:
@@ -123,6 +127,7 @@ export const DATA = {
       location: "Patiala, Punjab",
       title: "Research Intern",
       logoUrl: "/thapar.webp",
+      altText: "Thapar Institute of Engineering and Technology logo - university",
       start: "June 2024",
       end: "December 2024",
       description:
@@ -135,6 +140,7 @@ export const DATA = {
       location: "Remote",
       title: "Project Admin",
       logoUrl: "/wob.webp",
+      altText: "Winter of Blockchain logo - web3 development program",
       start: "August 2024",
       end: "November 2024",
       description:
@@ -147,6 +153,7 @@ export const DATA = {
       href: "https://thapar.edu",
       degree: "Bachelor's in Engineering (B.E.) in Electrical and Computer Engineering",
       logoUrl: "/thapar.webp",
+      altText: "Thapar Institute of Engineering and Technology logo - university",
       start: "2023",
       end: "2027",
     },
