@@ -134,4 +134,4 @@ For any questions or feedback, feel free to reach out:
 
 - Twitter: [@vedantsx](https://twitter.com/vedantsx)
 - Email: vedantanand.in@gmail.com
-- Website: [vedant-dev.tech](https://vedant-dev.tech)
+- Website: [vedant-dev.com](https://vedant-dev.com)
