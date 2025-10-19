@@ -26,7 +26,7 @@ const fontDisplay = FontDisplay({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: 'Vedant Anand - Full stack Blockchain Developer & Innovator',
+    default: 'Freelance Software Developer | Custom Software Development | Vedant Builds',
     template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
