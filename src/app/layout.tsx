@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     default: 'Freelance Software Developer | Custom Software Development | Vedant Builds',
     template: `%s | ${DATA.name}`,
   },
-  description: DATA.description,
+  description: "Harness the expertise of a freelance software developer for your custom software development needs. Vedant Builds delivers high-performance, scalable applications.",
   keywords: [
     "Vedant",
     "Vedant Anand",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: `${DATA.name}`,
-    description: DATA.description,
+    description: "Harness the expertise of a freelance software developer for your custom software development needs. Vedant Builds delivers high-performance, scalable applications.",
     url: DATA.url,
     siteName: `${DATA.name}`,
     images: [
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${DATA.name} - Full Stack Blockchain Developer`,
-    description: DATA.description,
+    description: "Harness the expertise of a freelance software developer for your custom software development needs. Vedant Builds delivers high-performance, scalable applications.",
     site: "@vedantsx",
     creator: "@vedantsx",
     images: [`${DATA.url}/og-image.webp`],
