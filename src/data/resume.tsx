@@ -8,9 +8,9 @@ export const DATA = {
   location: "Punjab, India",
   locationLink: "https://www.google.com/maps/place/patiala",
   description:
-    "Full Stack & Web3 Developer, Open Source Enthusiast, and a Teacher. I love to learn and share my knowledge with others.",
+    "Freelance Software Developer specializing in Full Stack & Web3 Development, Open Source Enthusiast, and a Teacher. I love to learn and share my knowledge with others.",
   summary:
-    "In 2023, I started with my first line of code. Since then, I have been learning and building impactful projects. [I am pursuing a degree in Electrical and Computer Engineering](/#education). I have worked on various real world projects and have been a part of many hackathons. I am currently working at [Timelock Protocol as a Founding Engineer](/#work) and contributing to open source.",
+    "In 2023, I started with my first line of code. Since then, I have been learning and building impactful projects through freelance work and custom software development solutions. [I am pursuing a degree in Electrical and Computer Engineering](/#education). I have worked on various real world projects and have been a part of many hackathons. I am currently working at [Timelock Protocol as a Founding Engineer](/#work) and contributing to open source, while also offering freelance software development services to clients worldwide.",
   avatarUrl: "/vedantpfp.webp",
   skills: [
     "React",
