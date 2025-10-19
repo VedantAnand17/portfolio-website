@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     icon: [{ url: `/favicon.ico` }],
   },
   verification: {
-    google: "tJAGFJGKh1oBdcxgebVw1ChPsb0uWLOcY86FsFJBeV0", // Add your Google verification code
+    google: "ICMF45n16z_LIoSylPf_GKvDz_ZAk3rD1sw7W73Yqcw", // Add your Google verification code
     yandex: "",
   },
   category: "Technology",
