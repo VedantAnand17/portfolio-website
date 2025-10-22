@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { StructuredData, WebsiteStructuredData } from "@/components/structured-data";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -27,12 +28,11 @@ const fontDisplay = FontDisplay({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: 'Freelance Software Developer | Custom Software Development | Vedant Builds',
-    template: `%s | ${DATA.name}`,
+    default: 'Vedant Anand - Full Stack Developer | Blockchain & Web3 Expert | Freelance Software Development',
+    template: `%s | ${DATA.name} - Full Stack Developer`,
   },
-  description: "Harness the expertise of a freelance software developer for your custom software development needs. Vedant Builds delivers high-performance, scalable applications.",
+  description: "Vedant Anand is a skilled full-stack developer specializing in blockchain, Web3, and custom software development. Expert in React, Next.js, TypeScript, Solidity, and Rust. Available for freelance projects and consulting.",
   keywords: [
-    "Vedant",
     "Vedant Anand",
     "Full Stack Developer",
     "Blockchain Developer",
@@ -40,16 +40,25 @@ export const metadata: Metadata = {
     "Next.js Developer",
     "TypeScript Developer",
     "React Developer",
-    "Portfolio",
+    "Solidity Developer",
+    "Rust Developer",
+    "Freelance Developer",
+    "Custom Software Development",
     "Zero-Knowledge Proofs",
-    "Solidity",
-    "Rust",
-    "Docker",
-    "Git",
+    "Smart Contracts",
+    "DApp Development",
+    "Frontend Development",
+    "Backend Development",
+    "Portfolio",
+    "Software Engineer",
+    "Web Development",
+    "Mobile Development",
     "Open Source",
     "Hackathons",
     "Veri Doc",
     "Mavik Labs",
+    "Thapar University",
+    "India Developer",
   ],
   authors: [{ name: DATA.name, url: "https://github.com/vedantanand17" }],
   creator: DATA.name,
@@ -58,16 +67,16 @@ export const metadata: Metadata = {
     canonical: DATA.url,
   },
   openGraph: {
-    title: `${DATA.name}`,
-    description: "Harness the expertise of a freelance software developer for your custom software development needs. Vedant Builds delivers high-performance, scalable applications.",
+    title: `${DATA.name} - Full Stack Developer & Blockchain Expert`,
+    description: "Vedant Anand is a skilled full-stack developer specializing in blockchain, Web3, and custom software development. Expert in React, Next.js, TypeScript, Solidity, and Rust.",
     url: DATA.url,
-    siteName: `${DATA.name}`,
+    siteName: `${DATA.name} - Portfolio`,
     images: [
       {
         url: `${DATA.url}/og-image.webp`,
         width: 1200,
         height: 630,
-        alt: `${DATA.name} Portfolio Preview`,
+        alt: `${DATA.name} - Full Stack Developer Portfolio Preview`,
       },
     ],
     locale: "en_US",
@@ -75,8 +84,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${DATA.name} - Full Stack Blockchain Developer`,
-    description: "Harness the expertise of a freelance software developer for your custom software development needs. Vedant Builds delivers high-performance, scalable applications.",
+    title: `${DATA.name} - Full Stack Developer & Blockchain Expert`,
+    description: "Vedant Anand is a skilled full-stack developer specializing in blockchain, Web3, and custom software development. Expert in React, Next.js, TypeScript, Solidity, and Rust.",
     site: "@vedantsx",
     creator: "@vedantsx",
     images: [`${DATA.url}/og-image.webp`],
@@ -114,6 +123,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <GoogleAnalytics />
+        <StructuredData />
+        <WebsiteStructuredData />
       </head>
       <body
         className={cn(

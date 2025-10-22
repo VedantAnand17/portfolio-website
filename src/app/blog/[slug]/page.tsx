@@ -1,6 +1,7 @@
 import { getBlogPosts, getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
+import { BlogBreadcrumb } from "@/components/breadcrumb";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -69,6 +70,7 @@ export default async function Blog({
 
   return (
     <section id="blog">
+      <BlogBreadcrumb title={post.metadata.title} />
       <script
         type="application/ld+json"
         suppressHydrationWarning

@@ -33,16 +33,16 @@ export default function Page() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border">
-                <AvatarImage alt={`${DATA.name} professional profile picture`} src={DATA.avatarUrl} />
+                <AvatarImage alt={`${DATA.name} professional profile picture - Full Stack Developer`} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
           </div>
         </div>
       </section>
-      <section id="about">
+      <section id="about" aria-labelledby="about-heading">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">About Me</h2>
+          <h2 id="about-heading" className="text-xl font-bold">About Me - Full Stack Developer</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
@@ -50,10 +50,10 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
-      <section id="work">
+      <section id="work" aria-labelledby="work-heading">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
+            <h2 id="work-heading" className="text-xl font-bold">Professional Work Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
@@ -75,10 +75,10 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section id="education">
+      <section id="education" aria-labelledby="education-heading">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
+            <h2 id="education-heading" className="text-xl font-bold">Educational Background</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
@@ -98,10 +98,10 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section id="skills">
+      <section id="skills" aria-labelledby="skills-heading">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+            <h2 id="skills-heading" className="text-xl font-bold">Technical Skills & Technologies</h2>
           </BlurFade>
           <div className="flex flex-wrap gap-1">
             {DATA.skills.map((skill, id) => (
@@ -112,21 +112,21 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="projects">
+      <section id="projects" aria-labelledby="projects-heading">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  My Projects
+                  Portfolio Projects
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  My Projects
+                <h2 id="projects-heading" className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Featured Software Development Projects
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   As a freelance software developer, I&apos;ve worked on a variety of projects, from simple
                   websites to complex web applications and custom software development solutions. Here are a few of my
-                  favorites.
+                  favorites showcasing full-stack development expertise.
                 </p>
               </div>
             </div>
