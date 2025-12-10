@@ -16,6 +16,9 @@ const fontSans = FontSans({
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
+  fallback: ["system-ui", "arial"],
+  adjustFontFallback: true,
+  preload: true,
 });
 
 const fontDisplay = FontDisplay({
@@ -23,6 +26,9 @@ const fontDisplay = FontDisplay({
   weight: ["400", "500", "600", "700"],
   variable: "--font-display",
   display: "swap",
+  fallback: ["system-ui", "arial"],
+  adjustFontFallback: true,
+  preload: true,
 });
 
 export const metadata: Metadata = {
