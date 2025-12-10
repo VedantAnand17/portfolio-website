@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import Image from "next/image";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -32,18 +31,12 @@ export default function Page() {
                 text={DATA.description}
               />
             </div>
-            <div className="relative size-28 shrink-0 overflow-hidden rounded-full border">
-              <Image
-                src={DATA.avatarUrl}
-                alt={`${DATA.name} professional profile picture - Full Stack Developer`}
-                width={112}
-                height={112}
-                priority
-                fetchPriority="high"
-                className="aspect-square h-full w-full object-cover"
-                sizes="112px"
-              />
-            </div>
+            <BlurFade delay={BLUR_FADE_DELAY}>
+              <Avatar className="size-28 border">
+                <AvatarImage alt={`${DATA.name} professional profile picture - Full Stack Developer`} src={DATA.avatarUrl} />
+                <AvatarFallback>{DATA.initials}</AvatarFallback>
+              </Avatar>
+            </BlurFade>
           </div>
         </div>
       </section>
