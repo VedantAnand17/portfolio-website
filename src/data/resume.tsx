@@ -258,7 +258,7 @@ export const DATA = {
     },
     {
       title: "Web3 Wallet",
-      href: "https://web3-wallet-phi-brown.vercel.app/",
+      href: "https://web3-wallet.vedant-dev.com",
       dates: "August 2024 - October 2024",
       active: true,
       description:
@@ -273,7 +273,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://web3-wallet-phi-brown.vercel.app/",
+          href: "https://web3-wallet.vedant-dev.com",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -282,7 +282,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/web3-wallet.webp",
+      image: "/web3-wallet.png",
       video:
         "",
     },
