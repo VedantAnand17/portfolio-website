@@ -223,6 +223,38 @@ export const DATA = {
       video: "",
     },
     {
+      title: "AgentPay",
+      href: "https://agentpay.vedant-dev.com/",
+      dates: "November 2025 - December 2025",
+      active: true,
+      description:
+        "A payment agent that allows you to pay for Sentimental Analysis as well as in house trading through x402 technology.",
+      technologies: [
+        "Next.js",
+        "x402",
+        "TypeScript",
+        "TailwindCSS",
+        "AI",
+        "Shadcn UI",
+        "DeFi",
+        "Blockchain",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://agentpay.vedant-dev.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/VedantAnand17/AgentPay/",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/AgentPay.png",
+      video: "",
+    },
+    {
       title: "Web3 Wallet",
       href: "https://web3-wallet-phi-brown.vercel.app/",
       dates: "August 2024 - October 2024",
@@ -251,35 +283,6 @@ export const DATA = {
       image: "/web3-wallet.webp",
       video:
         "",
-    },
-    {
-      title: "Web3 Faucet and Adapter",
-      href: "https://web3-faucet.vercel.app/",
-      dates: "September 2024 - October 2024",
-      active: true,
-      description:
-        "A modern React application demonstrating Solana wallet integration, development token airdrop as a faucet and SOL token management with a clean, responsive UI built using Tailwind CSS and shadcn/ui components.",
-      technologies: [
-        "React.js",
-        "Javascript",
-        "TailwindCSS",
-        "Web3.js",
-        "Shadcn UI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://web3-faucet.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/VedantAnand17/web3Adapter/",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/web3-faucet.webp",
-      video: "",
     },
   ],
   hackathons: [
