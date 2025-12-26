@@ -95,19 +95,6 @@ export const DATA = {
         "Building a decentralized document verification system using zero-knowledge proofs to reduce maintenance costs and improve verification efficiency by significantly decreasing verification time compared to standard methods.",
     },
     {
-      company: "Mavik Labs",
-      href: "https://www.maviklabs.com/",
-      badges: [],
-      location: "Remote",
-      title: "Full Stack Blockchain Developer",
-      logoUrl: "/maviklabs_logo.webp",
-      altText: "Mavik Labs logo - blockchain development company",
-      start: "October 2024",
-      end: "Present",
-      description:
-        "Currently contributing to MVP projects and developing a website at Mavik Labs , leveraging technologies like Next.js, TypeScript, Docker, and Go.",
-    },
-    {
       company: "Owasp (TIET Society)",
       href: "#",
       badges: [],
@@ -119,6 +106,19 @@ export const DATA = {
       end: "Present",
       description:
                 "As a Joint Secretary at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
+    },
+    {
+      company: "Mavik Labs",
+      href: "https://www.maviklabs.com/",
+      badges: [],
+      location: "Remote",
+      title: "Full Stack Blockchain Developer",
+      logoUrl: "/maviklabs_logo.webp",
+      altText: "Mavik Labs logo - blockchain development company",
+      start: "October 2024",
+      end: "October 2025",
+      description:
+        "Currently contributing to MVP projects and developing a website at Mavik Labs , leveraging technologies like Next.js, TypeScript, Docker, and Go.",
     },
     {
       company: "Thapar Institute of Engineering and Technology",
