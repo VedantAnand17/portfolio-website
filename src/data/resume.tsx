@@ -23,6 +23,8 @@ export const DATA = {
     "C++",
     "C",
     "Git & Github",
+    "Foundry",
+    "Zero-Knowledge Proofs",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
