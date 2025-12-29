@@ -86,7 +86,7 @@ export const DATA = {
     },
     {
       company: "Veri Doc",
-      href: "https://www.veri-doc.vercel.com/",
+      href: "https://veri-doc.tech",
       badges: ["Founder"],
       title: "Engineer and Manager",
       logoUrl: "/veri-doc.webp",
@@ -107,7 +107,7 @@ export const DATA = {
       start: "November 2023",
       end: "Present",
       description:
-                "As a Joint Secretary at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
+        "As a Joint Secretary at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
     },
     {
       company: "Mavik Labs",
@@ -159,7 +159,7 @@ export const DATA = {
       start: "2023",
       end: "2027",
     },
-    
+
   ],
   projects: [
     {
@@ -293,10 +293,10 @@ export const DATA = {
       dates: "December 12th - 13th 2024",
       location: "Bhubaneswar, Odisha",
       description:
-      "Got shortlisted in intra college round of this national hackathon(9,00,000+ participation) and waitlisted in the finals. Problem Statement: Development of a software solution to follow the cryptocurrency transaction trial associated with a wallet id/ transaction to find out the real reciever of the funds in a drug related transaction.",
+        "Got shortlisted in intra college round of this national hackathon(9,00,000+ participation) and waitlisted in the finals. Problem Statement: Development of a software solution to follow the cryptocurrency transaction trial associated with a wallet id/ transaction to find out the real reciever of the funds in a drug related transaction.",
       image:
-      "/sih.webp",
-      links: [ ],
+        "/sih.webp",
+      links: [],
     },
     {
       title: "Syrinx (CTF Winner)",
@@ -306,7 +306,7 @@ export const DATA = {
         "Won the CTF by solving several cybersecurity challenges.",
       image:
         "/syrinx.webp",
-      links: [ ],
+      links: [],
     },
     {
       title: "HackOWASP Intra",
