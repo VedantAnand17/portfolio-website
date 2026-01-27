@@ -23,7 +23,7 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-bold sm:text-5xl xl:text-6xl/none font-display"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                text={`Hi, I'm ${DATA.name.split(" ")[0]} <span role="img" aria-label="Waving hand">👋</span>`}
               />
               <BlurFadeText
                 className="max-w-[600px] md:text-xl"
@@ -68,7 +68,7 @@ export default function Page() {
                 subtitle={work.title}
                 href={work.href}
                 badges={work.badges}
-                period={`${work.start} - ${work.end ?? "Present"}`}
+                period={`${work.start} – ${work.end ?? "Present"}`}
                 description={work.description}
               />
             </BlurFade>
@@ -92,7 +92,7 @@ export default function Page() {
                 altText={education.school}
                 title={education.school}
                 subtitle={education.degree}
-                period={`${education.start} - ${education.end}`}
+                period={`${education.start} – ${education.end}`}
               />
             </BlurFade>
           ))}
@@ -172,7 +172,7 @@ export default function Page() {
                   I like building things
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                During my time at university, I have attended several hackathons where people from across the country come together to build incredible things in just 2-3 days. It is eye-opening to witness the endless possibilities brought to life by groups of motivated and passionate individuals.
+                  During my time at university, I have attended several hackathons where people from across the country come together to build incredible things in just 2-3 days. It is eye-opening to witness the endless possibilities brought to life by groups of motivated and passionate individuals.
                 </p>
               </div>
             </div>
@@ -255,12 +255,12 @@ export default function Page() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat or discuss freelance software development opportunities? Just shoot me a dm{" "}
+                Want to chat or discuss freelance software development opportunities? Just shoot me a DM{" "}
                 <Link
                   href={DATA.contact.social.X.url}
                   className="text-blue-500 hover:underline"
                 >
-                  with a direct question on twitter
+                  with a direct question on Twitter
                 </Link>{" "}
                 and I&apos;ll respond whenever I can. I will ignore all
                 soliciting.

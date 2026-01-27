@@ -28,7 +28,7 @@ export default function Navbar() {
                   )}
                   aria-label={item.label} // Add aria-label
                 >
-                  <item.icon className="size-4" />
+                  <item.icon className="size-4" aria-hidden="true" />
                   <span className="sr-only">{item.label}</span>
                 </Link>
               </TooltipTrigger>
@@ -58,7 +58,7 @@ export default function Navbar() {
                     target="_blank" // Add target for external links
                     rel="noopener noreferrer" // Add security attributes
                   >
-                    <social.icon className="size-4" />
+                    <social.icon className="size-4" aria-hidden="true" />
                     <span className="sr-only">Visit {name} profile</span>
                   </Link>
                 </TooltipTrigger>

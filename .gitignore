@@ -38,3 +38,13 @@ next-env.d.ts
 
 pnpm-lock.yaml
 package-lock.json
+
+# AI & IDE Metadata
+.agent/
+.agents/
+.claude/
+.cursor/
+.gemini/
+.opencode/
+.github/skills/
+skills/

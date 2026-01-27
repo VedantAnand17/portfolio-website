@@ -156,8 +156,10 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 /* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Prevent headings from being hidden behind fixed navbar */

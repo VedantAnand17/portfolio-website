@@ -59,6 +59,9 @@ const nextConfig = {
       },
     ];
   },
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@/components/icons'],
+  },
 };
 
 export default nextConfig;

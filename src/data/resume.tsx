@@ -165,7 +165,7 @@ export const DATA = {
     {
       title: "Timelock Landing",
       href: "https://timelock-landing.vercel.app/",
-      dates: "June 2025 - Present",
+      dates: "June 2025 – Present",
       active: true,
       description:
         "A modern landing page for Timelock Protocol showcasing advanced DeFi trading features with unlimited upside and zero liquidation risk. Features quantum-secured positions and temporal arbitrage across multiple DeFi protocols with enhanced yields.",
@@ -196,7 +196,7 @@ export const DATA = {
     {
       title: "Veri Doc",
       href: "https://veri-doc.vercel.app/",
-      dates: "May 2025 - Present",
+      dates: "May 2025 – Present",
       active: true,
       description:
         "A decentralized document verification system using zero-knowledge proofs to reduce maintenance costs and improve verification efficiency. The system significantly decreases verification time compared to standard methods while maintaining security and privacy through advanced cryptographic techniques.",
@@ -227,7 +227,7 @@ export const DATA = {
     {
       title: "AgentPay",
       href: "https://agentpay.vedant-dev.com/",
-      dates: "November 2025 - December 2025",
+      dates: "November 2025 – December 2025",
       active: true,
       description:
         "A payment agent that allows you to pay for Sentimental Analysis as well as in house trading through x402 technology.",
@@ -259,7 +259,7 @@ export const DATA = {
     {
       title: "Web3 Wallet",
       href: "https://web3-wallet.vedant-dev.com",
-      dates: "August 2024 - October 2024",
+      dates: "August 2024 – October 2024",
       active: true,
       description:
         "Wallet Generator is a React-based web application that allows users to generate secure mnemonic seed phrases for cryptocurrency wallets. Leveraging the BIP39 standard, the application facilitates the creation of seed phrases which can be used to set up wallets for both Solana and Ethereum networks. This tool is essential for developers and enthusiasts looking to manage their crypto assets securely.",
@@ -290,7 +290,7 @@ export const DATA = {
   hackathons: [
     {
       title: "Smart India Hackathon (Waitlisted)",
-      dates: "December 12th - 13th 2024",
+      dates: "December 12th – 13th 2024",
       location: "Bhubaneswar, Odisha",
       description:
         "Got shortlisted in intra college round of this national hackathon(9,00,000+ participation) and waitlisted in the finals. Problem Statement: Development of a software solution to follow the cryptocurrency transaction trial associated with a wallet id/ transaction to find out the real reciever of the funds in a drug related transaction.",
@@ -300,7 +300,7 @@ export const DATA = {
     },
     {
       title: "Syrinx (CTF Winner)",
-      dates: "July 26th - 27th, 2024",
+      dates: "July 26th – 27th, 2024",
       location: "Remote",
       description:
         "Won the CTF by solving several cybersecurity challenges.",
@@ -310,7 +310,7 @@ export const DATA = {
     },
     {
       title: "HackOWASP Intra",
-      dates: "July 13th - 14th, 2024",
+      dates: "July 13th – 14th, 2024",
       location: "Remote",
       description:
         "Developed a web application which informs people about TIET college, and share study resources which impacted more than 800 students.",
@@ -321,7 +321,7 @@ export const DATA = {
     },
     {
       title: "Hacklipse (Winner)",
-      dates: "April 6th - 7th, 2024",
+      dates: "April 6th – 7th, 2024",
       location: "TIET, Patiala",
       description:
         "Won this hackathon by making a web app that predicts the chance of winning a hackathon by using your idea as a parameter.",
@@ -331,7 +331,7 @@ export const DATA = {
     },
     {
       title: "HackTU 6.0",
-      dates: "February 7th - 9th, 2024",
+      dates: "February 7th – 9th, 2024",
       location: "TIET, Patiala",
       description:
         "Made an app that helps students to find the best study material, scholarships for their courses.",

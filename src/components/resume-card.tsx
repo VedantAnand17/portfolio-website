@@ -43,6 +43,9 @@ export const ResumeCard = ({
       href={href || "#"}
       className="block cursor-pointer"
       onClick={handleClick}
+      aria-expanded={description ? isExpanded : undefined}
+      aria-controls={description ? `description-${title.replace(/\s+/g, '-').toLowerCase()}` : undefined}
+      role={description ? "button" : undefined}
     >
       <Card className="flex">
         <div className="flex-none">
@@ -77,6 +80,7 @@ export const ResumeCard = ({
                   </span>
                 )}
                 <ChevronRightIcon
+                  aria-hidden="true"
                   className={cn(
                     "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
                     isExpanded ? "rotate-90" : "rotate-0"
@@ -91,6 +95,7 @@ export const ResumeCard = ({
           </CardHeader>
           {description && (
             <motion.div
+              id={`description-${title.replace(/\s+/g, '-').toLowerCase()}`}
               initial={{ opacity: 0, height: 0 }}
               animate={{
                 opacity: isExpanded ? 1 : 0,
