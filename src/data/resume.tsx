@@ -74,7 +74,7 @@ export const DATA = {
   work: [
     {
       company: "Timelock Protocol",
-      href: "https://www.timelock.trade/",
+      href: "https://timelock.trade",
       badges: ["DeFi"],
       title: "Founding Engineer",
       logoUrl: "/timelock.jpg",
@@ -163,8 +163,8 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Timelock Landing",
-      href: "https://timelock-landing.vercel.app/",
+      title: "Timelock Protocol",
+      href: "https://timelock.trade",
       dates: "June 2025 – Present",
       active: true,
       description:
@@ -181,7 +181,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://timelock-landing.vercel.app/",
+          href: "https://timelock.trade",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -190,7 +190,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/timelock-landing.png",
+      image: "/timelock-landing-new.png",
       video: "",
     },
     {
