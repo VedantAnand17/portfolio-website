@@ -8,7 +8,12 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans, Outfit as FontDisplay } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
+import dynamic from "next/dynamic";
+
+const Analytics = dynamic(
+  () => import("@vercel/analytics/next").then((m) => m.Analytics),
+  { ssr: false }
+);
 import "./globals.css";
 
 const fontSans = FontSans({
