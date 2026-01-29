@@ -99,6 +99,11 @@
     @apply px-4
   }
 
+  /* Add padding for plain code blocks without syntax highlighting */
+  pre code:not([data-line-numbers]) {
+    @apply px-4 block;
+  }
+
   code {
     @apply text-sm md:text-base !leading-loose;
   }

@@ -1,0 +1,78 @@
+---
+title: "The Core Mechanism — Concentrated Liquidity"
+publishedAt: "2026-01-29"
+summary: "Explore the core mechanism of Uniswap V3: Concentrated Liquidity. Learn how it solves capital inefficiency and maximizes LP yields."
+image: "/blog/concentrated-liquidity/uniswap-v3-banner.png"
+---
+
+# Module 1: The Core Mechanism — Concentrated Liquidity
+
+At the heart of Uniswap V3 lies "Concentrated Liquidity," a fundamental shift in how capital is utilized within an Automated Market Maker (AMM).
+
+## 1. The Problem with V2: The "Lazy Capital" Problem
+
+To understand V3, we must first identify the inefficiency of Uniswap V2.
+
+*   **The Scenario:** Consider a stablecoin pair like DAI/USDC. The goal of an LP is to provide liquidity within a stable range, typically between $0.99 and $1.01.
+*   **The V2 Flaw:** To maintain price stability while handling swaps, V2 spreads your liquidity across a price curve that goes from zero to infinity (0 to ∞).
+*   **The Example:** If you have 200 DAI + 200 USDC (totaling $400) in a V2 pool, swapping just a few tokens can push the price significantly because your capital is spread so thin.
+*   **The Waste:** Most of those 400 tokens are "lazy." They sit in the pool to support prices that will likely never be reached (like DAI hitting $100 or $0.01), doing nothing to earn fees for the majority of trades.
+
+## 2. The V3 Solution: Concentration
+
+Uniswap V3 changes the game by allowing LPs to "pick their battles."
+
+*   **The Shift:** Instead of spreading liquidity across all possible prices, you define a **Price Range** (e.g., $0.99 to $1.01).
+*   **The Impact:** Your capital is now concentrated exclusively in that active zone.
+*   **The Result:** Your concentrated position can now earn fees comparable to a much larger pool. For example, a **$183,500** V3 position can outperform a **$1,000,000** V2 position in terms of yield.
+
+## 3. The Vocabulary: Virtual Reserves
+
+To implement this, V3 introduces two critical concepts:
+
+1.  **Real Reserves (x, y):** This is the actual capital you hold and deposit (e.g., $183,500).
+2.  **Virtual Reserves (L):** This represents the "Mathematical Depth." To keep the price curve flat and stable within your range, the AMM calculates swaps *as if* it had the depth of a much larger pool (e.g., the $1,000,000 equivalent). 
+
+**The Formula:**
+```
+Real Reserves + Virtual Offset = Virtual Reserves
+```
+
+## 4. The Efficiency Calculation
+
+Now let's move beyond stablecoins to see how concentrated liquidity truly shines with volatile pairs. The power of this mechanism is best shown through its capital efficiency. Consider a **DAI/ETH** pool where two LPs want to provide liquidity for ETH prices between **$1,000 and $2,500**:
+
+*   **Alice's V2 Strategy:** $1,000,000 (500,000 DAI + 333.33 ETH), spread across the entire price curve → **50% APR**.
+*   **Bob's V3 Strategy:** $183,500 (91,751 DAI + 61.17 ETH), concentrated in the $1,000–$2,500 range → **314% APR**.
+*   **The Advantage:** Bob earns over **6x higher APR** while using less than **1/5th** of the capital.
+
+![Chart comparing Alice's V2 strategy ($1M at 50% APR) vs Bob's V3 strategy ($183.5K at 314% APR), showing 6x higher returns with concentrated liquidity](/blog/concentrated-liquidity/capital-efficiency-1.png)
+
+By concentrating liquidity, the capital becomes significantly more powerful—earning fees as if it were a much larger "whale" position while maintaining only a fraction of the actual exposure.
+
+### Limited Exposure & Range Protection
+
+Concentrated liquidity also reduces the amount of capital at risk. Using the same DAI/ETH example above—if ETH drops to $0:
+
+*   **Alice (V2):** Her entire $1M position becomes 100% ETH, 0% DAI—fully exposed to the crash.
+*   **Bob (V3):** His position only became 100% ETH when the price exited his $1,000–$2,500 range. He retains **$816,500** of his capital outside the pool, protected from further loss.
+
+![Diagram showing how Bob's V3 position protects $816,500 outside the active range while Alice's V2 position is fully exposed to ETH price crash](/blog/concentrated-liquidity/capital-efficiency-2.png)
+
+## 5. Range Orders
+
+A unique feature of concentrated liquidity is the ability to create "Range Orders." By providing liquidity in a very narrow range that is entirely above or below the current price, LPs can effectively create a limit order that executes along a smooth curve.
+
+![Illustration of range orders showing how a narrow liquidity position above current price acts as a limit sell order that earns fees while waiting](/blog/concentrated-liquidity/range-orders.png)
+
+This allows for more sophisticated trading strategies, such as profit-taking or buying into a position at a specific price range, while earning swap fees until the order is fully executed.
+
+---
+
+## Key Takeaways
+
+- **Capital Efficiency:** Concentrated liquidity lets you earn fees as if you had 5–10x more capital by focusing on active price ranges.
+- **Reduced Risk:** Your exposure is limited to your chosen range—capital outside that range stays protected.
+- **Strategic Flexibility:** Range orders enable limit-order-like functionality while still earning swap fees.
+
+In the next module, we'll dive deeper into how **ticks and price ranges** work under the hood, giving you the tools to optimize your liquidity positions like a pro.
