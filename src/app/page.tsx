@@ -1,7 +1,6 @@
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { TweetCard } from "@/components/magicui/tweet-card";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -9,6 +8,12 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import dynamic from "next/dynamic";
+
+const TweetCard = dynamic(() => import("@/components/magicui/tweet-card").then(mod => mod.TweetCard), {
+  ssr: false,
+  loading: () => <div className="h-[300px] bg-muted animate-pulse rounded-lg" />
+});
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -33,7 +38,12 @@ export default function Page() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border">
-                <AvatarImage alt={`${DATA.name} professional profile picture - Full Stack Developer`} src={DATA.avatarUrl} />
+                <AvatarImage
+                  alt={`${DATA.name} professional profile picture - Full Stack Developer`}
+                  src={DATA.avatarUrl}
+                  width={112}
+                  height={112}
+                />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
