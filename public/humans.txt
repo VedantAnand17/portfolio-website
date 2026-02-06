@@ -1,0 +1,56 @@
+/* TEAM */
+
+Developer: Vedant Anand
+Role: Full Stack & Web3 Developer
+Location: Punjab, India
+Email: vedantanand.in@gmail.com
+Social: @vedantsx (X/Twitter)
+From: India
+
+/* THANKS */
+
+Name: Open Source Community
+Name: Web3 & DeFi Builders
+Name: Thapar Institute of Engineering and Technology
+
+/* SITE */
+
+Last update: 2026-02-06
+Language: English
+Standards: HTML5, CSS3, TypeScript
+Components: React, Next.js, TailwindCSS, shadcn/ui
+Software: VS Code, Git, Node.js
+Doctype: HTML5
+IDE: VS Code
+
+/* TECHNOLOGY */
+
+Built with: Next.js 14, React 18, TypeScript
+Styled with: TailwindCSS, shadcn/ui
+Deployed on: Vercel
+Domain: vedant-dev.com
+
+/* ABOUT */
+
+This is a portfolio website showcasing Vedant Anand's work as a Full Stack & Web3 Developer. Started coding in 2023, Vedant specializes in building decentralized applications, DeFi protocols, and modern web applications. Currently pursuing Electrical and Computer Engineering at Thapar Institute.
+
+/* PROJECTS */
+
+Featured Projects:
+- Timelock Protocol: DeFi options trading platform
+- Veri Doc: Decentralized document verification using ZK proofs
+- AgentPay: AI payment agent for trading
+- Web3 Wallet: React-based wallet generator
+
+/* BLOG */
+
+Topics covered:
+- Uniswap and DeFi protocols
+- Concentrated liquidity mechanisms
+- Web3 development tutorials
+- Blockchain and smart contracts
+
+/* NOTE */
+
+This site is open source. Feel free to inspect the code and learn from it.
+GitHub: https://github.com/vedantanand17

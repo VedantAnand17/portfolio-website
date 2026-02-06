@@ -1,0 +1,36 @@
+# Security Policy
+
+Contact: mailto:vedantanand.in@gmail.com
+Expires: 2027-02-06T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://vedant-dev.com/.well-known/security.txt
+Policy: https://vedant-dev.com/security-policy
+
+# Acknowledgments
+
+Thank you for helping keep this site secure. If you discover a security vulnerability, please report it responsibly.
+
+# Scope
+
+This security policy applies to:
+- https://vedant-dev.com
+- https://agentpay.vedant-dev.com
+- All subdomains of vedant-dev.com
+
+# Reporting
+
+Please send vulnerability reports to: vedantanand.in@gmail.com
+
+Include the following in your report:
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact
+- Suggested fix (if any)
+
+# Response Time
+
+I aim to respond to security reports within 48 hours and will work to resolve valid issues promptly.
+
+# Disclosure Policy
+
+Please allow reasonable time for me to address the issue before publicly disclosing it. I appreciate responsible disclosure practices.

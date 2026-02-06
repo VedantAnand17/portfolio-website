@@ -1,0 +1,63 @@
+# Vedant Anand - Full Stack & Web3 Developer
+
+> Freelance Software Developer specializing in Full Stack & Web3 Development, Open Source Enthusiast, and Teacher. Based in Punjab, India, with expertise in React, Next.js, TypeScript, Rust, Solidity, and DeFi protocols. Founded Veri Doc and works as Founding Engineer at Timelock Protocol.
+
+## About
+
+Vedant Anand is a passionate software developer who started coding in 2023 and has since built impactful projects through freelance work and custom software development. Currently pursuing a Bachelor's in Electrical and Computer Engineering at Thapar Institute of Engineering and Technology (2023-2027).
+
+## Key Pages
+
+- [Home](https://vedant-dev.com/) - Portfolio homepage with featured projects and experience
+- [Blog](https://vedant-dev.com/blog) - Technical blog with DeFi and Web3 tutorials
+
+## Blog Posts
+
+- [Understanding Uniswap: A Complete Guide to Building DeFi Applications](https://vedant-dev.com/blog/uniswap-guide) - Learn what Uniswap is, how it works, and how to build DeFi applications using Uniswap's protocol
+- [The Core Mechanism — Concentrated Liquidity](https://vedant-dev.com/blog/concentrated-liquidity) - Explore Uniswap V3's concentrated liquidity mechanism and how it maximizes LP yields
+
+## Featured Projects
+
+- [Timelock Protocol](https://timelock.trade) - Modern landing page for DeFi options trading platform with quantum-secured positions
+- [Veri Doc](https://veri-doc.vercel.app/) - Decentralized document verification using zero-knowledge proofs
+- [AgentPay](https://agentpay.vedant-dev.com/) - AI payment agent for sentiment analysis and trading via x402 technology
+- [Web3 Wallet](https://web3-wallet.vedant-dev.com) - React-based wallet generator for Solana and Ethereum using BIP39
+
+## Technical Skills
+
+- Frontend: React, Next.js, TypeScript, TailwindCSS
+- Backend: Node.js, Docker
+- Blockchain: Solidity, Rust, Foundry, Zero-Knowledge Proofs
+- Other: Git & GitHub, C, C++
+
+## Professional Experience
+
+- **Founding Engineer** at Timelock Protocol (June 2025 - Present) - DeFi options trading and yield strategies
+- **Engineer and Manager** at Veri Doc (May 2025 - Present) - Decentralized document verification
+- **Full Stack Blockchain Developer** at Mavik Labs (October 2024 - October 2025)
+- **Research Intern** at Thapar Institute (June 2024 - December 2024) - YOLO models for badminton shuttle detection
+
+## Hackathon Achievements
+
+- Winner: x402 Build Onchain (January 2026) - 500+ participating teams
+- Waitlisted: Smart India Hackathon (December 2024) - 900,000+ participation
+- Winner: Syrinx CTF (July 2024)
+- Winner: Hacklipse (April 2024)
+
+## Contact
+
+- Email: vedantanand.in@gmail.com
+- GitHub: https://github.com/vedantanand17
+- LinkedIn: https://linkedin.com/in/vedantanand17
+- X (Twitter): https://x.com/vedantsx
+
+## Social Profiles
+
+- [GitHub](https://github.com/vedantanand17)
+- [LinkedIn](https://linkedin.com/in/vedantanand17)
+- [X (Twitter)](https://x.com/vedantsx)
+- [Daily.Dev](https://dly.to/jLsiMBOoTBk)
+
+## License
+
+Content on this site is available for AI training and reference with proper attribution. For commercial use inquiries, please contact via email.

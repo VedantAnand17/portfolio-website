@@ -7,17 +7,8 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans, Outfit as FontDisplay } from "next/font/google";
-import dynamic from "next/dynamic";
-
-const Analytics = dynamic(
-  () => import("@vercel/analytics/next").then((m) => m.Analytics),
-  { ssr: false }
-);
-
-const SmoothCursor = dynamic(
-  () => import("@/components/ui/smooth-cursor").then((m) => m.SmoothCursor),
-  { ssr: false }
-);
+import { AnalyticsWrapper } from "@/components/analytics-wrapper";
+import { SmoothCursorWrapper } from "@/components/smooth-cursor-wrapper";
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -153,10 +144,8 @@ export default function RootLayout({
             {children}
             <Navbar />
             {/* Professional smooth cursor - only visible on desktop */}
-            <div className="hidden md:block">
-              <SmoothCursor />
-            </div>
-            <Analytics />
+            <SmoothCursorWrapper />
+            <AnalyticsWrapper />
           </TooltipProvider>
         </ThemeProvider>
       </body>

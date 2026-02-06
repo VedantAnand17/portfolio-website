@@ -30,7 +30,7 @@ export function HackathonCard({
           <AvatarImage
             src={image}
             alt={`${title} hackathon logo and branding`}
-            className="object-contain"
+            className="object-cover object-center"
             width={48}
             height={48}
             loading="lazy"

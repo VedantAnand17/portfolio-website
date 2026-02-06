@@ -289,6 +289,16 @@ export const DATA = {
   ],
   hackathons: [
     {
+      title: "x402 Build Onchain (Winner)",
+      dates: "January 13th, 2026",
+      location: "Remote",
+      description:
+        "Won the x402 Build Onchain hackathon organized by FBI among 500+ participating teams.",
+      image:
+        "/x402.png",
+      links: [],
+    },
+    {
       title: "Smart India Hackathon (Waitlisted)",
       dates: "December 12th – 13th 2024",
       location: "Bhubaneswar, Odisha",
