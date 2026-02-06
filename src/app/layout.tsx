@@ -1,6 +1,5 @@
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { StructuredData, WebsiteStructuredData } from "@/components/structured-data";
@@ -12,6 +11,11 @@ import dynamic from "next/dynamic";
 
 const Analytics = dynamic(
   () => import("@vercel/analytics/next").then((m) => m.Analytics),
+  { ssr: false }
+);
+
+const SmoothCursor = dynamic(
+  () => import("@/components/ui/smooth-cursor").then((m) => m.SmoothCursor),
   { ssr: false }
 );
 import "./globals.css";
@@ -122,7 +126,6 @@ export const metadata: Metadata = {
     yandex: "",
   },
   category: "Technology",
-  assets: [`${DATA.url}/public`],
 };
 
 export default function RootLayout({
@@ -133,6 +136,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preload" href="/vedantpfp.webp" as="image" />
         <GoogleAnalytics />
         <StructuredData />
         <WebsiteStructuredData />
