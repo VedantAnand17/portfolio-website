@@ -59,6 +59,19 @@ const nextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*\\.(webp|jpg|jpeg|png|avif)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
   experimental: {
     optimizePackageImports: ['lucide-react', '@/components/icons'],
   },
