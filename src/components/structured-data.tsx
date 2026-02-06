@@ -80,11 +80,7 @@ export function WebsiteStructuredData() {
       "@type": "Person",
       name: DATA.name
     },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${DATA.url}/blog?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
+
   };
 
   return (
