@@ -73,6 +73,31 @@ export const DATA = {
 
   work: [
     {
+      company: "Google Summer of Code",
+      href: "https://summerofcode.withgoogle.com/",
+      badges: ["Mentor"],
+      location: "Remote",
+      title: "Mentor",
+      logoUrl: "/gsoc.png",
+      altText: "Google Summer of Code logo - Mentor @OWASP-BLT",
+      start: "Feb 2026",
+      end: "Present",
+      description:
+        "Mentoring contributors for OWASP-BLT in Google Summer of Code. Supporting open source development and guiding participants through the program.",
+    },
+    {
+      company: "Bag App",
+      href: "https://getbags.app",
+      badges: ["Co-Founder"],
+      title: "Co-Founder",
+      logoUrl: "/baglogo.png",
+      altText: "Bag App logo",
+      start: "Feb 2026",
+      end: "Present",
+      description:
+        "Tax, Compliance and Invoice Automation layer for businesses and SaaS companies.",
+    },
+    {
       company: "Timelock Protocol",
       href: "https://timelock.trade",
       badges: ["DeFi"],
@@ -257,37 +282,45 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Web3 Wallet",
-      href: "https://web3-wallet.vedant-dev.com",
-      dates: "August 2024 – October 2024",
+      title: "Bag",
+      href: "https://www.getbags.app/",
+      dates: "Feb 2026 – Present",
       active: true,
       description:
-        "Wallet Generator is a React-based web application that allows users to generate secure mnemonic seed phrases for cryptocurrency wallets. Leveraging the BIP39 standard, the application facilitates the creation of seed phrases which can be used to set up wallets for both Solana and Ethereum networks. This tool is essential for developers and enthusiasts looking to manage their crypto assets securely.",
+        "Merchant of Record for global founders. Accept cards or stablecoins with full compliance, tax invoicing, and merchant liability handled. No US entity needed, 1.5% flat fee. Built for founders who can't access Stripe and want to get paid globally without high fees or compliance headaches.",
       technologies: [
-        "React.js",
-        "Javascript",
-        "BIP39",
-        "TailwindCSS",
-        "Shadcn UI",
+        "Payments",
+        "Stablecoins",
+        "Compliance",
+        "Global",
       ],
       links: [
         {
           type: "Website",
-          href: "https://web3-wallet.vedant-dev.com",
+          href: "https://www.getbags.app/",
           icon: <Icons.globe className="size-3" />,
         },
-        {
-          type: "Source",
-          href: "https://github.com/VedantAnand17/Web3-Wallet/",
-          icon: <Icons.github className="size-3" />,
-        },
       ],
-      image: "/web3-wallet.png",
-      video:
-        "",
+      image: "/baglanding.png",
+      video: "",
     },
   ],
   hackathons: [
+    {
+      title: "ETH HackMoney 2026 (Winner)",
+      dates: "February 12th, 2026",
+      location: "Remote",
+      description:
+        "Won the ENS — Integrate ENS track with nyx, a fair launchpad using Uniswap V4 Continuous Clearing Auctions (CCA) and ENS for every token. Built permissionless token creation, fair launch, and liquidity bootstrapping in one flow, with agentic AI integration and ENS names for launched tokens and verified badges.",
+      image: "/ethglobal.png",
+      links: [
+        {
+          title: "Website",
+          href: "https://ethglobal.com/showcase/nyx-byzxt",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+    },
     {
       title: "x402 Build Onchain (Winner)",
       dates: "January 13th, 2026",
