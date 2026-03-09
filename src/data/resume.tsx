@@ -105,7 +105,7 @@ export const DATA = {
       logoUrl: "/timelock.jpg",
       altText: "Timelock Protocol logo - DeFi options trading platform",
       start: "June 2025",
-      end: "Present",
+      end: "February 2026",
       description:
         "Developing smart contracts and DeFi protocols for options trading and yield strategies. Working on innovative DeFi solutions including perpetual options, liquidity provision, and automated market making systems.",
     },
