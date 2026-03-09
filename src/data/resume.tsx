@@ -188,6 +188,61 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Bag",
+      href: "https://www.getbags.app/",
+      dates: "Feb 2026 – Present",
+      active: true,
+      description:
+        "Merchant of Record for global founders. Accept cards or stablecoins with full compliance, tax invoicing, and merchant liability handled. No US entity needed, 1.5% flat fee. Built for founders who can't access Stripe and want to get paid globally without high fees or compliance headaches.",
+      technologies: [
+        "Payments",
+        "Stablecoins",
+        "Compliance",
+        "Global",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.getbags.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/baglanding.png",
+      video: "",
+    },
+    {
+      title: "AgentPay",
+      href: "https://agentpay.vedant-dev.com/",
+      dates: "November 2025 – December 2025",
+      active: true,
+      description:
+        "A payment agent that allows you to pay for Sentimental Analysis as well as in house trading through x402 technology.",
+      technologies: [
+        "Next.js",
+        "x402",
+        "TypeScript",
+        "TailwindCSS",
+        "AI",
+        "Shadcn UI",
+        "DeFi",
+        "Blockchain",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://agentpay.vedant-dev.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/VedantAnand17/AgentPay/",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/AgentPay.png",
+      video: "",
+    },
+    {
       title: "Timelock Protocol",
       href: "https://timelock.trade",
       dates: "June 2025 – Present",
@@ -247,61 +302,6 @@ export const DATA = {
         },
       ],
       image: "/veridoc.png",
-      video: "",
-    },
-    {
-      title: "AgentPay",
-      href: "https://agentpay.vedant-dev.com/",
-      dates: "November 2025 – December 2025",
-      active: true,
-      description:
-        "A payment agent that allows you to pay for Sentimental Analysis as well as in house trading through x402 technology.",
-      technologies: [
-        "Next.js",
-        "x402",
-        "TypeScript",
-        "TailwindCSS",
-        "AI",
-        "Shadcn UI",
-        "DeFi",
-        "Blockchain",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://agentpay.vedant-dev.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/VedantAnand17/AgentPay/",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/AgentPay.png",
-      video: "",
-    },
-    {
-      title: "Bag",
-      href: "https://www.getbags.app/",
-      dates: "Feb 2026 – Present",
-      active: true,
-      description:
-        "Merchant of Record for global founders. Accept cards or stablecoins with full compliance, tax invoicing, and merchant liability handled. No US entity needed, 1.5% flat fee. Built for founders who can't access Stripe and want to get paid globally without high fees or compliance headaches.",
-      technologies: [
-        "Payments",
-        "Stablecoins",
-        "Compliance",
-        "Global",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://www.getbags.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/baglanding.png",
       video: "",
     },
   ],
