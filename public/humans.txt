@@ -1,7 +1,8 @@
 /* TEAM */
 
 Developer: Vedant Anand
-Role: Full Stack & Web3 Developer
+Role: Agentic Payments & x402 Engineer — Solidity + Full-Stack TypeScript
+Available: For contract and part-time work — https://vedant-dev.com/hire
 Location: Punjab, India
 Email: vedantanand.in@gmail.com
 Social: @vedantsx (X/Twitter)
@@ -32,15 +33,16 @@ Domain: vedant-dev.com
 
 /* ABOUT */
 
-This is a portfolio website showcasing Vedant Anand's work as a Full Stack & Web3 Developer. Started coding in 2023, Vedant specializes in building decentralized applications, DeFi protocols, and modern web applications. Currently pursuing Electrical and Computer Engineering at Thapar Institute.
+This is a portfolio website showcasing Vedant Anand's work on agentic commerce and stablecoin payment infrastructure. Vedant co-founded Bags, which let any API charge AI agents per request over x402, and has three merged pull requests to the x402 protocol repository. Currently pursuing Electrical and Computer Engineering at Thapar Institute, graduating 2027, and available for contract work now.
 
 /* PROJECTS */
 
 Featured Projects:
+- Bags: Agentic commerce — pay-per-call APIs charging AI agents in USDC over x402
+- x402 protocol contributions: EIP-2612 permit tests, ERC-20 gas constants, extensions docs
+- AgentPay: An agent that pays per request for sentiment analysis and trading signals over x402
 - Timelock Protocol: DeFi options trading platform
 - Veri Doc: Decentralized document verification using ZK proofs
-- AgentPay: AI payment agent for trading
-- Web3 Wallet: React-based wallet generator
 
 /* BLOG */
 

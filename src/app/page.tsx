@@ -5,9 +5,9 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { BelowFoldSectionsWrapper } from "@/components/below-fold-wrapper";
-import { MarkdownWrapper } from "@/components/markdown-wrapper";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
+import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -29,6 +29,11 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
+              <BlurFade delay={BLUR_FADE_DELAY * 2}>
+                <Link href="/hire" className="text-sm text-blue-500 hover:underline">
+                  Available from {DATA.hire.since} — rates, services and how to hire me →
+                </Link>
+              </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border">
@@ -46,12 +51,12 @@ export default function Page() {
       </section>
       <section id="about" aria-labelledby="about-heading">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 id="about-heading" className="text-xl font-bold">About Me - Full Stack Developer</h2>
+          <h2 id="about-heading" className="text-xl font-bold">About Me - Agentic Payments & x402 Engineer</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <MarkdownWrapper className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
-          </MarkdownWrapper>
+          </Markdown>
         </BlurFade>
       </section>
       <section id="work" aria-labelledby="work-heading">
@@ -125,12 +130,12 @@ export default function Page() {
                   Portfolio Projects
                 </div>
                 <h2 id="projects-heading" className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Featured Software Development Projects
+                  Agentic payments, x402 and DeFi work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  As a freelance software developer, I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications and custom software development solutions. Here are a few of my
-                  favorites showcasing full-stack development expertise.
+                  Most of what I build is payment infrastructure: charging AI agents per API call over
+                  x402, settling in USDC across chains, and the Solidity underneath it. Here is the work
+                  worth reading about, including what I shipped into the protocol itself and what I shut down.
                 </p>
               </div>
             </div>

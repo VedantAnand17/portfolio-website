@@ -106,15 +106,26 @@ export function BelowFoldSections() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat or discuss freelance software development opportunities? Just shoot me a DM{" "}
+                I am available for contract work right now — x402 and agentic
+                payments integration, Solidity, full-stack TypeScript. The{" "}
+                <Link href="/hire" className="text-blue-500 hover:underline">
+                  rate card and services are public
+                </Link>
+                , so you can decide to buy without a call. Email{" "}
+                <Link
+                  href={`mailto:${DATA.contact.email}`}
+                  className="text-blue-500 hover:underline"
+                >
+                  {DATA.contact.email}
+                </Link>{" "}
+                or DM me{" "}
                 <Link
                   href={DATA.contact.social.X.url}
                   className="text-blue-500 hover:underline"
                 >
-                  with a direct question on Twitter
-                </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all
-                soliciting.
+                  on Twitter
+                </Link>
+                . I will ignore all soliciting.
               </p>
             </div>
           </BlurFade>

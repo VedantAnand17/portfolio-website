@@ -1,14 +1,29 @@
-# Vedant Anand - Full Stack & Web3 Developer
+# Vedant Anand - Agentic Payments & x402 Engineer
 
-> Freelance Software Developer specializing in Full Stack & Web3 Development, Open Source Enthusiast, and Teacher. Based in Punjab, India, with expertise in React, Next.js, TypeScript, Rust, Solidity, and DeFi protocols. Founded Veri Doc and works as Founding Engineer at Timelock Protocol.
+> I build payment infrastructure for AI agents. Co-founder of Bags, an agentic commerce platform that let any API charge AI agents per request over the x402 protocol. Three merged pull requests to the x402 protocol repository. Production Solidity and full-stack TypeScript. Based in Punjab, India. Available now for contract and part-time work.
 
 ## About
 
-Vedant Anand is a passionate software developer who started coding in 2023 and has since built impactful projects through freelance work and custom software development. Currently pursuing a Bachelor's in Electrical and Computer Engineering at Thapar Institute of Engineering and Technology (2023-2027).
+Vedant Anand builds agentic commerce and stablecoin payment infrastructure. He co-founded Bags, which let any API charge AI agents per request over x402 — pay-per-call links that quoted a price, verified a USDC payment across four chains, then returned the response, with merchant-of-record compliance and tax invoicing underneath. Bags reached 100,000+ cumulative visitors, was backed by Founders Inc. and Superteam, and was part of Canopy, the Founders Inc. builder cohort. It was wound down in 2026 for lack of product-market fit.
+
+He is also a contributor to x402 itself, the HTTP-native standard for paying for API calls in stablecoins, with three merged pull requests to the protocol repository. He is pursuing a Bachelor's in Electrical and Computer Engineering at Thapar Institute of Engineering and Technology (2023-2027) and graduates in 2027, which does not affect contract availability.
+
+## Availability
+
+**Available now for contract and part-time work**, remote from India, working UK, EU and US hours. Up to 30 hrs/week.
+
+- Solidity / smart contracts — $70/hour
+- Full-stack TypeScript / Next.js — $55/hour
+- Protocol research and technical writing — $900 per deep-dive piece, or $75/hour ongoing
+- x402 / agentic payments integration — fixed price from $3,500, typically 1–2 weeks
+- Part-time retainer — from $7,500/month
+
+Rate card and services: https://vedant-dev.com/hire
 
 ## Key Pages
 
 - [Home](https://vedant-dev.com/) - Portfolio homepage with featured projects and experience
+- [Hire](https://vedant-dev.com/hire) - Availability, rate card, services and how to engage
 - [Blog](https://vedant-dev.com/blog) - Technical blog with DeFi and Web3 tutorials
 
 ## Blog Posts
@@ -18,28 +33,33 @@ Vedant Anand is a passionate software developer who started coding in 2023 and h
 
 ## Featured Projects
 
+- [Bags](https://www.getbags.app/) - Agentic commerce platform: pay-per-call APIs charging AI agents in USDC over x402 across four chains. 100,000+ cumulative visitors, backed by Founders Inc. and Superteam. Wound down in 2026.
+- x402 protocol contributions - Three merged pull requests to the x402 protocol repository: [EIP-2612 permit-signing tests](https://github.com/x402-foundation/x402/pull/2344), [ERC-20 approval gas constants](https://github.com/x402-foundation/x402/pull/2278), and [extensions documentation](https://github.com/x402-foundation/x402/pull/731)
+- [AgentPay](https://agentpay.vedant-dev.com/) - An agent that pays per request for sentiment analysis and trading signals over x402
 - [Timelock Protocol](https://timelock.trade) - Modern landing page for DeFi options trading platform with quantum-secured positions
 - [Veri Doc](https://veri-doc.vercel.app/) - Decentralized document verification using zero-knowledge proofs
-- [AgentPay](https://agentpay.vedant-dev.com/) - AI payment agent for sentiment analysis and trading via x402 technology
-- [Web3 Wallet](https://web3-wallet.vedant-dev.com) - React-based wallet generator for Solana and Ethereum using BIP39
 
 ## Technical Skills
 
-- Frontend: React, Next.js, TypeScript, TailwindCSS
-- Backend: Node.js, Docker
+- Agentic payments: x402, agentic commerce, stablecoin payments, USDC settlement across chains, EIP-2612, Permit2
 - Blockchain: Solidity, Rust, Foundry, Zero-Knowledge Proofs
+- Frontend: React, Next.js, TypeScript, TailwindCSS
+- Backend: Node.js, Docker, Python
 - Other: Git & GitHub, C, C++
 
 ## Professional Experience
 
-- **Founding Engineer** at Timelock Protocol (June 2025 - Present) - DeFi options trading and yield strategies
+- **Co-Founder** at Bags (February 2026 - August 2026) - Agentic commerce over x402, backed by Founders Inc. and Superteam, part of the Canopy builder cohort
+- **Mentor** at Google Summer of Code with OWASP BLT (February 2026 - Present)
+- **Founding Engineer** at Timelock Protocol (June 2025 - February 2026) - Solidity for a DeFi options protocol, perpetual options and market making
 - **Engineer and Manager** at Veri Doc (May 2025 - Present) - Decentralized document verification
-- **Full Stack Blockchain Developer** at Mavik Labs (October 2024 - October 2025)
+- **Full Stack Blockchain Developer** at Mavik Labs (October 2024 - October 2025) - Next.js, TypeScript, Docker, Go
 - **Research Intern** at Thapar Institute (June 2024 - December 2024) - YOLO models for badminton shuttle detection
 
 ## Hackathon Achievements
 
-- Winner: x402 Build Onchain (January 2026) - 500+ participating teams
+- Winner: x402 Build Onchain, organized by Founders Inc. (January 2026) - 500+ participating teams
+- ETHGlobal HackMoney 2026 (February 2026) - built nyx, a fair launchpad on Uniswap V4 Continuous Clearing Auctions with ENS
 - Waitlisted: Smart India Hackathon (December 2024) - 900,000+ participation
 - Winner: Syrinx CTF (July 2024)
 - Winner: Hacklipse (April 2024)

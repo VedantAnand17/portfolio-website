@@ -8,12 +8,32 @@ export function StructuredData() {
     url: DATA.url,
     image: `${DATA.url}/vedantpfp.webp`,
     description: DATA.description,
-    jobTitle: "Full Stack Developer",
+    email: DATA.contact.email,
+    jobTitle: "Software Engineer — Agentic Payments & x402",
     worksFor: {
       "@type": "Organization",
-      name: "Freelance"
+      name: "Independent contractor"
     },
-    knowsAbout: DATA.skills,
+    knowsAbout: [
+      "x402",
+      "Agentic commerce",
+      "Agentic payments",
+      "Stablecoin payments",
+      "USDC",
+      ...DATA.skills,
+    ],
+    makesOffer: DATA.hire.services.map(service => ({
+      "@type": "Offer",
+      name: service.title,
+      description: service.description,
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "USD",
+        description: service.price
+      },
+      availability: "https://schema.org/InStock",
+      url: `${DATA.url}/hire`
+    })),
     alumniOf: DATA.education.map(edu => ({
       "@type": "EducationalOrganization",
       name: edu.school,
@@ -31,7 +51,7 @@ export function StructuredData() {
     hasOccupation: {
       "@type": "Occupation",
       name: "Software Developer",
-      description: "Full-stack developer specializing in web applications, blockchain development, and custom software solutions"
+      description: "Engineer specializing in agentic payments and the x402 protocol, Solidity smart contracts, and full-stack TypeScript applications"
     }
   };
 
