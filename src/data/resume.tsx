@@ -389,11 +389,11 @@ export const DATA = {
   ],
   hackathons: [
     {
-      title: "ETHGlobal HackMoney 2026",
+      title: "ETH HackMoney 2026 (Winner)",
       dates: "February 12th, 2026",
       location: "Remote",
       description:
-        "Built nyx for the ENS track — a fair launchpad using Uniswap V4 Continuous Clearing Auctions (CCA) with an ENS name for every token. Permissionless token creation, fair launch and liquidity bootstrapping in one flow, with agentic AI integration and verified badges.",
+        "Won the ENS — Integrate ENS track with nyx, a fair launchpad using Uniswap V4 Continuous Clearing Auctions (CCA) and ENS for every token. Built permissionless token creation, fair launch, and liquidity bootstrapping in one flow, with agentic AI integration and ENS names for launched tokens and verified badges.",
       image: "/ethglobal.png",
       links: [
         {
