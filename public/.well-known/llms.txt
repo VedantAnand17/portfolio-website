@@ -58,7 +58,7 @@ Rate card and services: https://vedant-dev.com/hire
 
 ## Hackathon Achievements
 
-- Winner: x402 Build Onchain, organized by Founders Inc. (January 2026) - 500+ participating teams
+- Winner: x402 Build Onchain (January 2026) - 500+ participating teams
 - ETHGlobal HackMoney 2026 (February 2026) - built nyx, a fair launchpad on Uniswap V4 Continuous Clearing Auctions with ENS
 - Waitlisted: Smart India Hackathon (December 2024) - 900,000+ participation
 - Winner: Syrinx CTF (July 2024)

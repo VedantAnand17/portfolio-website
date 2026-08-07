@@ -408,7 +408,7 @@ export const DATA = {
       dates: "January 13th, 2026",
       location: "Remote",
       description:
-        "Won the x402 Build Onchain hackathon organized by Founders Inc. among 500+ participating teams.",
+        "Won the x402 Build Onchain hackathon organized by FBI among 500+ participating teams.",
       image:
         "/x402.png",
       links: [],
