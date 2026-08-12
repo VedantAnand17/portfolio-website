@@ -1,3 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
+import Markdown from "react-markdown";
+
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -7,9 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import Markdown from "react-markdown";
 
 interface Props {
   title: string;
@@ -41,11 +42,7 @@ export function ProjectCard({
   className,
 }: Props) {
   return (
-    <Card
-      className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
-      }
-    >
+    <Card className="flex h-full flex-col overflow-hidden border transition-all duration-300 ease-out hover:shadow-lg">
       <Link
         href={href || "#"}
         className={cn("block cursor-pointer", className)}
@@ -82,9 +79,9 @@ export function ProjectCard({
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
           </div>
-          <Markdown className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
-            {description}
-          </Markdown>
+          <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-xs text-pretty">
+            <Markdown>{description}</Markdown>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="mt-auto flex flex-col px-2">
@@ -106,7 +103,12 @@ export function ProjectCard({
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1">
             {links?.map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={link?.href}
+                key={idx}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
                   <span aria-hidden="true">{link.icon}</span>
                   {link.type}

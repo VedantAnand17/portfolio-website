@@ -6,15 +6,15 @@ interface LoadingProps {
   variant?: "spinner" | "dots" | "pulse";
 }
 
-export function Loading({ 
-  className, 
-  size = "md", 
-  variant = "spinner" 
+export function Loading({
+  className,
+  size = "md",
+  variant = "spinner",
 }: LoadingProps) {
   const sizeClasses = {
+    lg: "size-8",
+    md: "size-6",
     sm: "size-4",
-    md: "size-6", 
-    lg: "size-8"
   };
 
   if (variant === "dots") {
@@ -24,12 +24,12 @@ export function Loading({
           <div
             key={i}
             className={cn(
-              "bg-current rounded-full animate-pulse",
+              "animate-pulse rounded-full bg-current",
               sizeClasses[size]
             )}
             style={{
               animationDelay: `${i * 0.2}s`,
-              animationDuration: "1.4s"
+              animationDuration: "1.4s",
             }}
           />
         ))}
@@ -39,19 +39,23 @@ export function Loading({
 
   if (variant === "pulse") {
     return (
-      <div className={cn(
-        "bg-current rounded animate-pulse",
-        sizeClasses[size],
-        className
-      )} />
+      <div
+        className={cn(
+          "animate-pulse rounded bg-current",
+          sizeClasses[size],
+          className
+        )}
+      />
     );
   }
 
   return (
-    <div className={cn(
-      "animate-spin rounded-full border-2 border-current border-t-transparent",
-      sizeClasses[size],
-      className
-    )} />
+    <div
+      className={cn(
+        "animate-spin rounded-full border-2 border-current border-t-transparent",
+        sizeClasses[size],
+        className
+      )}
+    />
   );
-} 
+}

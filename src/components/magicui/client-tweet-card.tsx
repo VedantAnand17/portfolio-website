@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getTweet, type Tweet } from "react-tweet/api";
+import { getTweet } from "react-tweet/api";
+import type { Tweet } from "react-tweet/api";
+
 import { MagicTweet, TweetSkeleton, TweetNotFound } from "./tweet-card";
 
 interface ClientTweetCardProps {
@@ -32,12 +34,12 @@ export const ClientTweetCard = ({
         } else {
           setError(new Error("Tweet not found"));
         }
-      } catch (err) {
-        setError(err);
+      } catch (error) {
+        setError(error);
         if (onError) {
-          onError(err);
+          onError(error);
         } else {
-          console.error("Failed to fetch tweet:", err);
+          console.error("Failed to fetch tweet:", error);
         }
       } finally {
         setLoading(false);

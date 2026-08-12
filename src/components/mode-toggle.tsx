@@ -1,9 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import * as React from "react";
+
+import { Button } from "@/components/ui/button";
 
 export const ModeToggle = React.forwardRef<
   HTMLButtonElement,

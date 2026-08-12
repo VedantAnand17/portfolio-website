@@ -1,8 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import type { Variants } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useMemo } from "react";
+
+import { cn } from "@/lib/utils";
 
 interface BlurFadeTextProps {
   text: string;
@@ -27,11 +29,11 @@ const BlurFadeText = ({
   animateByCharacter = false,
 }: BlurFadeTextProps) => {
   const defaultVariants: Variants = {
-    hidden: { y: yOffset, opacity: 0, filter: "blur(8px)" },
-    visible: { y: -yOffset, opacity: 1, filter: "blur(0px)" },
+    hidden: { filter: "blur(8px)", opacity: 0, y: yOffset },
+    visible: { filter: "blur(0px)", opacity: 1, y: -yOffset },
   };
   const combinedVariants = variant || defaultVariants;
-  const characters = useMemo(() => Array.from(text), [text]);
+  const characters = useMemo(() => [...text], [text]);
 
   if (animateByCharacter) {
     return (
@@ -45,7 +47,6 @@ const BlurFadeText = ({
               exit="hidden"
               variants={combinedVariants}
               transition={{
-                yoyo: Infinity,
                 delay: delay + i * characterDelay,
                 ease: "easeOut",
               }}
@@ -69,7 +70,6 @@ const BlurFadeText = ({
           exit="hidden"
           variants={combinedVariants}
           transition={{
-            yoyo: Infinity,
             delay,
             ease: "easeOut",
           }}

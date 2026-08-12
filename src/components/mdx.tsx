@@ -3,10 +3,10 @@ import Link from "next/link";
 import React from "react";
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
-  let headers = data.headers.map((header, index) => (
+  const headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
   ));
-  let rows = data.rows.map((row, index) => (
+  const rows = data.rows.map((row, index) => (
     <tr key={index}>
       {row.map((cell, cellIndex) => (
         <td key={cellIndex}>{cell}</td>
@@ -25,7 +25,7 @@ function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
 }
 
 function CustomLink(props: any) {
-  let href = props.href;
+  const { href } = props;
 
   if (href.startsWith("/")) {
     return (
@@ -52,23 +52,23 @@ function slugify(str: string) {
     .toString()
     .toLowerCase()
     .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
-    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+    .replaceAll(/\s+/gu, "-") // Replace spaces with -
+    .replaceAll("&", "-and-") // Replace & with 'and'
+    .replaceAll(/[^\w-]+/gu, "") // Remove all non-word characters except for -
+    .replaceAll(/--+/gu, "-"); // Replace multiple - with single -
 }
 
 function createHeading(level: number) {
   const Heading = ({ children }: { children: React.ReactNode }) => {
-    let slug = slugify(children as string);
+    const slug = slugify(children as string);
     return React.createElement(
       `h${level}`,
       { id: slug },
       [
         React.createElement("a", {
+          className: "anchor",
           href: `#${slug}`,
           key: `link-${slug}`,
-          className: "anchor",
         }),
       ],
       children
@@ -79,13 +79,13 @@ function createHeading(level: number) {
 }
 
 export const globalComponents = {
+  Image: RoundedImage,
+  Table,
+  a: CustomLink,
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
   h4: createHeading(4),
   h5: createHeading(5),
   h6: createHeading(6),
-  Image: RoundedImage,
-  a: CustomLink,
-  Table,
 };

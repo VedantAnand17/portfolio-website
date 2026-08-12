@@ -4,11 +4,24 @@ export function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: DATA.name,
-    url: DATA.url,
-    image: `${DATA.url}/vedantpfp.webp`,
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IN",
+    },
+    alumniOf: DATA.education.map((edu) => ({
+      "@type": "EducationalOrganization",
+      name: edu.school,
+      url: edu.href,
+    })),
     description: DATA.description,
     email: DATA.contact.email,
+    hasOccupation: {
+      "@type": "Occupation",
+      description:
+        "Engineer specializing in agentic payments and the x402 protocol, Solidity smart contracts, and full-stack TypeScript applications",
+      name: "Software Developer",
+    },
+    image: `${DATA.url}/vedantpfp.webp`,
     jobTitle: "Software Engineer - Agentic Payments & x402",
     knowsAbout: [
       "x402",
@@ -18,25 +31,13 @@ export function StructuredData() {
       "USDC",
       ...DATA.skills,
     ],
-    alumniOf: DATA.education.map(edu => ({
-      "@type": "EducationalOrganization",
-      name: edu.school,
-      url: edu.href
-    })),
+    name: DATA.name,
     sameAs: [
       DATA.contact.social.X.url,
       DATA.contact.social.GitHub.url,
       DATA.contact.social.LinkedIn.url,
     ],
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "IN"
-    },
-    hasOccupation: {
-      "@type": "Occupation",
-      name: "Software Developer",
-      description: "Engineer specializing in agentic payments and the x402 protocol, Solidity smart contracts, and full-stack TypeScript applications"
-    }
+    url: DATA.url,
   };
 
   return (
@@ -51,18 +52,18 @@ export function ProjectStructuredData({ project }: { project: any }) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    name: project.title,
-    description: project.description,
-    url: project.href,
     creator: {
       "@type": "Person",
-      name: DATA.name
+      name: DATA.name,
     },
     dateCreated: project.dates,
+    description: project.description,
     keywords: project.technologies?.join(", "),
+    name: project.title,
+    url: project.href,
     ...(project.image && {
-      image: project.image
-    })
+      image: project.image,
+    }),
   };
 
   return (
@@ -77,14 +78,13 @@ export function WebsiteStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: `${DATA.name} - Portfolio`,
-    url: DATA.url,
-    description: DATA.description,
     author: {
       "@type": "Person",
-      name: DATA.name
+      name: DATA.name,
     },
-
+    description: DATA.description,
+    name: `${DATA.name} - Portfolio`,
+    url: DATA.url,
   };
 
   return (

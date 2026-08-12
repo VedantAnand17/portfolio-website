@@ -63,9 +63,7 @@ export interface SocialLink {
 export interface Contact {
   email: string;
   tel: string;
-  social: {
-    [key: string]: SocialLink;
-  };
+  social: Record<string, SocialLink>;
 }
 
 export interface NavbarItem {
@@ -91,4 +89,4 @@ export interface PortfolioData {
   projects: Project[];
   hackathons: Hackathon[];
   tweets: Tweet[];
-} 
+}

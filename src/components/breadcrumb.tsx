@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ChevronRightIcon, HomeIcon } from "lucide-react";
+import Link from "next/link";
 
 interface BreadcrumbItem {
   label: string;
@@ -13,10 +13,13 @@ interface BreadcrumbProps {
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb" className="mb-4">
-      <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
+      <ol className="text-muted-foreground flex items-center space-x-2 text-sm">
         <li>
-          <Link href="/" className="flex items-center hover:text-foreground transition-colors">
-            <HomeIcon className="h-4 w-4 mr-1" />
+          <Link
+            href="/"
+            className="hover:text-foreground flex items-center transition-colors"
+          >
+            <HomeIcon className="mr-1 h-4 w-4" />
             Home
           </Link>
         </li>
@@ -24,7 +27,10 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
           <li key={index} className="flex items-center space-x-2">
             <ChevronRightIcon className="h-4 w-4" />
             {item.href ? (
-              <Link href={item.href} className="hover:text-foreground transition-colors">
+              <Link
+                href={item.href}
+                className="hover:text-foreground transition-colors"
+              >
                 {item.label}
               </Link>
             ) : (
@@ -39,11 +45,6 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
 
 export function BlogBreadcrumb({ title }: { title: string }) {
   return (
-    <Breadcrumb
-      items={[
-        { label: "Blog", href: "/blog" },
-        { label: title }
-      ]}
-    />
+    <Breadcrumb items={[{ href: "/blog", label: "Blog" }, { label: title }]} />
   );
 }

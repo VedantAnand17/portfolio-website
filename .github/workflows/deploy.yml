@@ -2,7 +2,7 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v2
+      - name: Checkout the code
+        uses: actions/checkout@v2
 
-    - name: Execute remote SSH commands using password
-      uses: appleboy/ssh-action@v1.2.0
-      with:
-        host: 65.1.94.44
-        username: ubuntu
-        key: ${{ secrets.PRIVATE_SSH_KEY }}
-        port: 22
-        script: |
-          cd portfolio-website
-          git pull origin main
-          npm install
-          npm run build
-          npm run start
+      - name: Execute remote SSH commands using password
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 65.1.94.44
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_SSH_KEY }}
+          port: 22
+          script: |
+            cd portfolio-website
+            git pull origin main
+            npm install
+            npm run build
+            npm run start

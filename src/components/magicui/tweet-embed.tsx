@@ -15,7 +15,7 @@ export function TweetEmbed({ tweetId, className = "" }: TweetEmbedProps) {
     const script = document.createElement("script");
     script.src = "https://platform.twitter.com/widgets.js";
     script.async = true;
-    document.body.appendChild(script);
+    document.body.append(script);
 
     return () => {
       document.body.removeChild(script);
@@ -25,7 +25,7 @@ export function TweetEmbed({ tweetId, className = "" }: TweetEmbedProps) {
   return (
     <div ref={containerRef} className={className}>
       <blockquote className="twitter-tweet" data-conversation="none">
-        <a href={`https://twitter.com/i/status/${tweetId}`}></a>
+        <a href={`https://twitter.com/i/status/${tweetId}`} />
       </blockquote>
     </div>
   );

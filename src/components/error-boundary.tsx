@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 
 interface ErrorBoundaryState {
@@ -22,7 +23,7 @@ class ErrorBoundary extends React.Component<
   }
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return { hasError: true, error };
+    return { error, hasError: true };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
@@ -37,24 +38,26 @@ class ErrorBoundary extends React.Component<
       }
 
       return (
-        <div className="flex flex-col items-center justify-center min-h-[200px] p-6 text-center">
-          <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
+        <div className="flex min-h-[200px] flex-col items-center justify-center p-6 text-center">
+          <h2 className="mb-2 text-xl font-semibold">Something went wrong</h2>
           <p className="text-muted-foreground mb-4">
-            An unexpected error occurred. Please try refreshing the page, or return to the home page.
+            An unexpected error occurred. Please try refreshing the page, or
+            return to the home page.
           </p>
           <div className="flex gap-2">
             <button
+              type="button"
               onClick={() => this.setState({ hasError: false })}
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 transition-colors"
             >
               Try again
             </button>
-            <a
+            <Link
               href="/"
-              className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80 transition-colors"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md px-4 py-2 transition-colors"
             >
               Go Home
-            </a>
+            </Link>
           </div>
         </div>
       );
@@ -64,4 +67,4 @@ class ErrorBoundary extends React.Component<
   }
 }
 
-export default ErrorBoundary; 
+export default ErrorBoundary;

@@ -1,43 +1,53 @@
-import Navbar from "@/components/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { GoogleAnalytics } from "@/components/google-analytics";
-import { StructuredData, WebsiteStructuredData } from "@/components/structured-data";
-import { DATA } from "@/data/resume";
-import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans, Outfit as FontDisplay } from "next/font/google";
+
 import { AnalyticsWrapper } from "@/components/analytics-wrapper";
+import { GoogleAnalytics } from "@/components/google-analytics";
+import Navbar from "@/components/navbar";
 import { SmoothCursorWrapper } from "@/components/smooth-cursor-wrapper";
+import {
+  StructuredData,
+  WebsiteStructuredData,
+} from "@/components/structured-data";
+import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { DATA } from "@/data/resume";
+import { cn } from "@/lib/utils";
+
 import "./globals.css";
 
 const fontSans = FontSans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-sans",
+  adjustFontFallback: true,
   display: "swap",
   fallback: ["system-ui", "arial"],
-  adjustFontFallback: true,
   preload: true,
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
 });
 
 const fontDisplay = FontDisplay({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-display",
+  adjustFontFallback: true,
   display: "swap",
   fallback: ["system-ui", "arial"],
-  adjustFontFallback: true,
   preload: true,
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(DATA.url),
-  title: {
-    default: 'Vedant Anand - Agentic Payments & x402 Engineer | Solidity + Full-Stack TypeScript | Available for Contract Work',
-    template: `%s | ${DATA.name} - Agentic Payments & x402 Engineer`,
+  alternates: {
+    canonical: DATA.url,
   },
-  description: "Vedant Anand builds payment infrastructure for AI agents. Co-founder of Bags, an agentic commerce platform charging AI agents per API call over x402, backed by Founders Inc. and Superteam. Three merged pull requests to the x402 protocol. Solidity, Next.js and TypeScript. Available now for contract and part-time work.",
+  authors: [{ name: DATA.name, url: "https://github.com/vedantanand17" }],
+  category: "Technology",
+  creator: DATA.name,
+  description:
+    "Vedant Anand builds payment infrastructure for AI agents. Co-founder of Bags, an agentic commerce platform charging AI agents per API call over x402, backed by Founders Inc. and Superteam. Three merged pull requests to the x402 protocol. Solidity, Next.js and TypeScript. Available now for contract and part-time work.",
+  icons: {
+    icon: [{ url: `/favicon.ico` }],
+  },
   keywords: [
     "Vedant Anand",
     "x402",
@@ -74,17 +84,10 @@ export const metadata: Metadata = {
     "Thapar University",
     "India Developer",
   ],
-  authors: [{ name: DATA.name, url: "https://github.com/vedantanand17" }],
-  creator: DATA.name,
-  publisher: DATA.name,
-  alternates: {
-    canonical: DATA.url,
-  },
+  metadataBase: new URL(DATA.url),
   openGraph: {
-    title: `${DATA.name} - Agentic Payments & x402 Engineer`,
-    description: "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402, backed by Founders Inc. and Superteam), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
-    url: DATA.url,
-    siteName: `${DATA.name} - Portfolio`,
+    description:
+      "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402, backed by Founders Inc. and Superteam), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
     images: [
       {
         url: `${DATA.url}/og-image.webp`,
@@ -94,37 +97,43 @@ export const metadata: Metadata = {
       },
     ],
     locale: "en_US",
+    siteName: `${DATA.name} - Portfolio`,
+    title: `${DATA.name} - Agentic Payments & x402 Engineer`,
     type: "website",
+    url: DATA.url,
+  },
+  publisher: DATA.name,
+  robots: {
+    follow: true,
+    googleBot: {
+      follow: true,
+      index: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+      noimageindex: false,
+    },
+    index: true,
+    nocache: false,
+  },
+  title: {
+    default:
+      "Vedant Anand - Agentic Payments & x402 Engineer | Solidity + Full-Stack TypeScript | Available for Contract Work",
+    template: `%s | ${DATA.name} - Agentic Payments & x402 Engineer`,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${DATA.name} - Agentic Payments & x402 Engineer`,
-    description: "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
-    site: "@vedantsx",
     creator: "@vedantsx",
+    description:
+      "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
     images: [`${DATA.url}/og-image.webp`],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  icons: {
-    icon: [{ url: `/favicon.ico` }],
+    site: "@vedantsx",
+    title: `${DATA.name} - Agentic Payments & x402 Engineer`,
   },
   verification: {
     google: "ICMF45n16z_LIoSylPf_GKvDz_ZAk3rD1sw7W73Yqcw", // Add your Google verification code
     yandex: "",
   },
-  category: "Technology",
 };
 
 export default function RootLayout({
@@ -142,12 +151,16 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
+          "bg-background mx-auto min-h-screen max-w-2xl px-6 py-12 font-sans antialiased sm:py-24",
           fontSans.variable,
           fontDisplay.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+        >
           <TooltipProvider delayDuration={0}>
             {children}
             <Navbar />

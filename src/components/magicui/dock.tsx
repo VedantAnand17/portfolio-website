@@ -1,9 +1,12 @@
 "use client";
 
+import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import type { PropsWithChildren } from "react";
+import React, { useRef } from "react";
+
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { PropsWithChildren, useRef } from "react";
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
   className?: string;
@@ -16,7 +19,7 @@ const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "mx-auto w-max h-full p-2 flex items-end rounded-full border"
+  "mx-auto flex h-full w-max items-end rounded-full border p-2"
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -32,8 +35,8 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
   ) => {
     const mousex = useMotionValue(Infinity);
 
-    const renderChildren = () => {
-      return React.Children.map(children, (child: any) => {
+    const renderChildren = () =>
+      React.Children.map(children, (child: any) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             mousex,
@@ -43,7 +46,6 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
         }
         return child;
       });
-    };
 
     return (
       <motion.div
@@ -72,7 +74,7 @@ export interface DockIconProps {
 }
 
 const DockIcon = ({
-  size,
+  size: _size,
   magnification = DEFAULT_MAGNIFICATION,
   distance = DEFAULT_DISTANCE,
   mousex,
@@ -83,17 +85,17 @@ const DockIcon = ({
   const ref = useRef<HTMLDivElement>(null);
 
   const distanceCalc = useTransform(mousex, (val: number) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    const bounds = ref.current?.getBoundingClientRect() ?? { width: 0, x: 0 };
     return val - bounds.x - bounds.width / 2;
   });
 
-  let widthSync = useTransform(
+  const widthSync = useTransform(
     distanceCalc,
     [-distance, 0, distance],
     [40, magnification, 40]
   );
 
-  let width = useSpring(widthSync, {
+  const width = useSpring(widthSync, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,

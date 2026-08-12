@@ -23,16 +23,19 @@ A modern, responsive portfolio website built with Next.js 14, TypeScript, Tailwi
 ## 🚀 Quick Start
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/portfolio.git
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -73,6 +76,7 @@ The blog is powered by MDX. To add a new blog post:
 3. Write your content in MDX format
 
 Example:
+
 ```mdx
 ---
 title: "My New Post"

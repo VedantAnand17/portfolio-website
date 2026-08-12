@@ -1,25 +1,26 @@
+import Markdown from "react-markdown";
+
+import { BelowFoldSectionsWrapper } from "@/components/below-fold-wrapper";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { BelowFoldSectionsWrapper } from "@/components/below-fold-wrapper";
 import { DATA } from "@/data/resume";
-import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
+    <main className="flex min-h-[100dvh] flex-col space-y-10">
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="gap-2 flex justify-between">
-            <div className="flex-col flex flex-1 space-y-1.5">
+          <div className="flex justify-between gap-2">
+            <div className="flex flex-1 flex-col space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold sm:text-5xl xl:text-6xl/none font-display"
+                className="font-display text-3xl font-bold sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
@@ -45,18 +46,22 @@ export default function Page() {
       </section>
       <section id="about" aria-labelledby="about-heading">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 id="about-heading" className="text-xl font-bold">About Me - Agentic Payments & x402 Engineer</h2>
+          <h2 id="about-heading" className="text-xl font-bold">
+            About Me - Agentic Payments & x402 Engineer
+          </h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {DATA.summary}
-          </Markdown>
+          <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-sm text-pretty">
+            <Markdown>{DATA.summary}</Markdown>
+          </div>
         </BlurFade>
       </section>
       <section id="work" aria-labelledby="work-heading">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 id="work-heading" className="text-xl font-bold">Professional Work Experience</h2>
+            <h2 id="work-heading" className="text-xl font-bold">
+              Professional Work Experience
+            </h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
@@ -81,7 +86,9 @@ export default function Page() {
       <section id="education" aria-labelledby="education-heading">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 id="education-heading" className="text-xl font-bold">Educational Background</h2>
+            <h2 id="education-heading" className="text-xl font-bold">
+              Educational Background
+            </h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
@@ -104,7 +111,9 @@ export default function Page() {
       <section id="skills" aria-labelledby="skills-heading">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 id="skills-heading" className="text-xl font-bold">Technical Skills & Technologies</h2>
+            <h2 id="skills-heading" className="text-xl font-bold">
+              Technical Skills & Technologies
+            </h2>
           </BlurFade>
           <div className="flex flex-wrap gap-1">
             {DATA.skills.map((skill, id) => (
@@ -116,31 +125,45 @@ export default function Page() {
         </div>
       </section>
       <section id="projects" aria-labelledby="projects-heading">
-        <div className="space-y-12 w-full py-12">
+        <div className="w-full space-y-12 py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+                <div className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
                   Portfolio Projects
                 </div>
-                <h2 id="projects-heading" className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2
+                  id="projects-heading"
+                  className="text-3xl font-bold tracking-tighter sm:text-5xl"
+                >
                   Agentic payments, x402 and DeFi work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Most of what I build is payment infrastructure: charging AI agents per API call over
-                  x402, settling in USDC across chains, and the Solidity underneath it. Here is the work
-                  worth reading about, including what I shipped into the protocol itself and what I shut down.
+                  Most of what I build is payment infrastructure: charging AI
+                  agents per API call over x402, settling in USDC across chains,
+                  and the Solidity underneath it. Here is the work worth reading
+                  about, including what I shipped into the protocol itself and
+                  what I shut down.
                 </p>
               </div>
             </div>
           </BlurFade>
           {DATA.projects.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-8">
-              <p className="text-muted-foreground mb-4">No projects yet. Want to collaborate?</p>
-              <a href={DATA.contact.social.X.url} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">Contact Me</a>
+              <p className="text-muted-foreground mb-4">
+                No projects yet. Want to collaborate?
+              </p>
+              <a
+                href={DATA.contact.social.X.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 inline-block rounded-md px-4 py-2 transition-colors"
+              >
+                Contact Me
+              </a>
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
+            <div className="mx-auto grid max-w-[800px] grid-cols-1 gap-3 sm:grid-cols-2">
               {DATA.projects.map((project, id) => (
                 <BlurFade
                   key={project.title}

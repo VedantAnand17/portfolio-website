@@ -1,27 +1,27 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 // Hook for managing theme
 export const useTheme = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark";
     if (savedTheme) {
       setTheme(savedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
     }
   }, []);
 
   const toggleTheme = useCallback(() => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem("theme", newTheme);
   }, [theme]);
 
-  return { theme, toggleTheme, mounted };
+  return { mounted, theme, toggleTheme };
 };
 
 // Hook for managing scroll position
@@ -33,10 +33,10 @@ export const useScrollPosition = () => {
       setScrollPosition(window.pageYOffset);
     };
 
-    window.addEventListener('scroll', updatePosition);
+    window.addEventListener("scroll", updatePosition);
     updatePosition();
 
-    return () => window.removeEventListener('scroll', updatePosition);
+    return () => window.removeEventListener("scroll", updatePosition);
   }, []);
 
   return scrollPosition;
@@ -45,22 +45,22 @@ export const useScrollPosition = () => {
 // Hook for managing viewport size
 export const useViewport = () => {
   const [viewport, setViewport] = useState({
-    width: 0,
     height: 0,
+    width: 0,
   });
 
   useEffect(() => {
     const updateViewport = () => {
       setViewport({
-        width: window.innerWidth,
         height: window.innerHeight,
+        width: window.innerWidth,
       });
     };
 
-    window.addEventListener('resize', updateViewport);
+    window.addEventListener("resize", updateViewport);
     updateViewport();
 
-    return () => window.removeEventListener('resize', updateViewport);
+    return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
   return viewport;
@@ -74,7 +74,9 @@ export const useIntersectionObserver = (
   const [ref, setRef] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (!ref) return;
+    if (!ref) {
+      return;
+    }
 
     const observer = new IntersectionObserver(([entry]) => {
       setIsIntersecting(entry.isIntersecting);
@@ -91,7 +93,7 @@ export const useIntersectionObserver = (
 // Hook for managing local storage
 export const useLocalStorage = <T>(key: string, initialValue: T) => {
   const [storedValue, setStoredValue] = useState<T>(() => {
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return initialValue;
     }
 
@@ -106,9 +108,10 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
 
   const setValue = (value: T | ((val: T) => T)) => {
     try {
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
@@ -117,4 +120,4 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
   };
 
   return [storedValue, setValue] as const;
-}; 
+};

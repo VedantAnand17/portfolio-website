@@ -1,12 +1,9 @@
-import { Suspense } from "react";
-import {
-  enrichTweet,
-  type EnrichedTweet,
-  type TweetProps,
-  type TwitterComponents,
-} from "react-tweet";
-import { getTweet, type Tweet } from "react-tweet/api";
 import Image from "next/image";
+import { Suspense } from "react";
+import { enrichTweet } from "react-tweet";
+import type { EnrichedTweet, TweetProps, TwitterComponents } from "react-tweet";
+import { getTweet } from "react-tweet/api";
+import type { Tweet } from "react-tweet/api";
 
 import { cn } from "@/lib/utils";
 
@@ -27,8 +24,8 @@ const Twitter = ({ className, ...props }: TwitterIconProps) => (
     {...props}
   >
     <g>
-      <path fill="none" d="M0 0h24v24H0z"></path>
-      <path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"></path>
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z" />
     </g>
   </svg>
 );
@@ -47,18 +44,18 @@ const Verified = ({ className, ...props }: TwitterIconProps) => (
 );
 
 export const truncate = (str: string | null, length: number) => {
-  if (!str || str.length <= length) return str;
+  if (!str || str.length <= length) {
+    return str;
+  }
   return `${str.slice(0, length - 3)}...`;
 };
 
 const Skeleton = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <div className={cn("rounded-md bg-primary/10", className)} {...props} />
-  );
-};
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("bg-primary/10 rounded-md", className)} {...props} />
+);
 
 export const TweetSkeleton = ({
   className,
@@ -70,7 +67,7 @@ export const TweetSkeleton = ({
   <div
     className={cn(
       "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-lg border p-4",
-      className,
+      className
     )}
     {...props}
   >
@@ -92,17 +89,20 @@ export const TweetNotFound = ({
   <div
     className={cn(
       "flex size-full flex-col items-center justify-center gap-2 rounded-lg border p-4",
-      className,
+      className
     )}
     {...props}
   >
     <h3>Tweet not found</h3>
-    <p className="text-muted-foreground text-sm">This tweet may have been deleted or is unavailable. Check back later or follow me for updates!</p>
+    <p className="text-muted-foreground text-sm">
+      This tweet may have been deleted or is unavailable. Check back later or
+      follow me for updates!
+    </p>
     <a
       href="https://twitter.com/vedantsx"
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+      className="bg-primary text-primary-foreground hover:bg-primary/90 inline-block rounded-md px-4 py-2 transition-colors"
     >
       Follow on Twitter
     </a>
@@ -127,7 +127,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
           href={tweet.user.url}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center whitespace-nowrap font-semibold"
+          className="flex items-center font-semibold whitespace-nowrap"
         >
           {truncate(tweet.user.name, 20)}
           {tweet.user.verified ||
@@ -155,13 +155,13 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
 );
 
 export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="break-words leading-normal tracking-tighter">
+  <div className="leading-normal tracking-tighter break-words">
     {tweet.entities.map((entity, idx) => {
       switch (entity.type) {
         case "url":
         case "symbol":
         case "hashtag":
-        case "mention":
+        case "mention": {
           return (
             <a
               key={idx}
@@ -173,7 +173,8 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               <span>{entity.text}</span>
             </a>
           );
-        case "text":
+        }
+        case "text": {
           return (
             <span
               key={idx}
@@ -181,13 +182,16 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
           );
+        }
       }
     })}
   </div>
 );
 
 export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
-  if (!tweet.video && !tweet.photos) return null;
+  if (!tweet.video && !tweet.photos) {
+    return null;
+  }
   return (
     <div className="flex flex-1 items-center justify-center">
       {tweet.video && (
@@ -210,7 +214,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
             <Image
               key={photo.url}
               src={photo.url}
-              title={"Photo by " + tweet.user.name}
+              title={`Photo by ${tweet.user.name}`}
               alt={`Photo shared by ${tweet.user.name} in their tweet`}
               width={400}
               height={256}
@@ -222,11 +226,11 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
       )}
       {!tweet.video &&
         !tweet.photos &&
-        // @ts-ignore
+        // @ts-expect-error: react-tweet omits card binding metadata
         tweet?.card?.binding_values?.thumbnail_image_large?.image_value.url && (
           <Image
             src={
-              // @ts-ignore
+              // @ts-expect-error: react-tweet omits card binding metadata
               tweet.card.binding_values.thumbnail_image_large.image_value.url
             }
             width={400}
@@ -241,7 +245,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
 
 export const MagicTweet = ({
   tweet,
-  components,
+  components: _components,
   className,
   ...props
 }: {
@@ -254,7 +258,7 @@ export const MagicTweet = ({
     <div
       className={cn(
         "relative flex size-full max-w-lg flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
-        className,
+        className
       )}
       {...props}
     >
@@ -278,11 +282,11 @@ export const TweetCard = async ({
   className?: string;
 }) => {
   const tweet = id
-    ? await getTweet(id).catch((err) => {
+    ? await getTweet(id).catch((error) => {
         if (onError) {
-          onError(err);
+          onError(error);
         } else {
-          console.error(err);
+          console.error(error);
         }
       })
     : undefined;
