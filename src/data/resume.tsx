@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { BriefcaseIcon, HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
   name: "Vedant Anand",
@@ -8,9 +8,9 @@ export const DATA = {
   location: "Punjab, India",
   locationLink: "https://www.google.com/maps/place/patiala",
   description:
-    "I build payment infrastructure for AI agents — agentic commerce, x402 and stablecoin payments — backed by full-stack TypeScript and production Solidity. Available for contract work now, remote from India.",
+    "I build payment infrastructure for AI agents - agentic commerce, x402 and stablecoin payments - backed by full-stack TypeScript and production Solidity.",
   summary:
-    "I build payment infrastructure for AI agents.\n\nI co-founded [Bags](/#work), an agentic commerce platform that let any API charge AI agents per request over the [x402](https://x402.org) protocol — pay-per-call links that quoted a price, verified a USDC payment across four chains, then returned the response. It reached 100,000+ cumulative visitors, was backed by Founders Inc. and Superteam, and was part of Canopy, the Founders Inc. builder cohort. I have since wound it down: the product worked, the market was not there yet. I would rather say that plainly than leave a dead landing page up.\n\nI also contribute to x402 itself, the HTTP-native standard for paying for API calls in stablecoins. [Three of my pull requests are merged into the protocol repository](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged) — unit tests for EIP-2612 permit signing, named constants for ERC-20 approval gas defaults, and documentation for the extensions package. Before Bags I was [founding engineer at Timelock Protocol](/#work), writing Solidity for a DeFi options protocol, and spent twelve months as a full-stack blockchain developer at Mavik Labs across Next.js, TypeScript, Docker and Go. I mentor for Google Summer of Code with OWASP BLT.\n\n[I am pursuing a degree in Electrical and Computer Engineering](/#education) and graduate in 2027. **I am available for contract and part-time work right now** — Solidity, full-stack TypeScript, and protocol research. [Rates and how to hire me](/hire).",
+    "I build payment infrastructure for AI agents.\n\nI co-founded [Bags](/#work), an agentic commerce platform that let any API charge AI agents per request over the [x402](https://x402.org) protocol - pay-per-call links that quoted a price, verified a USDC payment across four chains, then returned the response. It reached 100,000+ cumulative visitors, was backed by Founders Inc. and Superteam, and was part of Canopy, the Founders Inc. builder cohort.\n\nI also contribute to x402 itself, the HTTP-native standard for paying for API calls in stablecoins. [Three of my pull requests are merged into the protocol repository](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged) - unit tests for EIP-2612 permit signing, named constants for ERC-20 approval gas defaults, and documentation for the extensions package. Before Bags I was [founding engineer at Timelock Protocol](/#work), writing Solidity for a DeFi options protocol, and spent twelve months as a full-stack blockchain developer at Mavik Labs across Next.js, TypeScript, Docker and Go. I mentor for Google Summer of Code with OWASP BLT.\n\n[I am pursuing a degree in Electrical and Computer Engineering](/#education) and graduate in 2027.",
   avatarUrl: "/vedantpfp.webp",
   skills: [
     "x402",
@@ -31,7 +31,6 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/hire", icon: BriefcaseIcon, label: "Hire Me" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
@@ -75,44 +74,6 @@ export const DATA = {
     },
   },
 
-  hire: {
-    // Update `since` monthly — an availability line without a date reads as noise.
-    status: "Available now",
-    since: "August 2026",
-    capacity: "Up to 30 hrs/week, taking on 2 engagements.",
-    timezone: "Remote from India (IST), working UK, EU and US hours.",
-    // TODO: replace with a real Cal.com / Savvycal link, then set this to the URL.
-    bookingUrl: "",
-    notDoing:
-      "I don't do design, marketing, or non-technical project management.",
-    services: [
-      {
-        title: "x402 / agentic payments integration",
-        description:
-          "Wrap an existing API so AI agents can pay per call — price quoting, USDC settlement, facilitator wiring and the client SDK. I have shipped this in production and contributed to the protocol itself.",
-        price: "Fixed price from $3,500, typically 1–2 weeks",
-      },
-      {
-        title: "Solidity development and review",
-        description:
-          "Contracts, test suites, gas work and integration. Production experience on a perpetual-options protocol, plus merged permit-signing and gas-constant work in the x402 repository.",
-        price: "$70/hour, or fixed scope",
-      },
-      {
-        title: "Protocol documentation and technical deep-dives",
-        description:
-          "Long-form technical writing on agentic commerce, stablecoin payments and DeFi mechanics — the kind that survives a reader who already knows the subject.",
-        price: "$900 per deep-dive piece",
-      },
-    ],
-    rates: [
-      { work: "Solidity / smart contracts", rate: "$70/hour" },
-      { work: "Full-stack TypeScript / Next.js", rate: "$55/hour" },
-      { work: "Protocol research & technical writing", rate: "$900 per piece, or $75/hour ongoing" },
-      { work: "Part-time retainer", rate: "from $7,500/month" },
-    ],
-  },
-
   work: [
     {
       company: "Google Summer of Code",
@@ -137,7 +98,7 @@ export const DATA = {
       start: "Feb 2026",
       end: "August 2026",
       description:
-        "Agentic commerce infrastructure: Bags let any API charge AI agents per request over the x402 protocol. A pay-per-call link quoted a price, verified a USDC payment across four chains, then returned the response — with merchant-of-record compliance and tax invoicing behind it. Reached 100,000+ cumulative visitors, backed by Founders Inc. and Superteam, and part of Canopy, the Founders Inc. builder cohort. Wound down in 2026 for lack of product-market fit.",
+        "Agentic commerce infrastructure: Bags let any API charge AI agents per request over the x402 protocol. A pay-per-call link quoted a price, verified a USDC payment across four chains, then returned the response - with merchant-of-record compliance and tax invoicing behind it. Reached 100,000+ cumulative visitors, backed by Founders Inc. and Superteam, and part of Canopy, the Founders Inc. builder cohort. Wound down in 2026 for lack of product-market fit.",
     },
     {
       company: "Timelock Protocol",
@@ -230,12 +191,12 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Bags — pay-per-call APIs for AI agents",
+      title: "Bags - pay-per-call APIs for AI agents",
       href: "https://www.getbags.app/",
       dates: "Feb 2026 – August 2026",
       active: false,
       description:
-        "An agentic commerce platform that let any API charge AI agents per request over x402. A pay-per-call link returned an HTTP 402 with a price quote, verified the agent's USDC payment across four chains, and only then released the response — with merchant-of-record compliance and tax invoicing underneath, so a founder without a US entity could still get paid. Reached 100,000+ cumulative visitors, backed by Founders Inc. and Superteam, part of the Canopy builder cohort. Wound down in 2026: the machinery worked, the demand was not there yet.",
+        "An agentic commerce platform that let any API charge AI agents per request over x402. A pay-per-call link returned an HTTP 402 with a price quote, verified the agent's USDC payment across four chains, and only then released the response - with merchant-of-record compliance and tax invoicing underneath, so a founder without a US entity could still get paid. Reached 100,000+ cumulative visitors, backed by Founders Inc. and Superteam, part of the Canopy builder cohort. Wound down in 2026: the machinery worked, the demand was not there yet.",
       technologies: [
         "x402",
         "Agentic Commerce",
@@ -261,7 +222,7 @@ export const DATA = {
       dates: "December 2025 – May 2026",
       active: true,
       description:
-        "Three merged pull requests to x402, the HTTP-native standard for paying for API calls in stablecoins. Unit tests for `sign_eip2612_permit`, which builds the EIP-712 payload facilitators verify on-chain — a regression in the domain or the Permit primary type would silently break Permit2 gas sponsoring on every chain that opts in. Named constants for the ERC-20 approval gas fee defaults, replacing hardcoded fallbacks and matching the TypeScript side. And a rewrite of the @x402/extensions documentation. All three reviewed and merged by the protocol's maintainers.",
+        "Three merged pull requests to x402, the HTTP-native standard for paying for API calls in stablecoins. Unit tests for `sign_eip2612_permit`, which builds the EIP-712 payload facilitators verify on-chain - a regression in the domain or the Permit primary type would silently break Permit2 gas sponsoring on every chain that opts in. Named constants for the ERC-20 approval gas fee defaults, replacing hardcoded fallbacks and matching the TypeScript side. And a rewrite of the @x402/extensions documentation. All three reviewed and merged by the protocol's maintainers.",
       technologies: [
         "x402",
         "Agentic Payments",
@@ -273,17 +234,17 @@ export const DATA = {
       ],
       links: [
         {
-          type: "PR #2344 — EIP-2612 permit tests",
+          type: "PR #2344 - EIP-2612 permit tests",
           href: "https://github.com/x402-foundation/x402/pull/2344",
           icon: <Icons.github className="size-3" />,
         },
         {
-          type: "PR #2278 — ERC-20 gas constants",
+          type: "PR #2278 - ERC-20 gas constants",
           href: "https://github.com/x402-foundation/x402/pull/2278",
           icon: <Icons.github className="size-3" />,
         },
         {
-          type: "PR #731 — extensions docs",
+          type: "PR #731 - extensions docs",
           href: "https://github.com/x402-foundation/x402/pull/731",
           icon: <Icons.github className="size-3" />,
         },
@@ -297,7 +258,7 @@ export const DATA = {
       dates: "November 2025 – December 2025",
       active: true,
       description:
-        "A payment agent that buys API calls on your behalf over x402 — sentiment analysis and in-house trading signals, each metered and settled per request in USDC rather than behind a subscription. The prototype that led to Bags.",
+        "A payment agent that buys API calls on your behalf over x402 - sentiment analysis and in-house trading signals, each metered and settled per request in USDC rather than behind a subscription. The prototype that led to Bags.",
       technologies: [
         "x402",
         "Agentic Payments",
@@ -393,7 +354,7 @@ export const DATA = {
       dates: "February 12th, 2026",
       location: "Remote",
       description:
-        "Won the ENS — Integrate ENS track with nyx, a fair launchpad using Uniswap V4 Continuous Clearing Auctions (CCA) and ENS for every token. Built permissionless token creation, fair launch, and liquidity bootstrapping in one flow, with agentic AI integration and ENS names for launched tokens and verified badges.",
+        "Won the ENS - Integrate ENS track with nyx, a fair launchpad using Uniswap V4 Continuous Clearing Auctions (CCA) and ENS for every token. Built permissionless token creation, fair launch, and liquidity bootstrapping in one flow, with agentic AI integration and ENS names for launched tokens and verified badges.",
       image: "/ethglobal.png",
       links: [
         {

@@ -82,7 +82,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: `${DATA.name} - Agentic Payments & x402 Engineer`,
-    description: "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402, backed by Founders Inc. and Superteam), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript. Available for contract work now.",
+    description: "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402, backed by Founders Inc. and Superteam), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
     url: DATA.url,
     siteName: `${DATA.name} - Portfolio`,
     images: [
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
         url: `${DATA.url}/og-image.webp`,
         width: 1200,
         height: 630,
-        alt: `${DATA.name} - Agentic Payments & x402 Engineer, available for contract work`,
+        alt: `${DATA.name} - Agentic Payments & x402 Engineer`,
       },
     ],
     locale: "en_US",
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${DATA.name} - Agentic Payments & x402 Engineer`,
-    description: "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript. Available for contract work now.",
+    description: "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
     site: "@vedantsx",
     creator: "@vedantsx",
     images: [`${DATA.url}/og-image.webp`],
@@ -147,7 +147,7 @@ export default function RootLayout({
           fontDisplay.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <TooltipProvider delayDuration={0}>
             {children}
             <Navbar />

@@ -106,12 +106,8 @@ export function BelowFoldSections() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                I am available for contract work right now — x402 and agentic
-                payments integration, Solidity, full-stack TypeScript. The{" "}
-                <Link href="/hire" className="text-blue-500 hover:underline">
-                  rate card and services are public
-                </Link>
-                , so you can decide to buy without a call. Email{" "}
+                Want to chat about agentic payments, x402, Solidity, or
+                full-stack TypeScript? Email{" "}
                 <Link
                   href={`mailto:${DATA.contact.email}`}
                   className="text-blue-500 hover:underline"

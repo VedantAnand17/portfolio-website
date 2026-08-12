@@ -9,11 +9,7 @@ export function StructuredData() {
     image: `${DATA.url}/vedantpfp.webp`,
     description: DATA.description,
     email: DATA.contact.email,
-    jobTitle: "Software Engineer — Agentic Payments & x402",
-    worksFor: {
-      "@type": "Organization",
-      name: "Independent contractor"
-    },
+    jobTitle: "Software Engineer - Agentic Payments & x402",
     knowsAbout: [
       "x402",
       "Agentic commerce",
@@ -22,18 +18,6 @@ export function StructuredData() {
       "USDC",
       ...DATA.skills,
     ],
-    makesOffer: DATA.hire.services.map(service => ({
-      "@type": "Offer",
-      name: service.title,
-      description: service.description,
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        priceCurrency: "USD",
-        description: service.price
-      },
-      availability: "https://schema.org/InStock",
-      url: `${DATA.url}/hire`
-    })),
     alumniOf: DATA.education.map(edu => ({
       "@type": "EducationalOrganization",
       name: edu.school,
