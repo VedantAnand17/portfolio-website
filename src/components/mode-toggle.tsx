@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 export const ModeToggle = React.forwardRef<
   HTMLButtonElement,
   React.ComponentPropsWithoutRef<"button">
->(({ ...props }, ref) => {
+>(({ onClick, ...props }, ref) => {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -22,7 +22,10 @@ export const ModeToggle = React.forwardRef<
       aria-label={
         theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
       }
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={(e) => {
+        setTheme(theme === "dark" ? "light" : "dark");
+        onClick?.(e);
+      }}
       {...props}
     >
       <SunIcon className="h-[1.2rem] w-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
