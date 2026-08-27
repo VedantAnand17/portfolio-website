@@ -16,6 +16,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Cloudflare deployment
 
 - Cloudflare deploys this site as a Worker via `@opennextjs/cloudflare` (`wrangler.jsonc`, `open-next.config.ts`). Do not use `@cloudflare/next-on-pages`: it only supports Next.js 13/14 (peer range `next <=15.5.2`) and cannot build this Next.js 16 app.
+- The legacy Cloudflare Pages project "portfolio-website" (account `d5addfff98319ee236259e234106087d`) is retired: its Git integration has `deployments_enabled: false` (set via the Pages API) so it no longer builds or posts failing PR checks. If it ever needs to go away, delete the project in the dashboard; do not re-enable its builds.
 - The `src/data/blog.ts` data layer reads `content/*.mdx` with Node `fs` at request time, so the worker needs the static-assets incremental cache and its cache assets (copied into `.open-next/assets` by `scripts/opennext-workers-build.mjs` or by `opennextjs-cloudflare deploy/preview/upload`). Verify with `npm run preview` before deploying.
 
 ## Maintaining this file
