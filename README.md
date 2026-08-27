@@ -1,15 +1,15 @@
 # Portfolio Website
 
-A modern, responsive portfolio website built with Next.js 14, TypeScript, Tailwind CSS, ShadCN, and Framer Motion.
+A modern, responsive portfolio website built with Next.js 16, TypeScript, Tailwind CSS, ShadCN, and Motion.
 
 ![Portfolio Preview](/public/portfolio.png)
 
 ## 🌟 Features
 
-- **Modern Stack**: Built with Next.js 14, TypeScript, and Tailwind CSS
+- **Modern Stack**: Built with Next.js 16, TypeScript, and Tailwind CSS
 - **Responsive Design**: Looks great on all devices
 - **Dark Mode**: Automatic and manual theme switching
-- **Animations**: Smooth animations using Framer Motion
+- **Animations**: Smooth animations using Motion
 - **Blog Support**: MDX-based blog with syntax highlighting
 - **SEO Optimized**: Meta tags and OpenGraph support
 - **Performance**: Optimized for Core Web Vitals with image optimization and lazy loading
@@ -62,7 +62,7 @@ npm run dev
 - [Next.js](https://nextjs.org/) - React framework
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 - [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Motion](https://motion.dev/) - Animations
 - [shadcn/ui](https://ui.shadcn.com/) - UI components
 - [MDX](https://mdxjs.com/) - Blog content
 - [Radix UI](https://www.radix-ui.com/) - Headless UI components
