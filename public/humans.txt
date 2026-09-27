@@ -15,7 +15,7 @@ Name: Thapar Institute of Engineering and Technology
 
 /* SITE */
 
-Last update: 2026-02-06
+Last update: 2026-09-28
 Language: English
 Standards: HTML5, CSS3, TypeScript
 Components: React, Next.js, TailwindCSS, shadcn/ui
@@ -25,20 +25,20 @@ IDE: VS Code
 
 /* TECHNOLOGY */
 
-Built with: Next.js 14, React 18, TypeScript
+Built with: Next.js 16, React 19, TypeScript
 Styled with: TailwindCSS, shadcn/ui
 Deployed on: Vercel
 Domain: vedant-dev.com
 
 /* ABOUT */
 
-This is a portfolio website showcasing Vedant Anand's work on agentic commerce and stablecoin payment infrastructure. Vedant co-founded Bags, which lets any API charge AI agents per request over x402, and has three merged pull requests to the x402 protocol repository. Currently pursuing Electrical and Computer Engineering at Thapar Institute, graduating 2027.
+This is a portfolio website showcasing Vedant Anand's work on agentic commerce and stablecoin payment infrastructure. Vedant co-founded Bags, which lets any API charge AI agents per request over x402, and has four merged pull requests to the x402 protocol repository. Currently pursuing Electrical and Computer Engineering at Thapar Institute, graduating 2027.
 
 /* PROJECTS */
 
 Featured Projects:
 - Bags: Agentic commerce - pay-per-call APIs charging AI agents in USDC over x402
-- x402 protocol contributions: EIP-2612 permit tests, ERC-20 gas constants, extensions docs
+- x402 protocol contributions: #3051 unregistered scheme guard, #2344 EIP-2612 permit tests, #2278 ERC-20 gas constants, #731 extensions docs
 - AgentPay: An agent that pays per request for sentiment analysis and trading signals over x402
 - Timelock Protocol: DeFi options trading platform
 - Veri Doc: Decentralized document verification using ZK proofs

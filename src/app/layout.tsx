@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   category: "Technology",
   creator: DATA.name,
   description:
-    "Vedant Anand builds payment infrastructure for AI agents. Co-founder of Bags, an agentic commerce platform charging AI agents per API call over x402, backed by Founders Inc. and Superteam. Three merged pull requests to the x402 protocol. Solidity, Next.js and TypeScript. Available now for contract and part-time work.",
+    "Vedant Anand builds payment infrastructure for AI agents. Co-founder of Bags, an agentic commerce platform charging AI agents per API call over x402, backed by Founders Inc. and Superteam. Four merged pull requests to the x402 protocol. Solidity, Next.js and TypeScript. Available now for contract and part-time work.",
   icons: {
     icon: [{ url: `/favicon.ico` }],
   },
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   openGraph: {
     description:
-      "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402, backed by Founders Inc. and Superteam), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
+      "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402, backed by Founders Inc. and Superteam), four merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
     images: [
       {
         url: `${DATA.url}/og-image.webp`,
@@ -125,7 +125,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@vedantsx",
     description:
-      "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402), three merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
+      "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402), four merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
     images: [`${DATA.url}/og-image.webp`],
     site: "@vedantsx",
     title: `${DATA.name} - Agentic Payments & x402 Engineer`,
