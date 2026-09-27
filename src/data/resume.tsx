@@ -164,10 +164,10 @@ export const DATA = {
     {
       title: "x402 protocol contributions",
       href: "https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged",
-      dates: "December 2025 – May 2026",
+      dates: "December 2025 – September 2026",
       active: true,
       description:
-        "Three merged pull requests to x402, the HTTP-native standard for paying for API calls in stablecoins. Unit tests for `sign_eip2612_permit`, which builds the EIP-712 payload facilitators verify on-chain - a regression in the domain or the Permit primary type would silently break Permit2 gas sponsoring on every chain that opts in. Named constants for the ERC-20 approval gas fee defaults, replacing hardcoded fallbacks and matching the TypeScript side. And a rewrite of the @x402/extensions documentation. All three reviewed and merged by the protocol's maintainers.",
+        "Four merged pull requests to x402, the HTTP-native standard for paying for API calls in stablecoins. They add unit tests for `sign_eip2612_permit`, named constants for ERC-20 approval gas defaults, a rewrite of the @x402/extensions documentation, and a core fix that throws when no server is registered for a requested payment scheme and network. All four were reviewed and merged by the protocol's maintainers.",
       technologies: [
         "x402",
         "Agentic Payments",
@@ -178,6 +178,11 @@ export const DATA = {
         "Open Source",
       ],
       links: [
+        {
+          type: "PR #3051 - Unregistered scheme guard",
+          href: "https://github.com/x402-foundation/x402/pull/3051",
+          icon: <Icons.github className="size-3" />,
+        },
         {
           type: "PR #2344 - EIP-2612 permit tests",
           href: "https://github.com/x402-foundation/x402/pull/2344",
@@ -311,7 +316,7 @@ export const DATA = {
     "Zero-Knowledge Proofs",
   ],
   summary:
-    "I build payment infrastructure for AI agents.\n\nI co-founded [Bags](/#work), an agentic commerce platform that lets any API charge AI agents per request over the [x402](https://x402.org) protocol - pay-per-call links that quote a price, verify a USDC payment across four chains, then return the response. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of the Canopy builder cohort.\n\nI also contribute to x402 itself, the HTTP-native standard for paying for API calls in stablecoins. [Three of my pull requests are merged into the protocol repository](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged) - unit tests for EIP-2612 permit signing, named constants for ERC-20 approval gas defaults, and documentation for the extensions package. Before Bags I was [founding engineer at Timelock Protocol](/#work), writing Solidity for a DeFi options protocol, and spent twelve months as a full-stack blockchain developer at Mavik Labs across Next.js, TypeScript, Docker and Go. I mentored for Google Summer of Code with OWASP BLT from February to August 2026.\n\n[I am pursuing a degree in Electrical and Computer Engineering](/#education) and graduate in 2027.",
+    "I build payment infrastructure for AI agents.\n\nI co-founded [Bags](/#work), an agentic commerce platform that lets any API charge AI agents per request over the [x402](https://x402.org) protocol - pay-per-call links that quote a price, verify a USDC payment across four chains, then return the response. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of the Canopy builder cohort.\n\nI also contribute to x402 itself, the HTTP-native standard for paying for API calls in stablecoins. [Four of my pull requests are merged into the protocol repository](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged): unit tests for EIP-2612 permit signing, named constants for ERC-20 approval gas defaults, documentation for the extensions package, and a core fix that throws when a requested payment scheme is not registered. Before Bags I was [founding engineer at Timelock Protocol](/#work), writing Solidity for a DeFi options protocol, and spent twelve months as a full-stack blockchain developer at Mavik Labs across Next.js, TypeScript, Docker and Go. I mentored for Google Summer of Code with OWASP BLT from February to August 2026.\n\n[I am pursuing a degree in Electrical and Computer Engineering](/#education) and graduate in 2027.",
   tweets: [
     {
       id: "1935588888300359901",
