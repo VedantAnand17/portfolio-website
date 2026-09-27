@@ -138,10 +138,10 @@ export const DATA = {
     {
       title: "Bags - pay-per-call APIs for AI agents",
       href: "https://www.getbags.app/",
-      dates: "Feb 2026 – August 2026",
-      active: false,
+      dates: "Feb 2026 – Present",
+      active: true,
       description:
-        "An agentic commerce platform that let any API charge AI agents per request over x402. A pay-per-call link returned an HTTP 402 with a price quote, verified the agent's USDC payment across four chains, and only then released the response - with merchant-of-record compliance and tax invoicing underneath, so a founder without a US entity could still get paid. Reached 100,000+ cumulative visitors, backed by Founders Inc. and Superteam, part of the Canopy builder cohort. Wound down in 2026: the machinery worked, the demand was not there yet.",
+        "An agentic commerce platform that lets any API charge AI agents per request over x402. A pay-per-call link returns an HTTP 402 with a price quote, verifies the agent's USDC payment across four chains, and only then releases the response - with merchant-of-record compliance and tax invoicing underneath, so a founder without a US entity can get paid. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of the Canopy builder cohort.",
       technologies: [
         "x402",
         "Agentic Commerce",
@@ -311,7 +311,7 @@ export const DATA = {
     "Zero-Knowledge Proofs",
   ],
   summary:
-    "I build payment infrastructure for AI agents.\n\nI co-founded [Bags](/#work), an agentic commerce platform that let any API charge AI agents per request over the [x402](https://x402.org) protocol - pay-per-call links that quoted a price, verified a USDC payment across four chains, then returned the response. It reached 100,000+ cumulative visitors, was backed by Founders Inc. and Superteam, and was part of Canopy, the Founders Inc. builder cohort.\n\nI also contribute to x402 itself, the HTTP-native standard for paying for API calls in stablecoins. [Three of my pull requests are merged into the protocol repository](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged) - unit tests for EIP-2612 permit signing, named constants for ERC-20 approval gas defaults, and documentation for the extensions package. Before Bags I was [founding engineer at Timelock Protocol](/#work), writing Solidity for a DeFi options protocol, and spent twelve months as a full-stack blockchain developer at Mavik Labs across Next.js, TypeScript, Docker and Go. I mentor for Google Summer of Code with OWASP BLT.\n\n[I am pursuing a degree in Electrical and Computer Engineering](/#education) and graduate in 2027.",
+    "I build payment infrastructure for AI agents.\n\nI co-founded [Bags](/#work), an agentic commerce platform that lets any API charge AI agents per request over the [x402](https://x402.org) protocol - pay-per-call links that quote a price, verify a USDC payment across four chains, then return the response. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of the Canopy builder cohort.\n\nI also contribute to x402 itself, the HTTP-native standard for paying for API calls in stablecoins. [Three of my pull requests are merged into the protocol repository](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged) - unit tests for EIP-2612 permit signing, named constants for ERC-20 approval gas defaults, and documentation for the extensions package. Before Bags I was [founding engineer at Timelock Protocol](/#work), writing Solidity for a DeFi options protocol, and spent twelve months as a full-stack blockchain developer at Mavik Labs across Next.js, TypeScript, Docker and Go. I mentored for Google Summer of Code with OWASP BLT from February to August 2026.\n\n[I am pursuing a degree in Electrical and Computer Engineering](/#education) and graduate in 2027.",
   tweets: [
     {
       id: "1935588888300359901",
@@ -341,9 +341,9 @@ export const DATA = {
       logoUrl: "/gsoc.png",
       altText: "Google Summer of Code logo - Mentor @OWASP-BLT",
       start: "Feb 2026",
-      end: "Present",
+      end: "August 2026",
       description:
-        "Mentoring contributors for OWASP-BLT in Google Summer of Code. Supporting open source development and guiding participants through the program.",
+        "Mentored contributors for OWASP-BLT during Google Summer of Code, supporting open source development and guiding participants through the program.",
     },
     {
       company: "Bags",
@@ -353,9 +353,9 @@ export const DATA = {
       logoUrl: "/baglogo.png",
       altText: "Bags logo - agentic commerce and x402 payments platform",
       start: "Feb 2026",
-      end: "August 2026",
+      end: "Present",
       description:
-        "Agentic commerce infrastructure: Bags let any API charge AI agents per request over the x402 protocol. A pay-per-call link quoted a price, verified a USDC payment across four chains, then returned the response - with merchant-of-record compliance and tax invoicing behind it. Reached 100,000+ cumulative visitors, backed by Founders Inc. and Superteam, and part of Canopy, the Founders Inc. builder cohort. Wound down in 2026 for lack of product-market fit.",
+        "Agentic commerce infrastructure: Bags lets any API charge AI agents per request over the x402 protocol. A pay-per-call link quotes a price, verifies a USDC payment across four chains, then returns the response - with merchant-of-record compliance and tax invoicing behind it. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of the Canopy builder cohort.",
     },
     {
       company: "Timelock Protocol",

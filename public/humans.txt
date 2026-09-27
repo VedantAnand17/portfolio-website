@@ -32,7 +32,7 @@ Domain: vedant-dev.com
 
 /* ABOUT */
 
-This is a portfolio website showcasing Vedant Anand's work on agentic commerce and stablecoin payment infrastructure. Vedant co-founded Bags, which let any API charge AI agents per request over x402, and has three merged pull requests to the x402 protocol repository. Currently pursuing Electrical and Computer Engineering at Thapar Institute, graduating 2027.
+This is a portfolio website showcasing Vedant Anand's work on agentic commerce and stablecoin payment infrastructure. Vedant co-founded Bags, which lets any API charge AI agents per request over x402, and has three merged pull requests to the x402 protocol repository. Currently pursuing Electrical and Computer Engineering at Thapar Institute, graduating 2027.
 
 /* PROJECTS */
 
