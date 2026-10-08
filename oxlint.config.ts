@@ -3,8 +3,16 @@ import core from "ultracite/oxlint/core";
 import next from "ultracite/oxlint/next";
 import react from "ultracite/oxlint/react";
 
+// This security-pinned preset still names the removed React Compiler rule.
+// Keep the project's existing compiler opt-out on the current oxlint engine.
+const reactRules = Object.fromEntries(
+  Object.entries(react.rules ?? {}).filter(
+    ([rule]) => rule !== "react/react-compiler"
+  )
+);
+
 export default defineConfig({
-  extends: [core, react, next],
+  extends: [core, { ...react, rules: reactRules }, next],
   ignorePatterns: core.ignorePatterns,
   rules: {
     "array-callback-return": "off",

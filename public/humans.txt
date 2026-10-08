@@ -15,7 +15,7 @@ Name: Thapar Institute of Engineering and Technology
 
 /* SITE */
 
-Last update: 2026-09-28
+Last update: 2026-10-08
 Language: English
 Standards: HTML5, CSS3, TypeScript
 Components: React, Next.js, TailwindCSS, shadcn/ui
@@ -41,7 +41,7 @@ Featured Projects:
 - x402 protocol contributions: #3051 unregistered scheme guard, #2344 EIP-2612 permit tests, #2278 ERC-20 gas constants, #731 extensions docs
 - AgentPay: An agent that pays per request for sentiment analysis and trading signals over x402
 - Timelock Protocol: DeFi options trading platform
-- Veri Doc: Decentralized document verification using ZK proofs
+- VeriDoc: Decentralized document verification using ZK proofs
 
 /* BLOG */
 

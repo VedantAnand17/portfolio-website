@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     "Founders Inc",
     "Canopy",
     "Timelock Protocol",
-    "Veri Doc",
+    "VeriDoc",
     "Mavik Labs",
     "Thapar University",
     "India Developer",
@@ -117,8 +117,7 @@ export const metadata: Metadata = {
     nocache: false,
   },
   title: {
-    default:
-      "Vedant Anand - Agentic Payments & x402 Engineer | Solidity + Full-Stack TypeScript | Available for Contract Work",
+    default: "Vedant Anand | Payment APIs, x402, and Solidity",
     template: `%s | ${DATA.name} - Agentic Payments & x402 Engineer`,
   },
   twitter: {
@@ -151,7 +150,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "bg-background mx-auto min-h-screen max-w-2xl px-6 py-12 font-sans antialiased sm:py-24",
+          "bg-background mx-auto min-h-screen max-w-2xl px-4 pt-10 pb-28 font-sans antialiased sm:px-6 sm:pt-20",
           fontSans.variable,
           fontDisplay.variable
         )}
@@ -162,9 +161,14 @@ export default function RootLayout({
           enableSystem={false}
         >
           <TooltipProvider delayDuration={0}>
+            <a
+              href="#main-content"
+              className="bg-background fixed top-3 left-3 z-50 -translate-y-20 rounded-md border p-3 focus:translate-y-0"
+            >
+              Skip to content
+            </a>
             {children}
             <Navbar />
-            {/* Professional smooth cursor - only visible on desktop */}
             <SmoothCursorWrapper />
             <AnalyticsWrapper />
           </TooltipProvider>

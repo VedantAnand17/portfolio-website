@@ -10,7 +10,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+
+function actionLabel(type: string, title: string) {
+  if (type === "Website") {
+    return `Visit ${title}`;
+  }
+  if (type === "Source") {
+    return `Source for ${title}`;
+  }
+  return `${type} for ${title}`;
+}
 
 interface Props {
   title: string;
@@ -42,10 +51,11 @@ export function ProjectCard({
   className,
 }: Props) {
   return (
-    <Card className="flex h-full flex-col overflow-hidden border transition-all duration-300 ease-out hover:shadow-lg">
+    <Card className="flex h-full flex-col overflow-hidden border transition-shadow duration-300 ease-out hover:shadow-lg">
       <Link
-        href={href || "#"}
-        className={cn("block cursor-pointer", className)}
+        href={href || links?.[0]?.href || "/#projects"}
+        aria-label={`View ${title}`}
+        className={`block cursor-pointer ${className ?? ""}`}
       >
         {video && (
           <video
@@ -66,25 +76,26 @@ export function ProjectCard({
             width={500}
             height={300}
             className="h-40 w-full overflow-hidden object-cover object-top"
+            sizes="(max-width: 639px) calc(100vw - 32px), 300px"
             loading="lazy"
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
         )}
       </Link>
-      <CardHeader className="px-2">
+      <CardHeader className="px-4 pt-4">
         <div className="space-y-1">
           <CardTitle className="mt-1 text-base">{title}</CardTitle>
-          <time className="font-sans text-xs">{dates}</time>
+          <p className="text-muted-foreground text-sm">{dates}</p>
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
           </div>
-          <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-xs text-pretty">
+          <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-sm leading-relaxed text-pretty">
             <Markdown>{description}</Markdown>
           </div>
         </div>
       </CardHeader>
-      <CardContent className="mt-auto flex flex-col px-2">
+      <CardContent className="mt-auto flex flex-col px-4">
         {tags && tags.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-1">
             {tags?.map((tag) => (
@@ -99,20 +110,22 @@ export function ProjectCard({
           </div>
         )}
       </CardContent>
-      <CardFooter className="px-2 pb-2">
+      <CardFooter className="px-4 pb-4">
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1">
             {links?.map((link, idx) => (
               <Link
                 href={link?.href}
+                aria-label={actionLabel(link.type, title)}
+                className="bg-primary text-primary-foreground inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-sm font-medium"
                 key={idx}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
+                <span className="flex items-center gap-2">
                   <span aria-hidden="true">{link.icon}</span>
                   {link.type}
-                </Badge>
+                </span>
               </Link>
             ))}
           </div>

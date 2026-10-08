@@ -51,7 +51,7 @@ This document outlines all the AI and SEO optimizations implemented on vedant-de
 **Includes:**
 
 - Static pages (home, blog) with priorities and change frequencies
-- Dynamic blog posts with publication dates
+- Dynamic blog posts with publication and update dates
 
 ### 4. humans.txt (Developer Information)
 
@@ -122,7 +122,7 @@ This document outlines all the AI and SEO optimizations implemented on vedant-de
 
 1. Update `sitemap.ts` if structure changes (automatic with current setup)
 2. Update `llms.txt` to include new blog post links
-3. Ensure new posts have proper metadata (title, description, publishedAt)
+3. Ensure new posts have proper metadata (title, summary, publishedAt, and optional updatedAt)
 
 ### When Updating Projects
 

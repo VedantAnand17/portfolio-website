@@ -1,64 +1,68 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-import BlurFade from "@/components/magicui/blur-fade";
-import { getBlogPosts } from "@/data/blog";
+import { getBlogPosts, postPath } from "@/data/blog";
+import { DATA } from "@/data/resume";
+import { formatDate } from "@/lib/utils";
 
-export const metadata = {
-  description: "My thoughts on software development, life, and more.",
+export const metadata: Metadata = {
+  alternates: { canonical: `${DATA.url}/blog` },
   title: "Blog",
+  description: "Notes on DeFi, Uniswap, and payment infrastructure.",
+  openGraph: {
+    title: "Blog | Vedant Anand",
+    description: "Notes on DeFi, Uniswap, and payment infrastructure.",
+    url: `${DATA.url}/blog`,
+    images: [`${DATA.url}/og-image.webp`],
+  },
+  twitter: {
+    title: "Blog | Vedant Anand",
+    description: "Notes on DeFi, Uniswap, and payment infrastructure.",
+    images: [`${DATA.url}/og-image.webp`],
+  },
 };
 
-const BLUR_FADE_DELAY = 0.04;
-
 export default async function BlogPage() {
-  const posts = await getBlogPosts();
-
+  const allPosts = await getBlogPosts();
+  const posts = allPosts.sort(
+    (a, b) =>
+      new Date(b.metadata.publishedAt).getTime() -
+      new Date(a.metadata.publishedAt).getTime()
+  );
   return (
-    <section>
-      <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="mb-8 text-2xl font-medium tracking-tighter">Blogs</h1>
-      </BlurFade>
+    <main id="main-content" tabIndex={-1} className="space-y-6">
+      <h1 className="text-3xl font-bold">Blog</h1>
+      <p className="text-muted-foreground">
+        Notes on DeFi, Uniswap, and payment infrastructure.
+      </p>
       {posts.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-8">
-          <p className="text-muted-foreground mb-4">
-            No blog posts yet. Check back soon for updates!
-          </p>
-          <Link
-            href="/"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-block rounded-md px-4 py-2 transition-colors"
-          >
-            Go Home
+        <p>
+          No articles yet.{" "}
+          <Link href="/" className="text-link underline">
+            Go home
           </Link>
-        </div>
+        </p>
       ) : (
-        posts
-          .sort((a, b) => {
-            if (
-              new Date(a.metadata.publishedAt) >
-              new Date(b.metadata.publishedAt)
-            ) {
-              return -1;
-            }
-            return 1;
-          })
-          .map((post, id) => (
-            <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
+        <ul className="divide-y">
+          {posts.map((post) => (
+            <li key={post.slug}>
               <Link
-                className="mb-4 flex flex-col space-y-1 rounded-lg p-4 transition-all duration-200 hover:scale-[1.02] hover:bg-gray-50 hover:shadow-sm dark:hover:bg-gray-900/50"
-                href={`/blog/${post.slug}`}
+                className="hover:bg-muted block space-y-2 rounded-lg py-5"
+                href={postPath(post.slug)}
               >
-                <div className="flex w-full flex-col">
-                  <p className="font-medium tracking-tight">
-                    {post.metadata.title}
-                  </p>
-                  <p className="text-muted-foreground h-6 text-xs">
-                    {post.metadata.publishedAt}
-                  </p>
-                </div>
+                <h2 className="text-lg font-semibold">{post.metadata.title}</h2>
+                <p className="text-muted-foreground text-sm">
+                  <time dateTime={post.metadata.publishedAt}>
+                    {formatDate(post.metadata.publishedAt)}
+                  </time>{" "}
+                  · {post.readingMinutes} min read
+                </p>
+                <p className="text-muted-foreground">{post.metadata.summary}</p>
               </Link>
-            </BlurFade>
-          ))
+            </li>
+          ))}
+        </ul>
       )}
-    </section>
+    </main>
   );
 }

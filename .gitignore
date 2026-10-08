@@ -52,3 +52,5 @@ pnpm-lock.yaml
 .opencode/
 .github/skills/
 skills/
+/test-results/
+/playwright-report/

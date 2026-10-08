@@ -1,11 +1,11 @@
+import Image from "next/image";
 import Markdown from "react-markdown";
 
-import { BelowFoldSectionsWrapper } from "@/components/below-fold-wrapper";
+import { BelowFoldSections } from "@/components/below-fold-sections";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 
@@ -13,35 +13,57 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
-    <main className="flex min-h-[100dvh] flex-col space-y-10">
-      <section id="hero">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="flex min-h-[100dvh] flex-col space-y-10"
+    >
+      <section id="hero" aria-labelledby="hero-heading">
         <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="flex justify-between gap-2">
+          <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row sm:gap-2">
             <div className="flex flex-1 flex-col space-y-1.5">
-              <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="font-display text-3xl font-bold sm:text-5xl xl:text-6xl/none"
-                yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
-              />
+              <h1 id="hero-heading">
+                <BlurFadeText
+                  delay={BLUR_FADE_DELAY}
+                  className="font-display text-3xl font-bold sm:text-5xl xl:text-6xl/none"
+                  yOffset={8}
+                  text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                />
+              </h1>
               <BlurFadeText
                 className="max-w-[600px] md:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border">
-                <AvatarImage
-                  alt={`${DATA.name} professional profile picture - Full Stack Developer`}
-                  src={DATA.avatarUrl}
-                  width={112}
-                  height={112}
-                />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+            <BlurFade delay={BLUR_FADE_DELAY} className="shrink-0">
+              <Image
+                src={DATA.avatarUrl}
+                alt="Vedant Anand"
+                width={112}
+                height={112}
+                priority
+                className="size-20 rounded-full border sm:size-28"
+              />
             </BlurFade>
           </div>
+          <BlurFade
+            delay={BLUR_FADE_DELAY * 2}
+            className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm"
+          >
+            <a
+              href={`mailto:${DATA.contact.email}`}
+              className="text-link inline-flex min-h-11 items-center underline underline-offset-4"
+            >
+              Email me
+            </a>
+            <a
+              href="#projects"
+              className="text-link inline-flex min-h-11 items-center underline underline-offset-4"
+            >
+              View work
+            </a>
+          </BlurFade>
         </div>
       </section>
       <section id="about" aria-labelledby="about-heading">
@@ -177,7 +199,6 @@ export default function Page() {
                     dates={project.dates}
                     tags={project.technologies}
                     image={project.image}
-                    video={project.video}
                     links={project.links}
                   />
                 </BlurFade>
@@ -186,7 +207,7 @@ export default function Page() {
           )}
         </div>
       </section>
-      <BelowFoldSectionsWrapper />
+      <BelowFoldSections />
     </main>
   );
 }

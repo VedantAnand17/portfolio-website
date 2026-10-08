@@ -1,61 +1,77 @@
 "use client";
 
-import type { Variants } from "motion/react";
-import { AnimatePresence, motion, useInView } from "motion/react";
-import { useRef } from "react";
+import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useRef } from "react";
+
+import { cn } from "@/lib/utils";
 
 interface BlurFadeProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  variant?: {
-    hidden: { y: number };
-    visible: { y: number };
-  };
   duration?: number;
   delay?: number;
   yOffset?: number;
-  inView?: boolean;
-  inViewMargin?: `${number}px`;
   blur?: string;
 }
-const BlurFade = ({
+
+// CSS enhances server-rendered content and also works without JavaScript.
+export default function BlurFade({
   children,
   className,
-  variant,
   duration = 0.4,
   delay = 0,
   yOffset = 6,
-  inView = false,
-  inViewMargin = "-50px",
   blur = "6px",
-}: BlurFadeProps) => {
-  const ref = useRef(null);
-  const inViewResult = useInView(ref, { margin: inViewMargin, once: true });
-  const isInView = !inView || inViewResult;
-  const defaultVariants: Variants = {
-    hidden: { filter: `blur(${blur})`, opacity: 0, y: yOffset },
-    visible: { filter: `blur(0px)`, opacity: 1, y: -yOffset },
-  };
-  const combinedVariants = variant || defaultVariants;
+}: BlurFadeProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const element = ref.current;
+    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    if (!element || preference.matches || !window.IntersectionObserver) {
+      return;
+    }
+    const bounds = element.getBoundingClientRect();
+    if (bounds.top < innerHeight && bounds.bottom > 0) {
+      return;
+    }
+    element.dataset.reveal = "pending";
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          delete element.dataset.reveal;
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(element);
+    const reveal = () => {
+      if (preference.matches) {
+        delete element.dataset.reveal;
+        observer.disconnect();
+      }
+    };
+    preference.addEventListener("change", reveal);
+    return () => {
+      observer.disconnect();
+      preference.removeEventListener("change", reveal);
+      delete element.dataset.reveal;
+    };
+  }, []);
   return (
-    <AnimatePresence>
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        exit="hidden"
-        variants={combinedVariants}
-        transition={{
-          delay: 0.04 + delay,
-          duration,
-          ease: "easeOut",
-        }}
-        className={className}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <div
+      ref={ref}
+      className={cn("blur-fade", className)}
+      style={
+        {
+          "--reveal-delay": `${delay}s`,
+          "--reveal-duration": `${duration}s`,
+          "--reveal-offset": `${yOffset}px`,
+          "--reveal-blur": blur,
+        } as CSSProperties
+      }
+    >
+      {children}
+    </div>
   );
-};
-
-export default BlurFade;
+}

@@ -120,11 +120,6 @@
   select {
     font-weight: 400;
   }
-
-  /* Hide default cursor when custom cursor is active */
-  .smooth-cursor-active * {
-    cursor: none !important;
-  }
 }
 
 h3 code {
@@ -158,12 +153,10 @@ code[data-theme*=" "] span {
   background-color: var(--shiki-light-bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  code[data-theme*=" "],
-  code[data-theme*=" "] span {
-    color: var(--shiki-dark);
-    background-color: var(--shiki-dark-bg);
-  }
+.dark code[data-theme*=" "],
+.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }
 
 code[data-line-numbers] {
@@ -215,4 +208,74 @@ h4,
 h5,
 h6 {
   scroll-margin-top: 80px; /* Adjust if your navbar is taller/shorter */
+}
+
+.prose pre {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+}
+.text-link {
+  color: #1d4ed8;
+}
+.dark .text-link {
+  color: #93c5fd;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 4px;
+}
+section {
+  scroll-margin-top: 24px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.prose {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.prose pre {
+  max-width: 100%;
+  overflow-wrap: normal;
+}
+
+@keyframes portfolio-reveal {
+  from {
+    opacity: 0;
+    filter: blur(var(--reveal-blur, 6px));
+    transform: translateY(var(--reveal-offset, 6px));
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .blur-fade {
+    animation: portfolio-reveal var(--reveal-duration, 0.4s) ease-out
+      var(--reveal-delay, 0s) backwards;
+  }
+}
+
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.animated-cursor-active,
+  html.animated-cursor-active body {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .blur-fade[data-reveal="pending"] {
+    animation: none;
+    opacity: 0;
+  }
 }

@@ -7,14 +7,16 @@
     "dev": "next dev",
     "build": "next build && node scripts/opennext-workers-build.mjs",
     "start": "next start",
-    "test": "npm run build && node --test",
+    "test": "npm run build && node --test tests/*.test.mjs && npm run test:production",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "lint": "ultracite check",
     "check": "ultracite check",
     "fix": "ultracite fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test",
+    "test:production": "PLAYWRIGHT_SERVER=production playwright test"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.2.6",
@@ -25,43 +27,47 @@
     "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "gray-matter": "^4.0.3",
     "lucide-react": "^1.34.0",
     "motion": "^13.1.1",
-    "next": "^16.3.3",
+    "next": "~16.3.8",
     "next-themes": "^0.4.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-markdown": "^10.1.0",
-    "react-tweet": "^3.3.1",
     "rehype-pretty-code": "^0.14.5",
     "rehype-slug": "^6.0.0",
     "rehype-stringify": "^10.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "shiki": "^4.4.3",
     "tailwind-merge": "^3.6.0",
-    "unified": "^11.0.5"
+    "unified": "^11.0.5",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.4",
+    "@opennextjs/cloudflare": "^1.20.9",
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^26.4.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
-    "oxfmt": "^0.65.0",
+    "oxfmt": "^0.72.0",
     "oxlint": "^1.80.0",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
     "tw-animate-css": "^1.4.0",
     "typescript": "^7.0.2",
-    "ultracite": "^7.10.7",
-    "wrangler": "^4.127.0"
+    "ultracite": "7.10.2",
+    "wrangler": "^4.148.0"
   },
   "overrides": {
+    "@tailwindcss/typography": {
+      "postcss-selector-parser": "^7.1.6"
+    },
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.5"
+    "@types/react-dom": "^19.2.5",
+    "sharp": "$sharp"
   }
 }

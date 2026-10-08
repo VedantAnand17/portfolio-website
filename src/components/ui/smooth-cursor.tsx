@@ -2,7 +2,7 @@
 
 import { motion, useSpring } from "motion/react";
 import type { FC, JSX } from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Position {
   x: number;
@@ -88,6 +88,7 @@ export function SmoothCursor({
     stiffness: 400,
   },
 }: SmoothCursorProps) {
+  const [visible, setVisible] = useState(false);
   const lastMousePos = useRef<Position>({ x: 0, y: 0 });
   const velocity = useRef<Position>({ x: 0, y: 0 });
   const lastUpdateTime = useRef(Date.now());
@@ -108,6 +109,11 @@ export function SmoothCursor({
   });
 
   useEffect(() => {
+    let scaleTimer: ReturnType<typeof setTimeout>;
+    const hide = () => {
+      setVisible(false);
+      document.documentElement.classList.remove("animated-cursor-active");
+    };
     const updateVelocity = (currentPos: Position) => {
       const currentTime = Date.now();
       const deltaTime = currentTime - lastUpdateTime.current;
@@ -124,6 +130,14 @@ export function SmoothCursor({
     };
 
     const smoothMouseMove = (e: MouseEvent) => {
+      const interactive =
+        e.target instanceof Element &&
+        e.target.closest(
+          "a, button, input, textarea, select, [contenteditable], pre, code"
+        );
+      const show = !interactive;
+      setVisible(show);
+      document.documentElement.classList.toggle("animated-cursor-active", show);
       const currentPos = { x: e.clientX, y: e.clientY };
       updateVelocity(currentPos);
 
@@ -150,44 +164,37 @@ export function SmoothCursor({
 
         scale.set(0.95);
 
-        setTimeout(() => {
+        clearTimeout(scaleTimer);
+        scaleTimer = setTimeout(() => {
           scale.set(1);
         }, 150);
       }
     };
 
-    let rafId: number;
+    let rafId = 0;
+    let latestEvent: MouseEvent;
     const throttledMouseMove = (e: MouseEvent) => {
+      latestEvent = e;
       if (rafId) {
         return;
       }
 
       rafId = requestAnimationFrame(() => {
-        smoothMouseMove(e);
+        smoothMouseMove(latestEvent);
         rafId = 0;
       });
     };
 
-    // Hide default cursor more effectively
-    const style = document.createElement("style");
-    style.textContent = `
-      *, *::before, *::after {
-        cursor: none !important;
-      }
-    `;
-    document.head.append(style);
-
-    // Also set on body as fallback
-    document.body.style.cursor = "none";
-    document.documentElement.style.cursor = "none";
-
     window.addEventListener("mousemove", throttledMouseMove);
+    document.addEventListener("mouseleave", hide);
+    window.addEventListener("blur", hide);
 
     return () => {
       window.removeEventListener("mousemove", throttledMouseMove);
-      document.body.style.cursor = "auto";
-      document.documentElement.style.cursor = "auto";
-      document.head.removeChild(style);
+      document.removeEventListener("mouseleave", hide);
+      window.removeEventListener("blur", hide);
+      document.documentElement.classList.remove("animated-cursor-active");
+      clearTimeout(scaleTimer);
       if (rafId) {
         cancelAnimationFrame(rafId);
       }
@@ -196,7 +203,10 @@ export function SmoothCursor({
 
   return (
     <motion.div
+      aria-label="Animated cursor"
+      aria-hidden="true"
       style={{
+        visibility: visible ? "visible" : "hidden",
         left: cursorX,
         pointerEvents: "none",
         position: "fixed",
