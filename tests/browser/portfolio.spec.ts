@@ -87,6 +87,17 @@ test("experience details support Space and preserve company links", async ({
   ).toHaveAttribute("href", "https://timelock.trade");
 });
 
+test("work experience badges are visible in rendered output", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const work = page.locator("#work");
+  await expect(work.getByText("Mentor", { exact: true })).toHaveCount(2);
+  await expect(work.getByText("x402", { exact: true })).toHaveCount(1);
+  await expect(work.getByText("DeFi", { exact: true })).toHaveCount(1);
+  await expect(work.getByText("Founder", { exact: true })).toHaveCount(1);
+});
+
 test("project actions are readable touch targets with project-specific names", async ({
   page,
 }) => {
@@ -182,15 +193,24 @@ test("public metadata and navigation use current semantics", async ({
   ).toMatch(/^2026-10-08/);
 
   await page.goto("/#contact");
-  await expect(page.getByRole("link", { name: "Contact" })).toHaveAttribute(
-    "aria-current",
-    "location"
-  );
+  const navigation = page.getByRole("navigation", {
+    name: "Main navigation",
+  });
+  await expect(
+    navigation.getByRole("link", { name: "Contact" })
+  ).toHaveAttribute("aria-current", "location");
   await page.goto("/blog");
-  await expect(page.getByRole("link", { name: "Blog" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  await expect(
+    navigation.getByRole("link", { name: "Blog" })
+  ).toHaveAttribute("aria-current", "page");
+  await page.goto("/blog/uniswap-guide");
+  await expect(
+    navigation.getByRole("link", { name: "Blog" })
+  ).toHaveAttribute("aria-current", "page");
+  await page.goto("/blogger");
+  await expect(
+    navigation.getByRole("link", { name: "Blog" })
+  ).not.toHaveAttribute("aria-current", "page");
 });
 
 test("published swap example computes fees and rejects invalid inputs", async ({

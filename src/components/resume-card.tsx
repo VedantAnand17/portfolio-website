@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useId, useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 interface ResumeCardProps {
   logoUrl: string;
@@ -23,6 +24,7 @@ export function ResumeCard({
   title,
   subtitle,
   href,
+  badges,
   period,
   description,
 }: ResumeCardProps) {
@@ -43,20 +45,31 @@ export function ResumeCard({
       </Avatar>
       <div className="min-w-0 flex-1 space-y-1">
         <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <h3 className="text-base font-semibold">
-            {href && href !== "#" ? (
-              <Link
-                className="hover:underline"
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {title}
-              </Link>
-            ) : (
-              title
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
+            <h3 className="text-base font-semibold">
+              {href && href !== "#" ? (
+                <Link
+                  className="hover:underline"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {title}
+                </Link>
+              ) : (
+                title
+              )}
+            </h3>
+            {badges && badges.length > 0 && (
+              <div className="flex flex-wrap gap-1">
+                {badges.map((badge) => (
+                  <Badge key={badge} variant="secondary">
+                    {badge}
+                  </Badge>
+                ))}
+              </div>
             )}
-          </h3>
+          </div>
           <p className="text-muted-foreground text-sm">{period}</p>
         </div>
         {subtitle && <p className="text-sm">{subtitle}</p>}

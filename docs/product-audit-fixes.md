@@ -13,7 +13,7 @@ Review date: 8 October 2026. Scope: portfolio, blog, mobile layout, accessibilit
 | 13, 17 | Removed the custom cursor and decorative page animations from the active routes. Native cursors remain available. Reduced-motion CSS disables transitions and animations. |
 | 14–18 | Added one main title per page, main and navigation landmarks, a skip link, native disclosure buttons, and hidden collapsed descriptions. Hackathon entries use H3. Company links are separate from Details buttons. |
 | 19 | Contact links use colors tested at a minimum contrast ratio of 4.5:1 in light mode. |
-| 20 | Removed the three diagrams that carried incorrect financial claims. The remaining article banner uses responsive WebP files, dimensions, lazy loading, and async decoding. Its 960 px file is about 23 KB. |
+| 20 | Removed three diagrams from the article because they contained incorrect financial claims. Kept the four original PNG URLs available for legacy links, as the user requested; this legacy access is intentional. The article now uses a responsive WebP banner with dimensions, lazy loading, and async decoding. Its 960 px file is about 23 KB. |
 | 21 | Home content, contact details, and selected X links render on the server. Work descriptions have a no-JavaScript fallback. |
 | 22–27 | Stacked the mobile introduction. Added visible availability, Email and View work actions, projects near the title, labeled navigation, current-location state, readable project text, and 44 px project actions. |
 | 28–30 | Corrected completed-role dates and tense. Added project roles and evidence links. Removed unsupported visitor totals, yield language, and performance claims. Kept the four merged x402 PRs. |
@@ -39,4 +39,4 @@ Updated dependencies to remove the known advisory paths. Keep Next.js on the pat
 
 ## Verification
 
-The browser suite covers missing pages, server-rendered content without JavaScript, keyboard disclosure behavior, company links, project action sizes, mobile overflow, both themes, code colors, contact contrast, metadata, image loading, domain redirects, public profile output, and the executable article example. All 13 browser tests pass against the normal Next.js production server and the local Worker preview. Typecheck, formatting and lint, and the existing production profile test pass. npm audit reports zero known advisories.
+The earlier full validation reported 13 browser tests passing against the normal Next.js production server and the local Worker preview. Three public regressions were added during review, bringing the suite to 16 tests; the focused review checks pass. The outer test phase must rerun the production and Worker suites and record their actual results before release. The earlier typecheck, formatting and lint, production profile test, and npm audit checks also passed, with zero known advisories.

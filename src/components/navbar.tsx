@@ -31,7 +31,7 @@ export default function Navbar() {
       {items.map((item) => {
         const active =
           item.href === "/blog"
-            ? pathname.startsWith("/blog")
+            ? pathname === "/blog" || pathname.startsWith("/blog/")
             : pathname === "/" && item.href === `/${hash}`;
         return (
           <Link
