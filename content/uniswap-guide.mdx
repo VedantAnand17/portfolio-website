@@ -115,7 +115,7 @@ For a same-token repayment with the standard fee, the minimum is rounded up from
 
 A v3 spot price can move within one transaction. Use a suitable observation window for a time-weighted price. Check that the pool has enough observation history and liquidity.
 
-Ticks are signed. Negative tick averages need correct rounding. Converting `sqrtPriceX96` by a direct square can overflow a 256-bit integer. Use the established oracle libraries and full-precision math. Account for token order and decimals. See the [Uniswap oracle guide](https://developers.uniswap.org/docs/sdks/v3/guides/advanced/price-oracle).
+Ticks are signed. Negative tick averages need correct rounding. Converting `sqrtPriceX96` by a direct square can overflow a 256-bit integer. Use the established oracle libraries and full-precision math. Account for token order and decimals. See the [Uniswap oracle guide](https://developers.uniswap.org/docs/sdks/v3/guides/price-oracle).
 
 For a liquidity deposit, calculate both minimum token amounts from the current state and the accepted slippage. A zero minimum accepts any result for that token. Set a deadline in Unix **seconds**, not milliseconds.
 

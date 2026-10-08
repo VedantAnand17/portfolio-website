@@ -134,6 +134,12 @@ test("blog pages have summaries, one main title, and valid social images", async
   await page.getByRole("link", { name: /Understanding Uniswap/ }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
   await expect(page.getByRole("main")).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Uniswap oracle guide", exact: true })
+  ).toHaveAttribute(
+    "href",
+    "https://developers.uniswap.org/docs/sdks/v3/guides/price-oracle"
+  );
   const images = await page
     .locator('meta[property="og:image"]')
     .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("content")));
