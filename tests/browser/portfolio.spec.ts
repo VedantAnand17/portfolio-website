@@ -45,6 +45,10 @@ test("home content works without JavaScript and fits a narrow screen", async ({
   await expect(
     page.getByRole("navigation", { name: "Main navigation" })
   ).toBeVisible();
+  const skipLink = page.getByRole("link", { name: "Skip to content" });
+  await skipLink.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#main-content")).toBeFocused();
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth)
   ).toBeLessThanOrEqual(320);
@@ -144,6 +148,9 @@ test("blog pages have summaries, one main title, and valid social images", async
     "href",
     "https://developers.uniswap.org/docs/sdks/v3/guides/price-oracle"
   );
+  await expect(
+    page.locator('meta[property="article:modified_time"]')
+  ).toHaveAttribute("content", "2026-10-08");
   const images = await page
     .locator('meta[property="og:image"]')
     .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("content")));

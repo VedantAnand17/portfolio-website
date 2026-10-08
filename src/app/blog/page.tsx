@@ -30,7 +30,7 @@ export default async function BlogPage() {
       new Date(a.metadata.publishedAt).getTime()
   );
   return (
-    <main id="main-content" className="space-y-6">
+    <main id="main-content" tabIndex={-1} className="space-y-6">
       <h1 className="text-3xl font-bold">Blog</h1>
       <p className="text-muted-foreground">
         Notes on DeFi, Uniswap, and payment infrastructure.

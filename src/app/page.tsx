@@ -9,7 +9,11 @@ import { DATA } from "@/data/resume";
 
 export default function Page() {
   return (
-    <main id="main-content" className="flex min-h-[100dvh] flex-col gap-12">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="flex min-h-[100dvh] flex-col gap-12"
+    >
       <section id="hero" aria-labelledby="hero-heading" className="space-y-6">
         <div className="flex flex-col-reverse items-start gap-5 sm:flex-row sm:justify-between">
           <div className="space-y-3">

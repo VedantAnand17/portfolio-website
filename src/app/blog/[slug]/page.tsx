@@ -44,6 +44,7 @@ export async function generateMetadata({
           url: ogImage,
         },
       ],
+      modifiedTime: post.metadata.updatedAt,
       publishedTime,
       title,
       type: "article",
@@ -74,7 +75,7 @@ export default async function Blog({
   }
 
   return (
-    <main id="main-content">
+    <main id="main-content" tabIndex={-1}>
       <BlogBreadcrumb title={post.metadata.title} />
       <script
         type="application/ld+json"
