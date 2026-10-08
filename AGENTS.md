@@ -27,3 +27,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Do not repeat what the codebase already shows; point to the authoritative file or command instead.
 - Prefer rewriting or pruning existing entries over appending new ones.
 - When updating this file, preserve this bar for all agents and keep entries concise.
+
+## Validation
+
+Use direct tests, typecheck, and browser checks. Do not run the no-mistakes gate for this project.

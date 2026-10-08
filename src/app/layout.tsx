@@ -4,6 +4,7 @@ import { Inter as FontSans, Outfit as FontDisplay } from "next/font/google";
 import { AnalyticsWrapper } from "@/components/analytics-wrapper";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import Navbar from "@/components/navbar";
+import { SmoothCursorWrapper } from "@/components/smooth-cursor-wrapper";
 import {
   StructuredData,
   WebsiteStructuredData,
@@ -168,6 +169,7 @@ export default function RootLayout({
             </a>
             {children}
             <Navbar />
+            <SmoothCursorWrapper />
             <AnalyticsWrapper />
           </TooltipProvider>
         </ThemeProvider>

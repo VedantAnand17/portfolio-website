@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronRightIcon } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useId, useState } from "react";
 
@@ -30,9 +31,10 @@ export function ResumeCard({
 }: ResumeCardProps) {
   const [expanded, setExpanded] = useState(false);
   const id = useId();
+  const reducedMotion = useReducedMotion();
   return (
-    <div className="flex gap-3 border-b pb-4">
-      <Avatar className="size-10 shrink-0 border sm:size-12">
+    <div className="group relative flex min-h-12 gap-4">
+      <Avatar className="size-12 shrink-0 border">
         <AvatarImage
           src={logoUrl}
           alt=""
@@ -43,10 +45,12 @@ export function ResumeCard({
         />
         <AvatarFallback>{altText[0]}</AvatarFallback>
       </Avatar>
-      <div className="min-w-0 flex-1 space-y-1">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+      <div className="min-w-0 flex-1 space-y-1 py-1">
+        <div
+          className={`flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 ${description ? "pr-10" : ""}`}
+        >
           <div className="flex min-w-0 flex-wrap items-center gap-2">
-            <h3 className="text-base font-semibold">
+            <h3 className="text-sm leading-none font-semibold">
               {href && href !== "#" ? (
                 <Link
                   className="hover:underline"
@@ -70,9 +74,11 @@ export function ResumeCard({
               </div>
             )}
           </div>
-          <p className="text-muted-foreground text-sm">{period}</p>
+          <p className="text-muted-foreground text-xs tabular-nums sm:text-sm">
+            {period}
+          </p>
         </div>
-        {subtitle && <p className="text-sm">{subtitle}</p>}
+        {subtitle && <p className="text-xs">{subtitle}</p>}
         {description && (
           <>
             <button
@@ -81,21 +87,30 @@ export function ResumeCard({
               aria-expanded={expanded}
               aria-controls={id}
               onClick={() => setExpanded(!expanded)}
-              className="text-link inline-flex min-h-11 items-center gap-2 text-sm underline underline-offset-4"
+              className="hover:bg-muted absolute top-0 right-0 inline-flex size-11 cursor-pointer items-center justify-center rounded-full"
             >
-              Details{" "}
-              <ChevronDownIcon
+              <ChevronRightIcon
                 aria-hidden="true"
-                className={`size-4 ${expanded ? "rotate-180" : ""}`}
+                className={`size-4 transition-transform duration-300 ${expanded ? "rotate-90" : ""}`}
               />
             </button>
-            <p
-              id={id}
-              hidden={!expanded}
-              className="text-muted-foreground text-sm leading-relaxed"
-            >
-              {description}
-            </p>
+            <div id={id} hidden={!expanded}>
+              {expanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  transition={{
+                    duration: reducedMotion ? 0 : 0.45,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="overflow-hidden"
+                >
+                  <p className="text-muted-foreground pt-2 text-sm leading-relaxed">
+                    {description}
+                  </p>
+                </motion.div>
+              )}
+            </div>
             <noscript>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {description}

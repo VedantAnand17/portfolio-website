@@ -34,13 +34,13 @@ test("home content works without JavaScript and fits a narrow screen", async ({
   const page = await context.newPage();
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Vedant Anand"
+    "Hi, I'm Vedant 👋"
   );
   await expect(
     page.getByRole("link", { name: "Email me", exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Contact", exact: true })
+    page.getByRole("heading", { name: "Get in Touch", exact: true })
   ).toBeVisible();
   await expect(
     page.getByRole("navigation", { name: "Main navigation" })
@@ -52,13 +52,9 @@ test("home content works without JavaScript and fits a narrow screen", async ({
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth)
   ).toBeLessThanOrEqual(320);
-  expect(
-    await page
-      .locator("#projects")
-      .evaluate((el) => el.getBoundingClientRect().top)
-  ).toBeLessThan(
-    await page.locator("#work").evaluate((el) => el.getBoundingClientRect().top)
-  );
+  await expect(
+    page.getByRole("link", { name: "View work", exact: true })
+  ).toHaveAttribute("href", "#projects");
   await context.close();
 });
 
@@ -433,3 +429,192 @@ test("home and article images show their content", async ({ page }) => {
 });
 
 /* oxlint-enable no-await-in-loop */
+
+test("original greeting and section hierarchy retain the portfolio character", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Hi, I'm Vedant 👋"
+  );
+  await expect(
+    page.getByRole("heading", {
+      name: "Agentic payments, x402 and DeFi work",
+      exact: true,
+    })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "I like building things", exact: true })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Get in Touch", exact: true })
+  ).toBeVisible();
+});
+
+test("dock magnification and cursor follow motion preferences", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  const home = page
+    .getByRole("navigation", { name: "Main navigation" })
+    .getByRole("link", { name: "Home", exact: true });
+  await expect(page.locator('[aria-label="Animated cursor"]')).toBeAttached();
+  const initial = await home.boundingBox();
+  await home.hover();
+  await expect
+    .poll(async () => {
+      const box = await home.boundingBox();
+      return box?.width ?? 0;
+    })
+    .toBeGreaterThan((initial?.width ?? 44) + 8);
+  await page.mouse.move(40, 40);
+  await expect(page.locator('[aria-label="Animated cursor"]')).toBeVisible();
+  expect(
+    await page
+      .locator("html")
+      .evaluate((element) => getComputedStyle(element).cursor)
+  ).toBe("none");
+  await home.hover();
+  await expect(page.locator('[aria-label="Animated cursor"]')).toBeHidden();
+  expect(await home.evaluate((el) => getComputedStyle(el).cursor)).toBe(
+    "pointer"
+  );
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.mouse.move(40, 40);
+  await expect(page.locator('[aria-label="Animated cursor"]')).toBeHidden();
+  await home.hover();
+  await expect
+    .poll(async () => {
+      const box = await home.boundingBox();
+      return Math.round(box?.width ?? 0);
+    })
+    .toBe(44);
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.mouse.move(40, 40);
+  await expect(page.locator('[aria-label="Animated cursor"]')).toBeHidden();
+  expect(
+    await page
+      .locator("html")
+      .evaluate((element) => getComputedStyle(element).cursor)
+  ).not.toBe("none");
+});
+
+test("experience rows stay compact and project cards respond to hover", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+  const row = page
+    .locator("#work")
+    .getByRole("heading", { name: "Timelock Protocol", exact: true })
+    .locator("xpath=../../..");
+  const rowBox = await row.boundingBox();
+  expect(rowBox?.height).toBeLessThanOrEqual(76);
+  const card = page
+    .locator("#projects")
+    .getByRole("heading", { name: "AgentPay", exact: true })
+    .locator("xpath=../../..");
+  const before = await card.evaluate((el) => getComputedStyle(el).boxShadow);
+  await card.hover();
+  await expect
+    .poll(() => card.evaluate((el) => getComputedStyle(el).boxShadow))
+    .not.toBe(before);
+});
+
+test("selected X posts keep rich cards and readable fallbacks when widgets are blocked", async ({
+  page,
+}) => {
+  await page.route("**/platform.twitter.com/**", (route) => route.abort());
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", { name: "From my Twitter", exact: true })
+  ).toBeVisible();
+  const posts = page.locator("#posts");
+  await expect(
+    posts.getByRole("link", { name: /Development notes .*on X/ })
+  ).toHaveCount(4);
+  await expect(posts.getByText("19 June 2025", { exact: true })).toBeVisible();
+  await expect(posts.getByText("22 June 2025", { exact: true })).toBeVisible();
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth)
+  ).toBeLessThanOrEqual(320);
+});
+
+test("section reveals run when the visitor scrolls into view", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await page.locator("#hero").evaluate(async (element) => {
+    await Promise.all(
+      element
+        .getAnimations({ subtree: true })
+        .map((animation) => animation.finished)
+    );
+  });
+  const heading = page.getByRole("heading", {
+    name: "Agentic payments, x402 and DeFi work",
+    exact: true,
+  });
+  const reveal = heading.locator("xpath=../../..");
+  await expect
+    .poll(() =>
+      reveal.evaluate((element) => Number(getComputedStyle(element).opacity))
+    )
+    .toBe(0);
+  await heading.scrollIntoViewIfNeeded();
+  await expect
+    .poll(() =>
+      reveal.evaluate((element) => Number(getComputedStyle(element).opacity))
+    )
+    .toBe(1);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const contact = page
+    .getByRole("heading", { name: "Get in Touch", exact: true })
+    .locator("xpath=..");
+  expect(
+    await contact.evaluate((element) =>
+      Number(getComputedStyle(element).opacity)
+    )
+  ).toBe(1);
+});
+
+test("X widgets load once and follow the selected theme", async ({ page }) => {
+  let scriptRequests = 0;
+  await page.route("**/platform.twitter.com/widgets.js", (route) => {
+    scriptRequests += 1;
+    return route.fulfill({
+      contentType: "application/javascript",
+      body: `
+      window.twttr = { widgets: { createTweet: async (id, target, options) => {
+        const iframe = document.createElement('iframe');
+        iframe.title = 'X post ' + id;
+        iframe.dataset.theme = options.theme;
+        iframe.width = options.width;
+        iframe.height = '160';
+        iframe.srcdoc = '<p>Embedded post</p>';
+        target.append(iframe);
+        return iframe;
+      } } };
+    `,
+    });
+  });
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.goto("/");
+  const frames = page.locator('#posts iframe[title^="X post"]');
+  await expect(frames).toHaveCount(4);
+  expect(scriptRequests).toBe(1);
+  await expect(frames.first()).toHaveAttribute("data-theme", "light");
+  await page.getByRole("button", { name: "Switch to dark theme" }).click();
+  await expect(frames).toHaveCount(4);
+  await expect(frames.first()).toHaveAttribute("data-theme", "dark");
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth)
+  ).toBeLessThanOrEqual(320);
+});

@@ -51,11 +51,11 @@ export function ProjectCard({
   className,
 }: Props) {
   return (
-    <Card className="flex h-full flex-col overflow-hidden border">
+    <Card className="flex h-full flex-col overflow-hidden border transition-shadow duration-300 ease-out hover:shadow-lg">
       <Link
         href={href || links?.[0]?.href || "/#projects"}
         aria-label={`View ${title}`}
-        className={className}
+        className={`block cursor-pointer ${className ?? ""}`}
       >
         {video && (
           <video
