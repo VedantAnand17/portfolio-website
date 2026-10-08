@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
-import { unlink, writeFile } from "node:fs/promises";
+import { readFile, unlink, writeFile } from "node:fs/promises";
 import { test } from "node:test";
 import path from "node:path";
 
@@ -21,6 +21,18 @@ This temporary article verifies filename handling.
 `;
 
 test("mixed-case and reserved article slugs generate safe links", async () => {
+  const originalFixtures = await Promise.all(
+    fixturePaths.map(async (fixturePath) => {
+      try {
+        return { fixturePath, source: await readFile(fixturePath) };
+      } catch (error) {
+        if (error.code === "ENOENT") {
+          return { fixturePath, source: null };
+        }
+        throw error;
+      }
+    })
+  );
   await Promise.all([
     writeFile(fixturePaths[0], fixture("Release Notes")),
     writeFile(fixturePaths[1], fixture("Release Notes With Punctuation")),
@@ -59,6 +71,18 @@ test("mixed-case and reserved article slugs generate safe links", async () => {
     const [code] = await once(child, "exit");
     assert.equal(code, 0, output);
   } finally {
-    await Promise.all(fixturePaths.map((fixturePath) => unlink(fixturePath)));
+    await Promise.all(
+      originalFixtures.map(async ({ fixturePath, source }) => {
+        if (source === null) {
+          await unlink(fixturePath).catch((error) => {
+            if (error.code !== "ENOENT") {
+              throw error;
+            }
+          });
+          return;
+        }
+        await writeFile(fixturePath, source);
+      })
+    );
   }
 });
