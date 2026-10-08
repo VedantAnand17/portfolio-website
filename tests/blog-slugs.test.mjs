@@ -33,11 +33,11 @@ test("mixed-case and reserved article slugs generate safe links", async () => {
       }
     })
   );
-  await Promise.all([
-    writeFile(fixturePaths[0], fixture("Release Notes")),
-    writeFile(fixturePaths[1], fixture("Release Notes With Punctuation")),
-  ]);
   try {
+    await Promise.all([
+      writeFile(fixturePaths[0], fixture("Release Notes")),
+      writeFile(fixturePaths[1], fixture("Release Notes With Punctuation")),
+    ]);
     const child = spawn(
       process.execPath,
       [
