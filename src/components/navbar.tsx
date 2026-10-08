@@ -42,7 +42,9 @@ export default function Navbar() {
                 item.href.split("#")[1] ? `#${item.href.split("#")[1]}` : ""
               )
             }
-            aria-current={active ? "page" : undefined}
+            aria-current={
+              active ? (item.href.includes("#") ? "location" : "page") : undefined
+            }
             className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg px-2 text-sm font-medium ${active ? "bg-muted" : "hover:bg-muted"}`}
           >
             {item.label}

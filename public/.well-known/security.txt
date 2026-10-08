@@ -3,7 +3,7 @@
 Contact: mailto:vedantanand.in@gmail.com
 Expires: 2027-02-06T00:00:00.000Z
 Preferred-Languages: en
-Canonical: https://vedant-dev.com/.well-known/security.txt
+Canonical: https://www.vedant-dev.com/.well-known/security.txt
 Policy: https://vedant-dev.com/security-policy
 
 # Acknowledgments

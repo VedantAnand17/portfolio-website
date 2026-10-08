@@ -137,6 +137,62 @@ test("blog pages have summaries, one main title, and valid social images", async
   );
 });
 
+test("article and listing dates stay absolute in public output", async ({
+  page,
+}) => {
+  await page.goto("/blog");
+  await expect(page.locator('time[datetime="2026-01-29"]')).toHaveText(
+    "29 January 2026"
+  );
+  await expect(page.locator('time[datetime="2025-07-12"]')).toHaveText(
+    "12 July 2025"
+  );
+
+  await page.goto("/blog/uniswap-guide");
+  await expect(page.locator('time[datetime="2025-07-12"]')).toHaveText(
+    "12 July 2025"
+  );
+  await expect(page.locator('time[datetime="2026-10-08"]')).toHaveText(
+    "8 October 2026"
+  );
+});
+
+test("public metadata and navigation use current semantics", async ({
+  page,
+  request,
+}) => {
+  const security = await request.get("/.well-known/security.txt");
+  expect(await security.text()).toContain(
+    "Canonical: https://www.vedant-dev.com/.well-known/security.txt"
+  );
+
+  const sitemap = await request.get("/sitemap.xml");
+  const sitemapUrls = await page.evaluate(async (xml) => {
+    const document = new DOMParser().parseFromString(xml, "application/xml");
+    return [...document.querySelectorAll("url")].map((url) => ({
+      lastmod: url.querySelector("lastmod")?.textContent,
+      loc: url.querySelector("loc")?.textContent,
+    }));
+  }, await sitemap.text());
+  expect(
+    sitemapUrls.find(
+      ({ loc }) =>
+        loc === "https://www.vedant-dev.com/blog/concentrated-liquidity"
+    )?.lastmod
+  ).toMatch(/^2026-10-08/);
+
+  await page.goto("/#contact");
+  await expect(page.getByRole("link", { name: "Contact" })).toHaveAttribute(
+    "aria-current",
+    "location"
+  );
+  await page.goto("/blog");
+  await expect(page.getByRole("link", { name: "Blog" })).toHaveAttribute(
+    "aria-current",
+    "page"
+  );
+});
+
 test("published swap example computes fees and rejects invalid inputs", async ({
   page,
 }) => {
