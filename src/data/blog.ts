@@ -10,6 +10,8 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { parse } from "yaml";
 
+const maxFilenameBytes = 255;
+
 function visitArticleImages(node: Root | Element) {
   if (
     node.type === "element" &&
@@ -66,16 +68,18 @@ export function postPath(slug: string) {
 }
 
 export async function getPost(slug: string) {
+  const filename = `${slug}.mdx`;
   if (
     slug === "." ||
     slug === ".." ||
     slug.includes("\0") ||
     slug.includes("/") ||
-    slug.includes("\\")
+    slug.includes("\\") ||
+    Buffer.byteLength(filename, "utf8") > maxFilenameBytes
   ) {
     return null;
   }
-  const filePath = path.join(process.cwd(), "content", `${slug}.mdx`);
+  const filePath = path.join(process.cwd(), "content", filename);
   let source: string;
   try {
     source = fs.readFileSync(filePath, "utf-8");
