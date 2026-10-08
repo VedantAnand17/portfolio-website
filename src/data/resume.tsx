@@ -141,7 +141,7 @@ export const DATA = {
       dates: "February 2026 – Present",
       active: true,
       description:
-        "Role: Co-founder. Built payment APIs for AI agents. A link returns an HTTP 402 price quote, verifies a USDC payment, and releases the response. The platform includes payment records and tax invoices. Bags is supported by Founders Inc., Canopy, and Superteam.",
+        "Role: Co-founder. Built x402 payment APIs for AI agents with USDC verification, payment records, and tax invoices. Supported by Founders Inc., Canopy, and Superteam.",
       technologies: [
         "x402",
         "Agentic Commerce",
@@ -167,7 +167,7 @@ export const DATA = {
       dates: "December 2025 – September 2026",
       active: true,
       description:
-        "Role: Contributor. Four merged pull requests to x402, the HTTP-native standard for paying for API calls in stablecoins. They add unit tests for `sign_eip2612_permit`, named constants for ERC-20 approval gas defaults, a rewrite of the @x402/extensions documentation, and a core fix that throws when no server is registered for a requested payment scheme and network. All four were reviewed and merged by the protocol's maintainers.",
+        "Role: Contributor. Four merged pull requests to x402: payment-scheme validation, EIP-2612 permit tests, ERC-20 gas constants, and extension documentation.",
       technologies: [
         "x402",
         "Agentic Payments",
@@ -180,21 +180,25 @@ export const DATA = {
       links: [
         {
           type: "PR #3051 - Unregistered scheme guard",
+          label: "PR #3051",
           href: "https://github.com/x402-foundation/x402/pull/3051",
           icon: <Icons.github className="size-3" />,
         },
         {
           type: "PR #2344 - EIP-2612 permit tests",
+          label: "PR #2344",
           href: "https://github.com/x402-foundation/x402/pull/2344",
           icon: <Icons.github className="size-3" />,
         },
         {
           type: "PR #2278 - ERC-20 gas constants",
+          label: "PR #2278",
           href: "https://github.com/x402-foundation/x402/pull/2278",
           icon: <Icons.github className="size-3" />,
         },
         {
           type: "PR #731 - extensions docs",
+          label: "PR #731",
           href: "https://github.com/x402-foundation/x402/pull/731",
           icon: <Icons.github className="size-3" />,
         },
@@ -208,7 +212,7 @@ export const DATA = {
       dates: "November 2025 – December 2025",
       active: true,
       description:
-        "Role: Builder. A prototype agent that pays for sentiment analysis and trading signals per API request in USDC over x402. This project led to Bags. The source is available below.",
+        "Role: Builder. Prototyped an agent that pays for sentiment analysis and trading signals per API request with USDC over x402. This project led to Bags.",
       technologies: [
         "x402",
         "Agentic Payments",
@@ -241,7 +245,7 @@ export const DATA = {
       dates: "June 2025 – February 2026",
       active: true,
       description:
-        "Role: Founding engineer. Built the protocol landing page with Next.js and TypeScript. My protocol work included Solidity contracts for DeFi options. Contribution completed in February 2026; the source link shows the landing page work.",
+        "Role: Founding engineer. Built the Next.js landing page and Solidity contracts for DeFi options. Completed in February 2026; the source covers the landing page.",
       technologies: [
         "Next.js",
         "TypeScript",

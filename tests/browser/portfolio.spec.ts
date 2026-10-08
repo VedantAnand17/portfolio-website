@@ -128,6 +128,69 @@ test("project actions are readable touch targets with project-specific names", a
   ).toBeLessThanOrEqual(375);
 });
 
+test("project previews show full centered images in a consistent frame", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const images = page.locator("#projects img");
+  await expect(images).toHaveCount(5);
+  const previews = await images.evaluateAll((elements) =>
+    elements.map((image) => {
+      const box = image.getBoundingClientRect();
+      const style = getComputedStyle(image);
+      return {
+        ratio: box.width / box.height,
+        fit: style.objectFit,
+        position: style.objectPosition,
+      };
+    })
+  );
+  for (const preview of previews) {
+    expect(preview.ratio).toBeCloseTo(16 / 9, 1);
+    expect(preview.fit).toBe("contain");
+    expect(preview.position).toBe("50% 50%");
+  }
+});
+
+test("project summaries stay compact and keep all contribution links", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const projects = page.locator("#projects");
+  const cards = projects.locator(".border").filter({ has: page.locator("h3") });
+  const summaries = await cards.locator(".prose").allTextContents();
+  for (const summary of summaries) {
+    expect(summary.trim().split(/\s+/).length).toBeLessThanOrEqual(35);
+  }
+  await Promise.all(
+    [3051, 2344, 2278, 731].map(async (number) => {
+      const link = projects.locator(
+        `a[href="https://github.com/x402-foundation/x402/pull/${number}"]`
+      );
+      await expect(link).toHaveText(`PR #${number}`);
+      await expect(link).toHaveAccessibleName(
+        new RegExp(`PR #${number}.*for x402`)
+      );
+    })
+  );
+  const firstRow = await cards.evaluateAll((elements) =>
+    elements.slice(0, 2).map((card) => card.getBoundingClientRect().height)
+  );
+  for (const height of firstRow) {
+    expect(height).toBeLessThan(560);
+  }
+  const dates = await cards.evaluateAll((elements) =>
+    elements.slice(0, 2).map((card) => {
+      const date = card.querySelector("h3 + p");
+      if (!date) {
+        throw new Error("Project date is missing");
+      }
+      return date.getBoundingClientRect().top;
+    })
+  );
+  expect(Math.abs(dates[0] - dates[1])).toBeLessThan(1);
+});
+
 test("blog pages have summaries, one main title, and valid social images", async ({
   page,
   request,
