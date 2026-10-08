@@ -62,7 +62,12 @@ export async function markdownToHTML(markdown: string) {
 }
 
 export async function getPost(slug: string) {
-  if (!/^[a-z0-9-]+$/.test(slug)) {
+  if (
+    slug === "." ||
+    slug === ".." ||
+    slug.includes("/") ||
+    slug.includes("\\")
+  ) {
     return null;
   }
   const filePath = path.join(process.cwd(), "content", `${slug}.mdx`);
