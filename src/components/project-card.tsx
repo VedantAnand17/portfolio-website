@@ -33,6 +33,7 @@ interface Props {
   links?: readonly {
     icon: React.ReactNode;
     type: string;
+    label?: string;
     href: string;
   }[];
   className?: string;
@@ -55,7 +56,7 @@ export function ProjectCard({
       <Link
         href={href || links?.[0]?.href || "/#projects"}
         aria-label={`View ${title}`}
-        className={`block cursor-pointer ${className ?? ""}`}
+        className={`relative block aspect-video cursor-pointer bg-black ${className ?? ""}`}
       >
         {video && (
           <video
@@ -66,16 +67,15 @@ export function ProjectCard({
             playsInline
             controls={false}
             title={`${title} project demonstration video`}
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
+            className="pointer-events-none h-full w-full object-contain object-center"
           />
         )}
         {image && (
           <Image
             src={image}
             alt={`${title} project screenshot showing the application interface and features`}
-            width={500}
-            height={300}
-            className="h-40 w-full overflow-hidden object-cover object-top"
+            fill
+            className="object-contain object-center"
             sizes="(max-width: 639px) calc(100vw - 32px), 300px"
             loading="lazy"
             placeholder="blur"
@@ -85,7 +85,7 @@ export function ProjectCard({
       </Link>
       <CardHeader className="px-4 pt-4">
         <div className="space-y-1">
-          <CardTitle className="mt-1 text-base">{title}</CardTitle>
+          <CardTitle className="mt-1 text-base sm:min-h-12">{title}</CardTitle>
           <p className="text-muted-foreground text-sm">{dates}</p>
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
@@ -117,6 +117,7 @@ export function ProjectCard({
               <Link
                 href={link?.href}
                 aria-label={actionLabel(link.type, title)}
+                title={link.label ? link.type : undefined}
                 className="bg-primary text-primary-foreground inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-sm font-medium"
                 key={idx}
                 target="_blank"
@@ -124,7 +125,7 @@ export function ProjectCard({
               >
                 <span className="flex items-center gap-2">
                   <span aria-hidden="true">{link.icon}</span>
-                  {link.type}
+                  {link.label ?? link.type}
                 </span>
               </Link>
             ))}
