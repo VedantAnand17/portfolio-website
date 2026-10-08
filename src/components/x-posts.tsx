@@ -9,7 +9,6 @@ interface Post {
   id: string;
   url: string;
   date: string;
-  label: string;
 }
 interface Widgets {
   createTweet: (
@@ -131,12 +130,13 @@ export function XPosts({
               }).format(new Date(post.date))}
             </time>
             <a
+              hidden={loaded.has(post.id)}
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-link mt-2 inline-flex min-h-11 cursor-pointer items-center text-sm underline underline-offset-4"
             >
-              {post.label} <span className="sr-only">on X</span>
+              Read post on X
             </a>
           </li>
         ))}

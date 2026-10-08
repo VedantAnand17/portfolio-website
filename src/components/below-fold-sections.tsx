@@ -49,13 +49,12 @@ export function BelowFoldSections() {
         <XPosts
           name={DATA.name}
           avatar={DATA.avatarUrl}
-          posts={DATA.tweets.map((tweet, index) => ({
+          posts={DATA.tweets.map((tweet) => ({
             id: tweet.id,
             url: `${DATA.contact.social.X.url}/status/${tweet.id}`,
             date: new Date(
               Number(BigInt(tweet.id) / 4_194_304n + 1_288_834_974_657n)
             ).toISOString(),
-            label: `Development notes ${index + 1}`,
           }))}
         />
       </section>
