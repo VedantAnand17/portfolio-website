@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
 import { BlogBreadcrumb } from "@/components/breadcrumb";
 import { getBlogPosts, getPost } from "@/data/blog";
@@ -21,6 +20,9 @@ export async function generateMetadata({
 }): Promise<Metadata | undefined> {
   const { slug } = await params;
   const post = await getPost(slug);
+  if (!post) {
+    notFound();
+  }
 
   const {
     title,
@@ -28,9 +30,7 @@ export async function generateMetadata({
     summary: description,
     image,
   } = post.metadata;
-  const ogImage = image
-    ? `${DATA.url}${image}`
-    : `${DATA.url}/og?title=${title}`;
+  const ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og-image.webp`;
 
   return {
     alternates: {
@@ -74,7 +74,7 @@ export default async function Blog({
   }
 
   return (
-    <section id="blog">
+    <main id="main-content">
       <BlogBreadcrumb title={post.metadata.title} />
       <script
         type="application/ld+json"
@@ -87,13 +87,13 @@ export default async function Blog({
               "@type": "Person",
               name: DATA.name,
             },
-            dateModified: post.metadata.publishedAt,
+            dateModified: post.metadata.updatedAt || post.metadata.publishedAt,
             datePublished: post.metadata.publishedAt,
             description: post.metadata.summary,
             headline: post.metadata.title,
             image: post.metadata.image
               ? `${DATA.url}${post.metadata.image}`
-              : `${DATA.url}/og?title=${post.metadata.title}`,
+              : `${DATA.url}/og-image.webp`,
             url: `${DATA.url}/blog/${post.slug}`,
           }),
         }}
@@ -102,16 +102,26 @@ export default async function Blog({
         {post.metadata.title}
       </h1>
       <div className="mt-2 mb-8 flex max-w-[650px] items-center justify-between text-sm">
-        <Suspense fallback={<p className="h-5" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <time dateTime={post.metadata.publishedAt}>
             {formatDate(post.metadata.publishedAt)}
-          </p>
-        </Suspense>
+          </time>{" "}
+          · {post.readingMinutes} min read
+          {post.metadata.updatedAt && (
+            <>
+              {" "}
+              · Updated{" "}
+              <time dateTime={post.metadata.updatedAt}>
+                {formatDate(post.metadata.updatedAt)}
+              </time>
+            </>
+          )}
+        </p>
       </div>
       <article
         className="prose dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: post.source }}
       />
-    </section>
+    </main>
   );
 }

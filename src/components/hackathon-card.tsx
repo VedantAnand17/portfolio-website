@@ -43,7 +43,7 @@ export function HackathonCard({
         {dates && (
           <time className="text-muted-foreground text-xs">{dates}</time>
         )}
-        <h2 className="leading-none font-semibold">{title}</h2>
+        <h3 className="leading-none font-semibold">{title}</h3>
         {location && (
           <p className="text-muted-foreground text-sm">{location}</p>
         )}
@@ -62,8 +62,12 @@ export function HackathonCard({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Badge key={idx} title={link.title} className="flex gap-2">
-                {link.icon}
+              <Badge
+                key={idx}
+                title={link.title}
+                className="flex min-h-11 gap-2 px-3 text-sm"
+              >
+                <span aria-hidden="true">{link.icon}</span>
                 {link.title}
               </Badge>
             </Link>

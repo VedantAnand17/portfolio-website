@@ -1,14 +1,10 @@
 "use client";
 
-import { ChevronRightIcon } from "lucide-react";
-import { motion } from "motion/react";
+import { ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import { useId, useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 
 interface ResumeCardProps {
   logoUrl: string;
@@ -20,104 +16,81 @@ interface ResumeCardProps {
   period: string;
   description?: string;
 }
-export const ResumeCard = ({
+
+export function ResumeCard({
   logoUrl,
   altText,
   title,
   subtitle,
   href,
-  badges,
   period,
   description,
-}: ResumeCardProps) => {
-  const [isExpanded, setIsExpanded] = React.useState(false);
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (description) {
-      e.preventDefault();
-      setIsExpanded(!isExpanded);
-    }
-  };
-
+}: ResumeCardProps) {
+  const [expanded, setExpanded] = useState(false);
+  const id = useId();
   return (
-    <Link
-      href={href || "#"}
-      className="block cursor-pointer"
-      onClick={handleClick}
-      aria-expanded={description ? isExpanded : undefined}
-      aria-controls={
-        description
-          ? `description-${title.replaceAll(/\s+/g, "-").toLowerCase()}`
-          : undefined
-      }
-      role={description ? "button" : undefined}
-    >
-      <Card className="flex">
-        <div className="flex-none">
-          <Avatar className="bg-muted-background dark:bg-foreground m-auto size-12 border">
-            <AvatarImage
-              src={logoUrl}
-              alt={altText}
-              className="object-contain"
-              width={48} // Add width
-              height={48} // Add height
-              loading="lazy" // Add lazy loading
-            />
-            <AvatarFallback>{altText[0]}</AvatarFallback>
-          </Avatar>
-        </div>
-        <div className="group ml-4 flex-grow flex-col items-center">
-          <CardHeader>
-            <div className="flex items-center justify-between gap-x-2 text-base">
-              <h3 className="inline-flex items-center justify-center text-xs leading-none font-semibold sm:text-sm">
+    <div className="flex gap-3 border-b pb-4">
+      <Avatar className="size-10 shrink-0 border sm:size-12">
+        <AvatarImage
+          src={logoUrl}
+          alt=""
+          width={48}
+          height={48}
+          loading="lazy"
+          className="object-contain"
+        />
+        <AvatarFallback>{altText[0]}</AvatarFallback>
+      </Avatar>
+      <div className="min-w-0 flex-1 space-y-1">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <h3 className="text-base font-semibold">
+            {href && href !== "#" ? (
+              <Link
+                className="hover:underline"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {title}
-                {badges && (
-                  <span className="inline-flex gap-x-1">
-                    {badges.map((badge, index) => (
-                      <Badge
-                        variant="secondary"
-                        className="align-middle text-xs"
-                        key={index}
-                      >
-                        {badge}
-                      </Badge>
-                    ))}
-                  </span>
-                )}
-                <ChevronRightIcon
-                  aria-hidden="true"
-                  className={cn(
-                    "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
-                    isExpanded ? "rotate-90" : "rotate-0"
-                  )}
-                />
-              </h3>
-              <div className="text-muted-foreground text-right text-xs tabular-nums sm:text-sm">
-                {period}
-              </div>
-            </div>
-            {subtitle && <div className="font-sans text-xs">{subtitle}</div>}
-          </CardHeader>
-          {description && (
-            <motion.div
-              id={`description-${title.replaceAll(/\s+/g, "-").toLowerCase()}`}
-              initial={{ height: 0, opacity: 0 }}
-              animate={{
-                height: isExpanded ? "auto" : 0,
-
-                opacity: isExpanded ? 1 : 0,
-              }}
-              transition={{
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="mt-2 text-xs sm:text-sm"
+              </Link>
+            ) : (
+              title
+            )}
+          </h3>
+          <p className="text-muted-foreground text-sm">{period}</p>
+        </div>
+        {subtitle && <p className="text-sm">{subtitle}</p>}
+        {description && (
+          <>
+            <button
+              type="button"
+              aria-label={`Details for ${title}`}
+              aria-expanded={expanded}
+              aria-controls={id}
+              onClick={() => setExpanded(!expanded)}
+              className="text-link inline-flex min-h-11 items-center gap-2 text-sm underline underline-offset-4"
+            >
+              Details{" "}
+              <ChevronDownIcon
+                aria-hidden="true"
+                className={`size-4 ${expanded ? "rotate-180" : ""}`}
+              />
+            </button>
+            <p
+              id={id}
+              hidden={!expanded}
+              className="text-muted-foreground text-sm leading-relaxed"
             >
               {description}
-            </motion.div>
-          )}
-        </div>
-      </Card>
-    </Link>
+            </p>
+            <noscript>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {description}
+              </p>
+            </noscript>
+          </>
+        )}
+      </div>
+    </div>
   );
-};
+}

@@ -41,7 +41,7 @@ export const DATA = {
     tel: "+917901982476",
   },
   description:
-    "I build payment infrastructure for AI agents - agentic commerce, x402 and stablecoin payments - backed by full-stack TypeScript and production Solidity.",
+    "I build payment APIs for AI agents with x402, TypeScript, and Solidity.",
   education: [
     {
       school: "Thapar Institute of Engineering and Technology",
@@ -58,7 +58,7 @@ export const DATA = {
   hackathons: [
     {
       title: "ETH HackMoney 2026 (Winner)",
-      dates: "February 12th, 2026",
+      dates: "12 February 2026",
       location: "Remote",
       description:
         "Won the ENS - Integrate ENS track with nyx, a fair launchpad using Uniswap V4 Continuous Clearing Auctions (CCA) and ENS for every token. Built permissionless token creation, fair launch, and liquidity bootstrapping in one flow, with agentic AI integration and ENS names for launched tokens and verified badges.",
@@ -73,25 +73,25 @@ export const DATA = {
     },
     {
       title: "x402 Build Onchain (Winner)",
-      dates: "January 13th, 2026",
+      dates: "13 January 2026",
       location: "Remote",
       description:
-        "Won the x402 Build Onchain hackathon organized by FBI among 500+ participating teams.",
+        "Won the x402 Build Onchain hackathon organized by Founders Inc.",
       image: "/x402.png",
       links: [],
     },
     {
       title: "Smart India Hackathon (Waitlisted)",
-      dates: "December 12th – 13th 2024",
+      dates: "12–13 December 2024",
       location: "Bhubaneswar, Odisha",
       description:
-        "Got shortlisted in intra college round of this national hackathon(9,00,000+ participation) and waitlisted in the finals. Problem Statement: Development of a software solution to follow the cryptocurrency transaction trial associated with a wallet id/ transaction to find out the real reciever of the funds in a drug related transaction.",
+        "Shortlisted in the college round and waitlisted for the finals. Built a tool to trace cryptocurrency transactions and identify fund recipients.",
       image: "/sih.webp",
       links: [],
     },
     {
       title: "Syrinx (CTF Winner)",
-      dates: "July 26th – 27th, 2024",
+      dates: "26–27 July 2024",
       location: "Remote",
       description: "Won the CTF by solving several cybersecurity challenges.",
       image: "/syrinx.webp",
@@ -99,17 +99,17 @@ export const DATA = {
     },
     {
       title: "HackOWASP Intra",
-      dates: "July 13th – 14th, 2024",
+      dates: "13–14 July 2024",
       location: "Remote",
       description:
-        "Developed a web application which informs people about TIET college, and share study resources which impacted more than 800 students.",
+        "Built a web application with TIET college information and study resources.",
       icon: "public",
       image: "/hacko.webp",
       links: [],
     },
     {
       title: "Hacklipse (Winner)",
-      dates: "April 6th – 7th, 2024",
+      dates: "6–7 April 2024",
       location: "TIET, Patiala",
       description:
         "Won this hackathon by making a web app that predicts the chance of winning a hackathon by using your idea as a parameter.",
@@ -118,7 +118,7 @@ export const DATA = {
     },
     {
       title: "HackTU 6.0",
-      dates: "February 7th – 9th, 2024",
+      dates: "7–9 February 2024",
       location: "TIET, Patiala",
       description:
         "Made an app that helps students to find the best study material, scholarships for their courses.",
@@ -138,10 +138,10 @@ export const DATA = {
     {
       title: "Bags - pay-per-call APIs for AI agents",
       href: "https://www.getbags.app/",
-      dates: "Feb 2026 – Present",
+      dates: "February 2026 – Present",
       active: true,
       description:
-        "An agentic commerce platform that lets any API charge AI agents per request over x402. A pay-per-call link returns an HTTP 402 with a price quote, verifies the agent's USDC payment across four chains, and only then releases the response - with merchant-of-record compliance and tax invoicing underneath, so a founder without a US entity can get paid. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of the Canopy builder cohort.",
+        "Role: Co-founder. Built payment APIs for AI agents. A link returns an HTTP 402 price quote, verifies a USDC payment, and releases the response. The platform includes payment records and tax invoices. Bags is supported by Founders Inc., Canopy, and Superteam.",
       technologies: [
         "x402",
         "Agentic Commerce",
@@ -167,7 +167,7 @@ export const DATA = {
       dates: "December 2025 – September 2026",
       active: true,
       description:
-        "Four merged pull requests to x402, the HTTP-native standard for paying for API calls in stablecoins. They add unit tests for `sign_eip2612_permit`, named constants for ERC-20 approval gas defaults, a rewrite of the @x402/extensions documentation, and a core fix that throws when no server is registered for a requested payment scheme and network. All four were reviewed and merged by the protocol's maintainers.",
+        "Role: Contributor. Four merged pull requests to x402, the HTTP-native standard for paying for API calls in stablecoins. They add unit tests for `sign_eip2612_permit`, named constants for ERC-20 approval gas defaults, a rewrite of the @x402/extensions documentation, and a core fix that throws when no server is registered for a requested payment scheme and network. All four were reviewed and merged by the protocol's maintainers.",
       technologies: [
         "x402",
         "Agentic Payments",
@@ -208,7 +208,7 @@ export const DATA = {
       dates: "November 2025 – December 2025",
       active: true,
       description:
-        "A payment agent that buys API calls on your behalf over x402 - sentiment analysis and in-house trading signals, each metered and settled per request in USDC rather than behind a subscription. The prototype that led to Bags.",
+        "Role: Builder. A prototype agent that pays for sentiment analysis and trading signals per API request in USDC over x402. This project led to Bags. The source is available below.",
       technologies: [
         "x402",
         "Agentic Payments",
@@ -238,10 +238,10 @@ export const DATA = {
     {
       title: "Timelock Protocol",
       href: "https://timelock.trade",
-      dates: "June 2025 – Present",
+      dates: "June 2025 – February 2026",
       active: true,
       description:
-        "A modern landing page for Timelock Protocol showcasing advanced DeFi trading features with unlimited upside and zero liquidation risk. Features quantum-secured positions and temporal arbitrage across multiple DeFi protocols with enhanced yields.",
+        "Role: Founding engineer. Built the protocol landing page with Next.js and TypeScript. My protocol work included Solidity contracts for DeFi options. Contribution completed in February 2026; the source link shows the landing page work.",
       technologies: [
         "Next.js",
         "TypeScript",
@@ -267,12 +267,12 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Veri Doc",
+      title: "VeriDoc",
       href: "https://veri-doc.vercel.app/",
       dates: "May 2025 – Present",
       active: true,
       description:
-        "A decentralized document verification system using zero-knowledge proofs to reduce maintenance costs and improve verification efficiency. The system significantly decreases verification time compared to standard methods while maintaining security and privacy through advanced cryptographic techniques.",
+        "Role: Founder and engineer. Building a document verification application using zero-knowledge proofs and Solidity. The source link provides the contracts.",
       technologies: [
         "Next.js",
         "TypeScript",
@@ -305,18 +305,18 @@ export const DATA = {
     "Solidity",
     "React",
     "Next.js",
-    "Typescript",
+    "TypeScript",
     "Node.js",
     "Rust",
     "Foundry",
     "Docker",
     "C++",
     "C",
-    "Git & Github",
+    "Git & GitHub",
     "Zero-Knowledge Proofs",
   ],
   summary:
-    "I build payment infrastructure for AI agents.\n\nI co-founded [Bags](/#work), an agentic commerce platform that lets any API charge AI agents per request over the [x402](https://x402.org) protocol - pay-per-call links that quote a price, verify a USDC payment across four chains, then return the response. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of the Canopy builder cohort.\n\nI also contribute to x402 itself, the HTTP-native standard for paying for API calls in stablecoins. [Four of my pull requests are merged into the protocol repository](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged): unit tests for EIP-2612 permit signing, named constants for ERC-20 approval gas defaults, documentation for the extensions package, and a core fix that throws when a requested payment scheme is not registered. Before Bags I was [founding engineer at Timelock Protocol](/#work), writing Solidity for a DeFi options protocol, and spent twelve months as a full-stack blockchain developer at Mavik Labs across Next.js, TypeScript, Docker and Go. I mentored for Google Summer of Code with OWASP BLT from February to August 2026.\n\n[I am pursuing a degree in Electrical and Computer Engineering](/#education) and graduate in 2027.",
+    "I co-founded [Bags](https://www.getbags.app/) and contribute to the [x402 protocol](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged). I also build web applications and Solidity contracts.\n\nI mentored OWASP BLT contributors in Google Summer of Code 2026. I study Electrical and Computer Engineering at Thapar Institute and expect to graduate in 2027.",
   tweets: [
     {
       id: "1935588888300359901",
@@ -335,7 +335,7 @@ export const DATA = {
       title: "Learning Journey",
     },
   ],
-  url: "https://vedant-dev.com",
+  url: "https://www.vedant-dev.com",
   work: [
     {
       company: "Google Summer of Code",
@@ -345,7 +345,7 @@ export const DATA = {
       title: "Mentor",
       logoUrl: "/gsoc.png",
       altText: "Google Summer of Code logo - Mentor @OWASP-BLT",
-      start: "Feb 2026",
+      start: "February 2026",
       end: "August 2026",
       description:
         "Mentored contributors for OWASP-BLT during Google Summer of Code, supporting open source development and guiding participants through the program.",
@@ -357,10 +357,10 @@ export const DATA = {
       title: "Co-Founder",
       logoUrl: "/baglogo.png",
       altText: "Bags logo - agentic commerce and x402 payments platform",
-      start: "Feb 2026",
+      start: "February 2026",
       end: "Present",
       description:
-        "Agentic commerce infrastructure: Bags lets any API charge AI agents per request over the x402 protocol. A pay-per-call link quotes a price, verifies a USDC payment across four chains, then returns the response - with merchant-of-record compliance and tax invoicing behind it. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of the Canopy builder cohort.",
+        "Co-founded Bags and built infrastructure for payment APIs over x402. Bags is supported by Founders Inc., Canopy, and Superteam.",
     },
     {
       company: "Timelock Protocol",
@@ -371,23 +371,22 @@ export const DATA = {
       altText: "Timelock Protocol logo - DeFi options trading platform",
       start: "June 2025",
       end: "February 2026",
-      description:
-        "Developing smart contracts and DeFi protocols for options trading and yield strategies. Working on innovative DeFi solutions including perpetual options, liquidity provision, and automated market making systems.",
+      description: "Developed Solidity contracts for a DeFi options protocol.",
     },
     {
-      company: "Veri Doc",
-      href: "https://veri-doc.tech",
+      company: "VeriDoc",
+      href: "https://veri-doc.vercel.app/",
       badges: ["Founder"],
       title: "Engineer and Manager",
       logoUrl: "/veri-doc.webp",
-      altText: "Veri Doc logo - decentralized document verification platform",
+      altText: "VeriDoc logo - decentralized document verification platform",
       start: "May 2025",
       end: "Present",
       description:
-        "Building a decentralized document verification system using zero-knowledge proofs to reduce maintenance costs and improve verification efficiency by significantly decreasing verification time compared to standard methods.",
+        "Building a document verification application using zero-knowledge proofs and Solidity.",
     },
     {
-      company: "Owasp (TIET Society)",
+      company: "OWASP (TIET Society)",
       href: "#",
       badges: [],
       location: "TIET, Patiala",
@@ -397,7 +396,7 @@ export const DATA = {
       start: "November 2023",
       end: "Present",
       description:
-        "As a Joint Secretary at the society, I have been actively involved in organizing workshops, webinars, and several similar events improving not just my technical skills but also my leadership and management skills.",
+        "Organize workshops, webinars, and technical events as Joint Secretary.",
     },
     {
       company: "Mavik Labs",
@@ -410,7 +409,7 @@ export const DATA = {
       start: "October 2024",
       end: "October 2025",
       description:
-        "Currently contributing to MVP projects and developing a website at Mavik Labs , leveraging technologies like Next.js, TypeScript, Docker, and Go.",
+        "Built prototype applications and a website with Next.js, TypeScript, Docker, and Go.",
     },
     {
       company: "Thapar Institute of Engineering and Technology",
@@ -428,7 +427,7 @@ export const DATA = {
     },
     {
       company: "Winter of Blockchain",
-      href: "https://wob.girlscript.tech/wob",
+      href: "",
       badges: [],
       location: "Remote",
       title: "Project Admin",
@@ -437,7 +436,7 @@ export const DATA = {
       start: "August 2024",
       end: "November 2024",
       description:
-        "I was selected as a Project Admin at Winter of Blockchain, where I listed my project and guided several hundred contributors in web3 and in contributing to my project.",
+        "Managed my project in Winter of Blockchain and guided contributors.",
     },
   ],
 };

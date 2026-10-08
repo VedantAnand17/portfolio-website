@@ -4,26 +4,26 @@
 
 ## About
 
-Vedant Anand builds agentic commerce and stablecoin payment infrastructure. He co-founded Bags, which lets any API charge AI agents per request over x402 - pay-per-call links that quote a price, verify a USDC payment across four chains, then return the response, with merchant-of-record compliance and tax invoicing underneath. Bags has reached 100,000+ cumulative visitors and is backed by Founders Inc. and Superteam as part of Canopy, the Founders Inc. builder cohort.
+Vedant Anand builds agentic commerce and stablecoin payment infrastructure. He co-founded Bags, which lets any API charge AI agents per request over x402 - pay-per-call links that quote a price, verify a USDC payment across four chains, then return the response, with merchant-of-record compliance and tax invoicing underneath. Bags is supported by Founders Inc., Canopy, and Superteam.
 
 He is also a contributor to x402 itself, the HTTP-native standard for paying for API calls in stablecoins, with four merged pull requests to the protocol repository. He is pursuing a Bachelor's in Electrical and Computer Engineering at Thapar Institute of Engineering and Technology (2023-2027) and graduates in 2027.
 
 ## Key Pages
 
-- [Home](https://vedant-dev.com/) - Portfolio homepage with featured projects and experience
-- [Blog](https://vedant-dev.com/blog) - Technical blog with DeFi and Web3 tutorials
+- [Home](https://www.vedant-dev.com/) - Portfolio homepage with featured projects and experience
+- [Blog](https://www.vedant-dev.com/blog) - Technical blog with DeFi and Web3 tutorials
 
 ## Blog Posts
 
-- [Understanding Uniswap: A Complete Guide to Building DeFi Applications](https://vedant-dev.com/blog/uniswap-guide) - Learn what Uniswap is, how it works, and how to build DeFi applications using Uniswap's protocol
-- [The Core Mechanism - Concentrated Liquidity](https://vedant-dev.com/blog/concentrated-liquidity) - Explore Uniswap V3's concentrated liquidity mechanism and how it maximizes LP yields
+- [Understanding Uniswap: Pools, Quotes, and Integration](https://www.vedant-dev.com/blog/uniswap-guide) - Learn what Uniswap is, how it works, and how to build DeFi applications using Uniswap's protocol
+- [Concentrated Liquidity: Capital, Fees, and Risk](https://www.vedant-dev.com/blog/concentrated-liquidity) - Learn how price ranges affect capital use, fees, and token risk
 
 ## Featured Projects
 
-- [Bags](https://www.getbags.app/) - Agentic commerce platform: pay-per-call APIs charging AI agents in USDC over x402 across four chains. 100,000+ cumulative visitors, backed by Founders Inc. and Superteam.
+- [Bags](https://www.getbags.app/) - Agentic commerce platform: pay-per-call APIs charging AI agents in USDC over x402 across four chains. Supported by Founders Inc., Canopy, and Superteam.
 - x402 protocol contributions - Four merged pull requests to the x402 protocol repository: [unregistered scheme guard](https://github.com/x402-foundation/x402/pull/3051), [EIP-2612 permit-signing tests](https://github.com/x402-foundation/x402/pull/2344), [ERC-20 approval gas constants](https://github.com/x402-foundation/x402/pull/2278), and [extensions documentation](https://github.com/x402-foundation/x402/pull/731)
 - [AgentPay](https://agentpay.vedant-dev.com/) - An agent that pays per request for sentiment analysis and trading signals over x402
-- [Timelock Protocol](https://timelock.trade) - Modern landing page for DeFi options trading platform with quantum-secured positions
+- [Timelock Protocol](https://timelock.trade) - Landing page and Solidity work for a DeFi options protocol; contribution completed February 2026
 - [VeriDoc](https://veri-doc.vercel.app/) - Decentralized document verification using zero-knowledge proofs
 
 ## Technical Skills
@@ -45,9 +45,9 @@ He is also a contributor to x402 itself, the HTTP-native standard for paying for
 
 ## Hackathon Achievements
 
-- Winner: x402 Build Onchain (January 2026) - 500+ participating teams
+- Winner: x402 Build Onchain (January 2026)
 - ETHGlobal HackMoney 2026 (February 2026) - built nyx, a fair launchpad on Uniswap V4 Continuous Clearing Auctions with ENS
-- Waitlisted: Smart India Hackathon (December 2024) - 900,000+ participation
+- Waitlisted: Smart India Hackathon (December 2024)
 - Winner: Syrinx CTF (July 2024)
 - Winner: Hacklipse (April 2024)
 

@@ -1,141 +1,60 @@
-# Portfolio Website
+# Vedant Anand's portfolio
 
-A modern, responsive portfolio website built with Next.js 16, TypeScript, Tailwind CSS, ShadCN, and Motion.
+A personal portfolio and technical blog built with Next.js 16, React 19, TypeScript, and Tailwind CSS 4.
 
-![Portfolio Preview](/public/portfolio.png)
+## Run locally
 
-## 🌟 Features
+Use Node.js 22.12 or later.
 
-- **Modern Stack**: Built with Next.js 16, TypeScript, and Tailwind CSS
-- **Responsive Design**: Looks great on all devices
-- **Dark Mode**: Automatic and manual theme switching
-- **Animations**: Smooth animations using Motion
-- **Blog Support**: MDX-based blog with syntax highlighting
-- **SEO Optimized**: Meta tags and OpenGraph support
-- **Performance**: Optimized for Core Web Vitals with image optimization and lazy loading
-- **Type Safe**: Full TypeScript support with Zod validation
-- **Component Library**: Built with shadcn/ui components
-- **Error Handling**: Comprehensive error boundaries and validation
-- **Analytics**: Built-in performance monitoring and user interaction tracking
-- **Accessibility**: ARIA labels and semantic HTML
-- **Performance Monitoring**: Custom hooks for state management and performance tracking
-
-## 🚀 Quick Start
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/portfolio.git
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Run the development server:
-
-```bash
+```sh
+git clone https://github.com/VedantAnand17/portfolio-website.git
+cd portfolio-website
+npm ci
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open http://localhost:3000.
 
-## 📁 Project Structure
+## Content
 
-```
-├── src/
-│   ├── app/                 # Next.js app directory
-│   ├── components/          # React components
-│   │   ├── magicui/        # Animation components
-│   │   └── ui/             # UI components
-│   ├── data/               # Data and content
-│   └── lib/                # Utility functions
-├── content/                # MDX blog posts
-├── public/                 # Static assets
-└── styles/                # Global styles
-```
+- Edit `src/data/resume.tsx` for project, work, and contact information.
+- Update `public/llms.txt` and `public/humans.txt` when profile facts change. Keep the copy at `public/.well-known/llms.txt` in sync.
+- Add Markdown articles under `content/` with `.mdx` filenames. The renderer supports Markdown, not executable MDX components.
+- Use frontmatter fields `title`, `publishedAt` (YYYY-MM-DD), and `summary`. Optional fields are `updatedAt` and `image` (a public asset path).
+- Start the article body at heading level 2. The page renders the main title.
+- Define theme colors and article styles in `src/app/globals.css`.
 
-## 🛠️ Built With
+The concentrated-liquidity banner has 480 px and 960 px WebP versions. The Markdown image transform in `src/data/blog.ts` supplies its dimensions and responsive sources. Add matching asset information when adding another article image.
 
-- [Next.js](https://nextjs.org/) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Motion](https://motion.dev/) - Animations
-- [shadcn/ui](https://ui.shadcn.com/) - UI components
-- [MDX](https://mdxjs.com/) - Blog content
-- [Radix UI](https://www.radix-ui.com/) - Headless UI components
+## Verify
 
-## 📝 Blog
-
-The blog is powered by MDX. To add a new blog post:
-
-1. Create a new `.mdx` file in the `content` directory
-2. Add frontmatter with title, date, and summary
-3. Write your content in MDX format
-
-Example:
-
-```mdx
----
-title: "My New Post"
-publishedAt: "2024-01-01"
-summary: "A brief summary of the post"
----
-
-Your content here...
+```sh
+npm run typecheck
+npm run check
+npm run test:e2e
+npm test
 ```
 
-## 🎨 Customization
+Install the test browser once with `npx playwright install chromium`. Browser tests cover HTTP errors, keyboard use, mobile layout, themes, metadata, article images, and the published quote example. `npm test` builds the application, checks the public x402 profile output, and runs the browser suite against a fresh production server on port 3100. Stop any development server on that port first.
 
-1. Update `src/data/resume.tsx` with your information
-2. Modify theme colors in `tailwind.config.ts`
-3. Add your own components in `src/components`
-4. Customize animations in `src/components/magicui`
+To test a running production server or Worker preview, set `TEST_BASE_URL`:
 
-## 📱 Components
-
-The project includes several reusable components:
-
-- `BlurFade`: Fade-in animation with blur effect
-- `BlurFadeText`: Text animation with character-by-character support
-- `Dock`: macOS-style dock component
-- `ProjectCard`: Card component for showcasing projects
-- `ResumeCard`: Card component for work experience
-
-## 🔧 Development
-
-```bash
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Lint code
-npm run lint
+```sh
+TEST_BASE_URL=http://127.0.0.1:8787 npm run test:e2e
 ```
 
-## 📄 License
+## Deploy
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The canonical domain is https://www.vedant-dev.com. The apex host and both v3dant.com hosts redirect to it and preserve the path. The Cloudflare Worker hostname stays available for independent testing.
 
-## 🤝 Contributing
+- Vercel uses the normal Next.js build.
+- Cloudflare Workers uses `@opennextjs/cloudflare`, `open-next.config.ts`, and `wrangler.jsonc`.
+- `npm run build` adapts the output for Workers only when `WORKERS_CI=1`.
+- `npm run preview` builds and runs a local Worker preview. This step verifies the static-assets cache used by blog pages.
+- Workers Builds must deploy the existing build with `npm install && npx opennextjs-cloudflare deploy` on main. Non-production branches upload preview versions.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+See `AGENTS.md` for build constraints and the retired Cloudflare Pages project. The EC2 workflow is a separate legacy deployment path.
 
-## 📞 Contact
+## Contact
 
-For any questions or feedback, feel free to reach out:
-
-- Twitter: [@vedantsx](https://twitter.com/vedantsx)
-- Email: vedantanand.in@gmail.com
-- Website: [vedant-dev.com](https://vedant-dev.com)
+[Portfolio](https://www.vedant-dev.com) · [X](https://x.com/vedantsx) · [Email](mailto:vedantanand.in@gmail.com)
