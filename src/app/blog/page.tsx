@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { getBlogPosts } from "@/data/blog";
+import { getBlogPosts, postPath } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
 
@@ -48,7 +48,7 @@ export default async function BlogPage() {
             <li key={post.slug}>
               <Link
                 className="hover:bg-muted block space-y-2 rounded-lg py-5"
-                href={`/blog/${post.slug}`}
+                href={postPath(post.slug)}
               >
                 <h2 className="text-lg font-semibold">{post.metadata.title}</h2>
                 <p className="text-muted-foreground text-sm">

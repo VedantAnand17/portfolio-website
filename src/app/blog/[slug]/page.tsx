@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BlogBreadcrumb } from "@/components/breadcrumb";
-import { getBlogPosts, getPost } from "@/data/blog";
+import { getBlogPosts, getPost, postPath } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
 
@@ -34,7 +34,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${DATA.url}/blog/${post.slug}`,
+      canonical: `${DATA.url}${postPath(post.slug)}`,
     },
     description,
     openGraph: {
@@ -47,7 +47,7 @@ export async function generateMetadata({
       publishedTime,
       title,
       type: "article",
-      url: `${DATA.url}/blog/${post.slug}`,
+      url: `${DATA.url}${postPath(post.slug)}`,
     },
     title,
     twitter: {
@@ -94,7 +94,7 @@ export default async function Blog({
             image: post.metadata.image
               ? `${DATA.url}${post.metadata.image}`
               : `${DATA.url}/og-image.webp`,
-            url: `${DATA.url}/blog/${post.slug}`,
+            url: `${DATA.url}${postPath(post.slug)}`,
           }),
         }}
       />

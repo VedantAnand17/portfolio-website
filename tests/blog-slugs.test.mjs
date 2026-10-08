@@ -5,11 +5,14 @@ import { unlink, writeFile } from "node:fs/promises";
 import { test } from "node:test";
 import path from "node:path";
 
-const fixturePath = path.join(process.cwd(), "content", "ReleaseNotes.mdx");
-const fixture = `---
-title: "Release Notes"
+const fixturePaths = [
+  path.join(process.cwd(), "content", "ReleaseNotes.mdx"),
+  path.join(process.cwd(), "content", "Release?Notes.mdx"),
+];
+const fixture = (title) => `---
+title: "${title}"
 publishedAt: "2026-10-08"
-summary: "A mixed-case slug fixture."
+summary: "A slug fixture."
 ---
 
 ## Update
@@ -17,8 +20,11 @@ summary: "A mixed-case slug fixture."
 This temporary article verifies filename handling.
 `;
 
-test("mixed-case article slugs load and list without allowing traversal", async () => {
-  await writeFile(fixturePath, fixture);
+test("mixed-case and reserved article slugs generate safe links", async () => {
+  await Promise.all([
+    writeFile(fixturePaths[0], fixture("Release Notes")),
+    writeFile(fixturePaths[1], fixture("Release Notes With Punctuation")),
+  ]);
   try {
     const child = spawn(
       process.execPath,
@@ -27,14 +33,18 @@ test("mixed-case article slugs load and list without allowing traversal", async 
         "--input-type=module",
         "-e",
         `
-          import { getBlogPosts, getPost } from "./src/data/blog.ts";
-          const post = await getPost("ReleaseNotes");
+          import { getBlogPosts, getPost, postPath } from "./src/data/blog.ts";
+          const mixedCase = await getPost("ReleaseNotes");
+          const reserved = await getPost("Release?Notes");
           const posts = await getBlogPosts();
           const traversal = await getPost("../README");
           if (
-            !post ||
-            post.slug !== "ReleaseNotes" ||
-            !posts.some((item) => item.slug === "ReleaseNotes") ||
+            !mixedCase ||
+            mixedCase.slug !== "ReleaseNotes" ||
+            !reserved ||
+            reserved.slug !== "Release?Notes" ||
+            !posts.some((item) => item.slug === "Release?Notes") ||
+            postPath("Release?Notes") !== "/blog/Release%3FNotes" ||
             traversal !== null
           ) {
             process.exitCode = 1;
@@ -49,6 +59,6 @@ test("mixed-case article slugs load and list without allowing traversal", async 
     const [code] = await once(child, "exit");
     assert.equal(code, 0, output);
   } finally {
-    await unlink(fixturePath);
+    await Promise.all(fixturePaths.map((fixturePath) => unlink(fixturePath)));
   }
 });

@@ -6,6 +6,8 @@ test("missing articles return a useful 404 for visitors and crawlers", async ({
 }) => {
   const response = await request.get("/blog/does-not-exist");
   expect(response.status()).toBe(404);
+  const malformed = await request.get("/blog/%00");
+  expect(malformed.status()).toBe(404);
   await page.goto("/blog/does-not-exist");
   await expect(
     page.getByRole("heading", { level: 1, name: "Page not found" })

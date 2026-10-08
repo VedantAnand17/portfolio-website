@@ -61,10 +61,15 @@ export async function markdownToHTML(markdown: string) {
   return p.toString();
 }
 
+export function postPath(slug: string) {
+  return `/blog/${encodeURIComponent(slug)}`;
+}
+
 export async function getPost(slug: string) {
   if (
     slug === "." ||
     slug === ".." ||
+    slug.includes("\0") ||
     slug.includes("/") ||
     slug.includes("\\")
   ) {

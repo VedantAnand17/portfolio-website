@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { getBlogPosts } from "@/data/blog";
+import { getBlogPosts, postPath } from "@/data/blog";
 import { DATA } from "@/data/resume";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       post.metadata.updatedAt ?? post.metadata.publishedAt
     ),
     priority: 0.6,
-    url: `${baseUrl}/blog/${post.slug}`,
+    url: `${baseUrl}${postPath(post.slug)}`,
   }));
 
   return [...staticPages, ...blogPages];
