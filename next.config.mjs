@@ -57,12 +57,20 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
-      ...["v3dant.com", "www.v3dant.com", "vedant-dev.com"].map((host) => ({
-        source: "/:path*",
-        has: [{ type: "host", value: `^${host.replaceAll(".", "\\.")}$` }],
-        destination: "https://www.vedant-dev.com/:path*",
-        permanent: true,
-      })),
+      ...["v3dant.com", "www.v3dant.com", "vedant-dev.com"].flatMap((host) => [
+        {
+          source: "/",
+          has: [{ type: "host", value: `^${host.replaceAll(".", "\\.")}$` }],
+          destination: "https://www.vedant-dev.com/",
+          permanent: true,
+        },
+        {
+          source: "/:path+",
+          has: [{ type: "host", value: `^${host.replaceAll(".", "\\.")}$` }],
+          destination: "https://www.vedant-dev.com/:path+",
+          permanent: true,
+        },
+      ]),
       {
         source: "/index",
         destination: "/",
