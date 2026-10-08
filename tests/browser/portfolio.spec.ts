@@ -354,6 +354,23 @@ test("domain aliases redirect to the canonical URL and keep the path", async ({
   );
 });
 
+test("domain alias homepages redirect without a literal path placeholder", async ({
+  request,
+}) => {
+  await Promise.all(
+    ["v3dant.com", "www.v3dant.com", "vedant-dev.com"].map(async (host) => {
+      const response = await request.get("/?from=alias", {
+        headers: { Host: host },
+        maxRedirects: 0,
+      });
+      expect(response.status()).toBe(308);
+      expect(response.headers().location).toBe(
+        "https://www.vedant-dev.com/?from=alias"
+      );
+    })
+  );
+});
+
 test("public profile files use the corrected project facts", async ({
   request,
 }) => {
