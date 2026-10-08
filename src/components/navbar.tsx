@@ -33,6 +33,10 @@ export default function Navbar() {
           item.href === "/blog"
             ? pathname === "/blog" || pathname.startsWith("/blog/")
             : pathname === "/" && item.href === `/${hash}`;
+        let current: "location" | "page" | undefined;
+        if (active) {
+          current = item.href.includes("#") ? "location" : "page";
+        }
         return (
           <Link
             key={item.href}
@@ -42,9 +46,7 @@ export default function Navbar() {
                 item.href.split("#")[1] ? `#${item.href.split("#")[1]}` : ""
               )
             }
-            aria-current={
-              active ? (item.href.includes("#") ? "location" : "page") : undefined
-            }
+            aria-current={current}
             className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg px-2 text-sm font-medium ${active ? "bg-muted" : "hover:bg-muted"}`}
           >
             {item.label}

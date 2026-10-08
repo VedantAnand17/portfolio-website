@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { readFile, unlink, writeFile } from "node:fs/promises";
-import { test } from "node:test";
 import path from "node:path";
+import { test } from "node:test";
 
 const fixturePaths = [
   path.join(process.cwd(), "content", "ReleaseNotes.mdx"),
@@ -66,8 +66,8 @@ test("mixed-case and reserved article slugs generate safe links", async () => {
       { cwd: process.cwd(), stdio: ["ignore", "pipe", "pipe"] }
     );
     let output = "";
-    child.stdout.setEncoding("utf8").on("data", (chunk) => (output += chunk));
-    child.stderr.setEncoding("utf8").on("data", (chunk) => (output += chunk));
+    child.stdout.setEncoding("utf-8").on("data", (chunk) => (output += chunk));
+    child.stderr.setEncoding("utf-8").on("data", (chunk) => (output += chunk));
     const [code] = await once(child, "exit");
     assert.equal(code, 0, output);
   } finally {

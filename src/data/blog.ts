@@ -75,7 +75,7 @@ export async function getPost(slug: string) {
     slug.includes("\0") ||
     slug.includes("/") ||
     slug.includes("\\") ||
-    Buffer.byteLength(filename, "utf8") > maxFilenameBytes
+    Buffer.byteLength(filename, "utf-8") > maxFilenameBytes
   ) {
     return null;
   }

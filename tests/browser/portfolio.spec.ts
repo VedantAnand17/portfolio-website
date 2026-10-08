@@ -195,13 +195,16 @@ test("public metadata and navigation use current semantics", async ({
   );
 
   const sitemap = await request.get("/sitemap.xml");
-  const sitemapUrls = await page.evaluate(async (xml) => {
-    const document = new DOMParser().parseFromString(xml, "application/xml");
-    return [...document.querySelectorAll("url")].map((url) => ({
-      lastmod: url.querySelector("lastmod")?.textContent,
-      loc: url.querySelector("loc")?.textContent,
-    }));
-  }, await sitemap.text());
+  const sitemapUrls = await page.evaluate(
+    async (xml) => {
+      const document = new DOMParser().parseFromString(xml, "application/xml");
+      return [...document.querySelectorAll("url")].map((url) => ({
+        lastmod: url.querySelector("lastmod")?.textContent,
+        loc: url.querySelector("loc")?.textContent,
+      }));
+    },
+    await sitemap.text()
+  );
   expect(
     sitemapUrls.find(
       ({ loc }) =>
@@ -217,13 +220,15 @@ test("public metadata and navigation use current semantics", async ({
     navigation.getByRole("link", { name: "Contact" })
   ).toHaveAttribute("aria-current", "location");
   await page.goto("/blog");
-  await expect(
-    navigation.getByRole("link", { name: "Blog" })
-  ).toHaveAttribute("aria-current", "page");
+  await expect(navigation.getByRole("link", { name: "Blog" })).toHaveAttribute(
+    "aria-current",
+    "page"
+  );
   await page.goto("/blog/uniswap-guide");
-  await expect(
-    navigation.getByRole("link", { name: "Blog" })
-  ).toHaveAttribute("aria-current", "page");
+  await expect(navigation.getByRole("link", { name: "Blog" })).toHaveAttribute(
+    "aria-current",
+    "page"
+  );
   await page.goto("/blogger");
   await expect(
     navigation.getByRole("link", { name: "Blog" })
