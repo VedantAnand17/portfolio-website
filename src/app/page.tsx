@@ -51,9 +51,6 @@ export default function Page() {
             delay={BLUR_FADE_DELAY * 2}
             className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm"
           >
-            <span className="text-muted-foreground">
-              Available for contract and part-time work.
-            </span>
             <a
               href={`mailto:${DATA.contact.email}`}
               className="text-link inline-flex min-h-11 items-center underline underline-offset-4"

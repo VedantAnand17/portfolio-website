@@ -37,6 +37,11 @@ test("home content works without JavaScript and fits a narrow screen", async ({
     "Hi, I'm Vedant 👋"
   );
   await expect(
+    page.getByText("Available for contract and part-time work.", {
+      exact: true,
+    })
+  ).toHaveCount(0);
+  await expect(
     page.getByRole("link", { name: "Email me", exact: true })
   ).toBeVisible();
   await expect(
