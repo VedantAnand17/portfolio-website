@@ -66,7 +66,7 @@ export default function Navbar() {
                       )
                     }
                     aria-current={current}
-                    className={`inline-flex size-full min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full ${active ? "bg-muted" : "hover:bg-muted"}`}
+                    className={`pressable inline-flex size-full min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full ${active ? "bg-muted" : "hover:bg-muted"}`}
                   >
                     <item.icon className="size-4" aria-hidden="true" />
                   </Link>
@@ -90,7 +90,7 @@ export default function Navbar() {
                   aria-label={`Visit ${social.name} profile`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:bg-muted flex size-full min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full"
+                  className="pressable hover:bg-muted flex size-full min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full"
                 >
                   <social.icon className="size-4" aria-hidden="true" />
                 </a>

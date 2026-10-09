@@ -1,7 +1,6 @@
 "use client";
 
 import { ChevronRightIcon } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useId, useState } from "react";
 
@@ -31,7 +30,6 @@ export function ResumeCard({
 }: ResumeCardProps) {
   const [expanded, setExpanded] = useState(false);
   const id = useId();
-  const reducedMotion = useReducedMotion();
   return (
     <div className="group relative flex min-h-12 gap-4">
       <Avatar className="size-12 shrink-0 border">
@@ -87,29 +85,17 @@ export function ResumeCard({
               aria-expanded={expanded}
               aria-controls={id}
               onClick={() => setExpanded(!expanded)}
-              className="hover:bg-muted absolute top-0 right-0 inline-flex size-11 cursor-pointer items-center justify-center rounded-full"
+              className="pressable hover:bg-muted absolute top-0 right-0 inline-flex size-11 cursor-pointer items-center justify-center rounded-full"
             >
               <ChevronRightIcon
                 aria-hidden="true"
-                className={`size-4 transition-transform duration-300 ${expanded ? "rotate-90" : ""}`}
+                className={`size-4 ${expanded ? "rotate-90" : ""}`}
               />
             </button>
             <div id={id} hidden={!expanded}>
-              {expanded && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  transition={{
-                    duration: reducedMotion ? 0 : 0.45,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="overflow-hidden"
-                >
-                  <p className="text-muted-foreground pt-2 text-sm leading-relaxed">
-                    {description}
-                  </p>
-                </motion.div>
-              )}
+              <p className="text-muted-foreground pt-2 text-sm leading-relaxed">
+                {description}
+              </p>
             </div>
             <noscript>
               <p className="text-muted-foreground text-sm leading-relaxed">

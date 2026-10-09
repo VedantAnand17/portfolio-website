@@ -537,55 +537,36 @@ test("original greeting and section hierarchy retain the portfolio character", a
   ).toBeVisible();
 });
 
-test("dock magnification and cursor follow motion preferences", async ({
+test("navigation stays steady and preserves the native cursor", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
-  const home = page
-    .getByRole("navigation", { name: "Main navigation" })
-    .getByRole("link", { name: "Home", exact: true });
-  await expect(page.locator('[aria-label="Animated cursor"]')).toBeAttached();
-  const initial = await home.boundingBox();
+  const nav = page.getByRole("navigation", { name: "Main navigation" });
+  const home = nav.getByRole("link", { name: "Home", exact: true });
+  const before = await nav.boundingBox();
   await home.hover();
-  await expect
-    .poll(async () => {
-      const box = await home.boundingBox();
-      return box?.width ?? 0;
-    })
-    .toBeGreaterThan((initial?.width ?? 44) + 8);
-  await page.mouse.move(40, 40);
-  await expect(page.locator('[aria-label="Animated cursor"]')).toBeVisible();
-  expect(
-    await page
-      .locator("html")
-      .evaluate((element) => getComputedStyle(element).cursor)
-  ).toBe("none");
-  await home.hover();
-  await expect(page.locator('[aria-label="Animated cursor"]')).toBeHidden();
+  // Sample the settled interaction rather than passing during its first frame.
+  await page.waitForTimeout(300);
+  const after = await nav.boundingBox();
+  expect(after?.width).toBeCloseTo(before?.width || 0, 0);
   expect(await home.evaluate((el) => getComputedStyle(el).cursor)).toBe(
     "pointer"
   );
-  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.mouse.move(40, 40);
-  await expect(page.locator('[aria-label="Animated cursor"]')).toBeHidden();
-  await home.hover();
-  await expect
-    .poll(async () => {
-      const box = await home.boundingBox();
-      return Math.round(box?.width ?? 0);
-    })
-    .toBe(44);
-  await page.emulateMedia({ reducedMotion: "no-preference" });
-  await page.setViewportSize({ width: 375, height: 812 });
-  await page.mouse.move(40, 40);
-  await expect(page.locator('[aria-label="Animated cursor"]')).toBeHidden();
   expect(
-    await page
-      .locator("html")
-      .evaluate((element) => getComputedStyle(element).cursor)
+    await page.locator("html").evaluate((el) => getComputedStyle(el).cursor)
   ).not.toBe("none");
+  await expect(page.locator('[aria-label="Animated cursor"]')).toHaveCount(0);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await home.hover();
+  const homeBox = await home.boundingBox();
+  expect(homeBox?.width).toBe(44);
+  await page.setViewportSize({ width: 375, height: 812 });
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth)
+  ).toBeLessThanOrEqual(375);
 });
 
 test("experience rows stay compact and project cards respond to hover", async ({

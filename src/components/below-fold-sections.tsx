@@ -9,19 +9,19 @@ export function BelowFoldSections() {
       <section
         id="hackathons"
         aria-labelledby="hackathons-heading"
-        className="space-y-5"
+        className="space-y-6 border-t pt-10"
       >
-        <BlurFade delay={0.52} className="space-y-4 py-12 text-center">
-          <span className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
+        <BlurFade delay={0.52} className="space-y-3">
+          <span className="text-muted-foreground text-xs font-medium tracking-wide">
             Hackathons
           </span>
           <h2
             id="hackathons-heading"
-            className="text-3xl font-bold tracking-tighter sm:text-5xl"
+            className="font-display text-2xl leading-tight font-semibold tracking-tight sm:text-3xl"
           >
             I like building things
           </h2>
-          <p className="text-muted-foreground text-base sm:text-xl">
+          <p className="text-muted-foreground text-sm leading-relaxed">
             Projects and results from team events.
           </p>
         </BlurFade>
@@ -31,18 +31,22 @@ export function BelowFoldSections() {
           ))}
         </ul>
       </section>
-      <section id="posts" aria-labelledby="posts-heading" className="space-y-3">
-        <BlurFade delay={0.6} className="space-y-4 py-12 text-center">
-          <span className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
+      <section
+        id="posts"
+        aria-labelledby="posts-heading"
+        className="space-y-6 border-t pt-10"
+      >
+        <BlurFade delay={0.6} className="space-y-3">
+          <span className="text-muted-foreground text-xs font-medium tracking-wide">
             Selected Thoughts
           </span>
           <h2
             id="posts-heading"
-            className="text-3xl font-bold tracking-tighter sm:text-5xl"
+            className="font-display text-2xl leading-tight font-semibold tracking-tight sm:text-3xl"
           >
             From my Twitter
           </h2>
-          <p className="text-muted-foreground text-base sm:text-xl">
+          <p className="text-muted-foreground text-sm leading-relaxed">
             Thoughts and development notes from June 2025.
           </p>
         </BlurFade>
@@ -61,15 +65,15 @@ export function BelowFoldSections() {
       <section
         id="contact"
         aria-labelledby="contact-heading"
-        className="space-y-4 px-4 py-12 text-center"
+        className="bg-muted/40 space-y-4 rounded-xl border px-5 py-8 sm:px-8"
       >
         <BlurFade delay={0.68} className="space-y-4">
-          <span className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
+          <span className="text-muted-foreground text-xs font-medium tracking-wide">
             Contact
           </span>
           <h2
             id="contact-heading"
-            className="text-3xl font-bold tracking-tighter sm:text-5xl"
+            className="font-display text-2xl leading-tight font-semibold tracking-tight sm:text-3xl"
           >
             Get in Touch
           </h2>
@@ -84,7 +88,7 @@ export function BelowFoldSections() {
         >
           {DATA.contact.email}
         </a>
-        <ul className="flex flex-wrap justify-center gap-4">
+        <ul className="flex flex-wrap gap-4">
           {[
             DATA.contact.social.GitHub,
             DATA.contact.social.LinkedIn,

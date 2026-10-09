@@ -4,7 +4,6 @@ import { Inter as FontSans, Outfit as FontDisplay } from "next/font/google";
 import { AnalyticsWrapper } from "@/components/analytics-wrapper";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import Navbar from "@/components/navbar";
-import { SmoothCursorWrapper } from "@/components/smooth-cursor-wrapper";
 import {
   StructuredData,
   WebsiteStructuredData,
@@ -160,7 +159,11 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem={false}
         >
-          <TooltipProvider delayDuration={0}>
+          <TooltipProvider
+            delayDuration={350}
+            skipDelayDuration={300}
+            disableHoverableContent
+          >
             <a
               href="#main-content"
               className="bg-background fixed top-3 left-3 z-50 -translate-y-20 rounded-md border p-3 focus:translate-y-0"
@@ -169,7 +172,6 @@ export default function RootLayout({
             </a>
             {children}
             <Navbar />
-            <SmoothCursorWrapper />
             <AnalyticsWrapper />
           </TooltipProvider>
         </ThemeProvider>

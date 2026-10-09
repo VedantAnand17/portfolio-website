@@ -1,3 +1,4 @@
+import { ArrowDownIcon, ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
 import Markdown from "react-markdown";
 
@@ -7,6 +8,7 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -16,22 +18,25 @@ export default function Page() {
     <main
       id="main-content"
       tabIndex={-1}
-      className="flex min-h-[100dvh] flex-col space-y-10"
+      className="portfolio-home flex min-h-[100dvh] flex-col gap-12 sm:gap-14"
     >
       <section id="hero" aria-labelledby="hero-heading">
-        <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row sm:gap-2">
-            <div className="flex flex-1 flex-col space-y-1.5">
+        <div className="mx-auto w-full max-w-2xl space-y-6 border-b pb-10 sm:pb-12">
+          <div className="flex items-start justify-between gap-5">
+            <div className="flex min-w-0 flex-1 flex-col gap-4">
+              <p className="text-muted-foreground text-xs font-medium tracking-wide">
+                Payments, protocols & products
+              </p>
               <h1 id="hero-heading">
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY}
-                  className="font-display text-3xl font-bold sm:text-5xl xl:text-6xl/none"
+                  className="font-display text-3xl leading-tight font-semibold tracking-tight sm:text-5xl"
                   yOffset={8}
                   text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
                 />
               </h1>
               <BlurFadeText
-                className="max-w-[600px] md:text-xl"
+                className="text-muted-foreground max-w-md text-base leading-relaxed"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -43,25 +48,30 @@ export default function Page() {
                 width={112}
                 height={112}
                 priority
-                className="size-20 rounded-full border sm:size-28"
+                className="size-16 rounded-full border object-cover sm:size-24"
               />
             </BlurFade>
           </div>
           <BlurFade
             delay={BLUR_FADE_DELAY * 2}
-            className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm"
+            className="flex flex-wrap items-center gap-3"
           >
             <a
-              href={`mailto:${DATA.contact.email}`}
-              className="text-link inline-flex min-h-11 items-center underline underline-offset-4"
-            >
-              Email me
-            </a>
-            <a
               href="#projects"
-              className="text-link inline-flex min-h-11 items-center underline underline-offset-4"
+              className={buttonVariants({ className: "min-h-11 gap-2 px-4" })}
             >
               View work
+              <ArrowDownIcon className="size-4" aria-hidden="true" />
+            </a>
+            <a
+              href={`mailto:${DATA.contact.email}`}
+              className={buttonVariants({
+                variant: "outline",
+                className: "min-h-11 gap-2 px-4",
+              })}
+            >
+              Email me
+              <ArrowUpRightIcon className="size-4" aria-hidden="true" />
             </a>
           </BlurFade>
         </div>
@@ -69,7 +79,7 @@ export default function Page() {
       <section id="about" aria-labelledby="about-heading">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <h2 id="about-heading" className="text-xl font-bold">
-            About Me - Agentic Payments & x402 Engineer
+            About
           </h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
@@ -82,7 +92,7 @@ export default function Page() {
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <h2 id="work-heading" className="text-xl font-bold">
-              Professional Work Experience
+              Experience
             </h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
@@ -109,7 +119,7 @@ export default function Page() {
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <h2 id="education-heading" className="text-xl font-bold">
-              Educational Background
+              Education
             </h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
@@ -134,33 +144,39 @@ export default function Page() {
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 id="skills-heading" className="text-xl font-bold">
-              Technical Skills & Technologies
+              Toolkit
             </h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-2">
             {DATA.skills.map((skill, id) => (
               <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+                <Badge
+                  key={skill}
+                  variant="secondary"
+                  className="px-2.5 py-1 text-xs"
+                >
+                  {skill}
+                </Badge>
               </BlurFade>
             ))}
           </div>
         </div>
       </section>
       <section id="projects" aria-labelledby="projects-heading">
-        <div className="w-full space-y-12 py-12">
+        <div className="w-full space-y-6 border-t pt-10">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
-                  Portfolio Projects
+            <div className="flex flex-col items-start space-y-4">
+              <div className="space-y-3">
+                <div className="text-muted-foreground text-xs font-medium tracking-wide">
+                  Selected work
                 </div>
                 <h2
                   id="projects-heading"
-                  className="text-3xl font-bold tracking-tighter sm:text-5xl"
+                  className="font-display text-2xl leading-tight font-semibold tracking-tight sm:text-3xl"
                 >
                   Agentic payments, x402 and DeFi work
                 </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Most of what I build is payment infrastructure: charging AI
                   agents per API call over x402, settling in USDC across chains,
                   and the Solidity underneath it. Here is the work worth reading
@@ -185,7 +201,7 @@ export default function Page() {
               </a>
             </div>
           ) : (
-            <div className="mx-auto grid max-w-[800px] grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="mx-auto grid max-w-[800px] grid-cols-1 gap-4 sm:grid-cols-2">
               {DATA.projects.map((project, id) => (
                 <BlurFade
                   key={project.title}

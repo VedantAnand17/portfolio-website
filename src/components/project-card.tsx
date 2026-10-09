@@ -52,7 +52,7 @@ export function ProjectCard({
   className,
 }: Props) {
   return (
-    <Card className="flex h-full flex-col overflow-hidden border transition-shadow duration-300 ease-out hover:shadow-lg">
+    <Card className="flex h-full flex-col overflow-hidden rounded-xl border transition-shadow duration-200 ease-out hover:shadow-md">
       <Link
         href={href || links?.[0]?.href || "/#projects"}
         aria-label={`View ${title}`}
@@ -84,8 +84,10 @@ export function ProjectCard({
         )}
       </Link>
       <CardHeader className="px-4 pt-4">
-        <div className="space-y-1">
-          <CardTitle className="mt-1 text-base sm:min-h-12">{title}</CardTitle>
+        <div className="space-y-1.5">
+          <CardTitle className="text-base leading-snug sm:min-h-12">
+            {title}
+          </CardTitle>
           <p className="text-muted-foreground text-sm">{dates}</p>
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
@@ -100,7 +102,7 @@ export function ProjectCard({
           <div className="mt-2 flex flex-wrap gap-1">
             {tags?.map((tag) => (
               <Badge
-                className="px-1 py-0 text-[10px]"
+                className="px-1 py-0 text-[11px]"
                 variant="secondary"
                 key={tag}
               >
@@ -112,13 +114,13 @@ export function ProjectCard({
       </CardContent>
       <CardFooter className="px-4 pb-4">
         {links && links.length > 0 && (
-          <div className="flex flex-row flex-wrap items-start gap-1">
+          <div className="flex flex-row flex-wrap items-start gap-2">
             {links?.map((link, idx) => (
               <Link
                 href={link?.href}
                 aria-label={actionLabel(link.type, title)}
                 title={link.label ? link.type : undefined}
-                className="bg-primary text-primary-foreground inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-sm font-medium"
+                className="pressable bg-secondary text-secondary-foreground inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-sm font-medium"
                 key={idx}
                 target="_blank"
                 rel="noopener noreferrer"
