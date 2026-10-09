@@ -11,17 +11,15 @@ interface BlurFadeProps {
   duration?: number;
   delay?: number;
   yOffset?: number;
-  blur?: string;
 }
 
 // CSS enhances server-rendered content and also works without JavaScript.
 export default function BlurFade({
   children,
   className,
-  duration = 0.4,
+  duration = 0.24,
   delay = 0,
   yOffset = 6,
-  blur = "6px",
 }: BlurFadeProps) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -64,10 +62,9 @@ export default function BlurFade({
       className={cn("blur-fade", className)}
       style={
         {
-          "--reveal-delay": `${delay}s`,
+          "--reveal-delay": `${Math.min(delay, 0.08)}s`,
           "--reveal-duration": `${duration}s`,
           "--reveal-offset": `${yOffset}px`,
-          "--reveal-blur": blur,
         } as CSSProperties
       }
     >

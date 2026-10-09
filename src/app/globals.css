@@ -250,26 +250,17 @@ section {
 @keyframes portfolio-reveal {
   from {
     opacity: 0;
-    filter: blur(var(--reveal-blur, 6px));
     transform: translateY(var(--reveal-offset, 6px));
   }
   to {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0);
   }
 }
 @media (prefers-reduced-motion: no-preference) {
   .blur-fade {
-    animation: portfolio-reveal var(--reveal-duration, 0.4s) ease-out
-      var(--reveal-delay, 0s) backwards;
-  }
-}
-
-@media (min-width: 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  html.animated-cursor-active,
-  html.animated-cursor-active body {
-    cursor: none;
+    animation: portfolio-reveal var(--reveal-duration, 0.24s)
+      cubic-bezier(0.23, 1, 0.32, 1) var(--reveal-delay, 0s) backwards;
   }
 }
 
@@ -278,4 +269,61 @@ section {
     animation: none;
     opacity: 0;
   }
+}
+
+/* Short, interruptible feedback; keyboard and reduced-motion controls stay still. */
+.pressable {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    transform 120ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+.pressable:active:not(:focus-visible) {
+  transform: scale(0.97);
+}
+.pressable:focus-visible {
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pressable:active:not(:focus-visible) {
+    transform: none;
+  }
+}
+
+.tooltip-content {
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  animation: tooltip-enter 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.tooltip-content[data-state="instant-open"],
+.tooltip-content[data-state="closed"] {
+  animation: none;
+}
+@keyframes tooltip-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.portfolio-home h2 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.portfolio-home #about .prose {
+  line-height: 1.75;
+}
+.portfolio-home #about h2 {
+  margin-bottom: 0.75rem;
+}
+.portfolio-home #work > div,
+.portfolio-home #education > div {
+  row-gap: 1.25rem;
 }
