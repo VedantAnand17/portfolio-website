@@ -35,6 +35,11 @@ export const personStructuredData = {
     ]),
   ],
   sameAs: PROFILE.socialProfiles.map((social) => social.url),
+  subjectOf: PROFILE.communityReferences.map((reference) => ({
+    "@type": "WebPage",
+    name: reference.name,
+    url: reference.url,
+  })),
 };
 
 export const websiteStructuredData = {

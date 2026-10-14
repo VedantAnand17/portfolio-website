@@ -97,6 +97,21 @@ export default function Page() {
           </div>
         </BlurFade>
       </section>
+      <section aria-labelledby="writing-heading" className="space-y-2">
+        <h2 id="writing-heading" className="text-xl font-bold">
+          Technical writing
+        </h2>
+        <p className="text-muted-foreground text-sm leading-relaxed">
+          <Link
+            href="/blog/x402-agentic-commerce"
+            className="text-link underline underline-offset-4"
+          >
+            How I build payment APIs for AI agents with x402
+          </Link>{" "}
+          connects my work on Bags and AgentPay with contributions to the
+          protocol.
+        </p>
+      </section>
       <section id="work" aria-labelledby="work-heading">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>

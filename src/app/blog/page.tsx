@@ -9,16 +9,19 @@ import { formatDate } from "@/lib/utils";
 export const metadata: Metadata = {
   alternates: { canonical: `${DATA.url}/blog` },
   title: "Blog",
-  description: "Notes on DeFi, Uniswap, and payment infrastructure.",
+  description:
+    "Technical articles by Vedant Anand on x402, AI agent payments, Uniswap, and DeFi.",
   openGraph: {
     title: "Blog | Vedant Anand",
-    description: "Notes on DeFi, Uniswap, and payment infrastructure.",
+    description:
+      "Technical articles by Vedant Anand on x402, AI agent payments, Uniswap, and DeFi.",
     url: `${DATA.url}/blog`,
     images: [PROFILE.socialImageUrl],
   },
   twitter: {
     title: "Blog | Vedant Anand",
-    description: "Notes on DeFi, Uniswap, and payment infrastructure.",
+    description:
+      "Technical articles by Vedant Anand on x402, AI agent payments, Uniswap, and DeFi.",
     images: [PROFILE.socialImageUrl],
   },
 };
@@ -34,7 +37,11 @@ export default async function BlogPage() {
     <main id="main-content" tabIndex={-1} className="space-y-6">
       <h1 className="text-3xl font-bold">Blog</h1>
       <p className="text-muted-foreground">
-        Notes on DeFi, Uniswap, and payment infrastructure.
+        Technical articles on x402, AI agent payments, Uniswap, and DeFi by{" "}
+        <Link href="/about" className="text-link underline underline-offset-4">
+          Vedant Anand
+        </Link>
+        .
       </p>
       {posts.length === 0 ? (
         <p>
