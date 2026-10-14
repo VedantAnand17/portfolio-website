@@ -41,7 +41,7 @@ export const DATA = {
     tel: "+917901982476",
   },
   description:
-    "I build payment APIs for AI agents with x402, TypeScript, and Solidity.",
+    "Co-founder of Bags, x402 contributor and maintainer. I build payment infrastructure for AI agents with TypeScript and Solidity.",
   education: [
     {
       school: "Thapar Institute of Engineering and Technology",
@@ -320,7 +320,7 @@ export const DATA = {
     "Zero-Knowledge Proofs",
   ],
   summary:
-    "I co-founded [Bags](https://www.getbags.app/) and contribute to the [x402 protocol](https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AVedantAnand17+is%3Amerged). I also build web applications and Solidity contracts.\n\nI mentored OWASP BLT contributors in Google Summer of Code 2026. I study Electrical and Computer Engineering at Thapar Institute and expect to graduate in 2027.",
+    "I'm Vedant Anand, co-founder of [Bags](https://www.getbags.app/) and an x402 contributor and maintainer. I build agentic commerce infrastructure: payment APIs that let AI agents pay per request in USDC. My work spans full-stack TypeScript and Solidity smart contracts.\n\nI mentored OWASP BLT contributors in Google Summer of Code 2026. I study Electrical and Computer Engineering at Thapar Institute and expect to graduate in 2027.",
   tweets: [
     {
       id: "1935588888300359901",

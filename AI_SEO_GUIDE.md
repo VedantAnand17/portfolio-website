@@ -1,159 +1,33 @@
-# AI & SEO Optimization Guide
+# Search and AI discovery
 
-This document outlines all the AI and SEO optimizations implemented on vedant-dev.com to ensure maximum discoverability by search engines, AI assistants, and developers.
+The portfolio's canonical origin is `https://www.vedant-dev.com`. The primary targets are Vedant Anand's full name and his work on x402, Bags, agentic commerce, and GSoC mentorship.
 
-## Files Created
+## Authoritative data
 
-### 1. llms.txt (AI Discoverability)
+- `src/data/resume.tsx`: public projects, experience, education, and profile links.
+- `src/data/profile.ts`: identity description, metadata, canonical biography URL, and the actual profile modification date.
+- `src/lib/seo.ts`: stable Person/WebSite identifiers and safe JSON-LD serialization.
 
-**Locations:**
+Keep visible content, metadata, and structured data consistent. The current maintainer role is user-confirmed and intentionally has no dedicated role link. Ongoing study is an educational affiliation, not alumni status.
 
-- `/llms.txt` (root)
-- `/.well-known/llms.txt`
+## Public entry points
 
-**Purpose:** Helps AI assistants (ChatGPT, Claude, Gemini, Perplexity) understand and reference your site content.
+- `/`: portfolio with Vedant Anand's full name and linked biography.
+- `/about`: canonical biography and article author page with ProfilePage markup.
+- `/blog` and `/blog/[slug]`: authored technical articles with BlogPosting markup and visible dates.
+- `/sitemap.xml`: canonical page URLs with meaningful content modification dates.
+- `/robots.txt`: public crawl access, private/admin exclusions, and the canonical sitemap.
+- `/llms.txt` and `/.well-known/llms.txt`: identical text generated from the profile, projects, and article data at build time.
+- `/opengraph-image`: a build-time PNG used for identity-focused share previews; article-specific images remain available where supplied.
+- `/humans.txt`: developer information.
+- `/.well-known/security.txt`: security reporting contact.
 
-**Format:** Markdown-based specification following llmstxt.org standard
+`llms.txt` is an optional machine-readable summary. It is not an established ranking signal, an access-control mechanism, a training license, or a requirement for Google's AI features. The useful foundation is public server-rendered content, accurate attribution, canonical URLs, and genuine third-party evidence. Do not add obsolete AI plugin manifests or unsupported rich-result claims.
 
-- H1 heading with site name
-- Blockquote with concise summary
-- Key pages section
-- Featured projects
-- Technical skills
-- Contact information
-- Social profiles
+## Maintenance and verification
 
-**Why it matters:**
+After changing biographical facts, update the corresponding public data and `PROFILE.updatedAt` to the real modification date. Article publication and update dates belong in frontmatter; do not set them to the current date just to appear fresh. The sitemap and both llms.txt routes pick up article/project changes during the build. Keep humans.txt synchronized when roles change.
 
-- AI assistants struggle with complex HTML/JavaScript
-- Provides structured, easy-to-parse content
-- Improves chances of being referenced in AI responses
-- Like robots.txt but for AI comprehension, not just crawling
+Use `npm test`, `npm run typecheck`, and `npm run check`. The browser identity checks exercise public pages, metadata, shared entity IDs, script-safe article titles, mobile rendering without JavaScript, and discovery endpoints. Run `npm run preview` and verify the Worker routes before a Cloudflare deployment.
 
-### 2. robots.ts (Search Engine Crawling)
-
-**Location:** `/src/app/robots.ts`
-
-**Purpose:** Directs search engine crawlers on what to index.
-
-**Current configuration:**
-
-- Allows all user agents
-- Disallows `/private/` and `/admin/` directories
-- Points to sitemap.xml
-
-### 3. sitemap.ts (Site Structure)
-
-**Location:** `/src/app/sitemap.ts`
-
-**Purpose:** Provides search engines with a complete list of pages to index.
-
-**Includes:**
-
-- Static pages (home, blog) with priorities and change frequencies
-- Dynamic blog posts with publication and update dates
-
-### 4. humans.txt (Developer Information)
-
-**Location:** `/humans.txt`
-
-**Purpose:** Provides information about the developer for other developers and curious visitors.
-
-**Contains:**
-
-- Team information
-- Technology stack
-- Acknowledgments
-- Site metadata
-
-### 5. security.txt (Security Contacts)
-
-**Location:** `/.well-known/security.txt`
-
-**Purpose:** Standardized way to report security vulnerabilities (RFC 9116).
-
-**Contains:**
-
-- Contact email
-- Expiration date
-- Scope of security policy
-- Reporting guidelines
-
-### 6. Structured Data
-
-**Location:** `/src/components/structured-data.tsx`
-
-**Purpose:** JSON-LD schema markup for rich search results.
-
-**Includes:**
-
-- Person schema (for Vedant Anand)
-- Website schema
-- Article schemas for blog posts
-
-## Best Practices Implemented
-
-### SEO
-
-1. Semantic HTML with proper heading hierarchy
-2. Meta descriptions and titles for all pages
-3. Alt text for all images
-4. Open Graph tags for social sharing
-5. Twitter Card metadata
-6. Canonical URLs
-
-### Accessibility
-
-1. ARIA labels and roles
-2. Keyboard navigation support
-3. Color contrast compliance
-4. Screen reader friendly content
-
-### Performance
-
-1. Next.js static generation
-2. Image optimization with next/image
-3. Lazy loading for below-fold content
-4. Proper caching headers
-
-## How to Maintain
-
-### When Adding New Blog Posts
-
-1. Update `sitemap.ts` if structure changes (automatic with current setup)
-2. Update `llms.txt` to include new blog post links
-3. Ensure new posts have proper metadata (title, summary, publishedAt, and optional updatedAt)
-
-### When Updating Projects
-
-1. Add new featured projects to `llms.txt`
-2. Update structured data if project schema is added
-
-### Regular Checks
-
-1. Validate llms.txt: https://llmstxt.studio/tools/validator
-2. Check sitemap: Google Search Console
-3. Test robots.txt: Google Robots Testing Tool
-
-## External Tools
-
-- **llms.txt Validator:** https://llmstxt.studio/tools/validator
-- **llms.txt Generator:** https://llmstxt.studio
-- **Schema Validator:** https://validator.schema.org
-- **Google Search Console:** https://search.google.com/search-console
-
-## Resources
-
-- llms.txt Specification: https://llmstxt.org
-- robots.txt Standard: https://www.robotstxt.org
-- security.txt RFC: https://www.rfc-editor.org/rfc/rfc9116
-- humans.txt: http://humanstxt.org
-
-## Future Enhancements
-
-Consider adding:
-
-- `/.well-known/ai-plugin.json` for ChatGPT plugins
-- RSS/Atom feed for blog posts
-- Web App Manifest for PWA capabilities
-- Additional structured data types (Course, HowTo, FAQ)
+See [the audit and external-profile drafts](docs/search-visibility.md) for the dated Search Console baseline, external actions, and measurement queries. Google ranking and AI citations must be measured after publishing; passing markup validation or a Lighthouse audit does not establish either outcome.

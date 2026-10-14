@@ -34,7 +34,7 @@ test("home content works without JavaScript and fits a narrow screen", async ({
   const page = await context.newPage();
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Hi, I'm Vedant 👋"
+    "Hi, I'm Vedant Anand 👋"
   );
   await expect(
     page.getByText("Available for contract and part-time work.", {
@@ -445,7 +445,7 @@ test("public profile files use the corrected project facts", async ({
       expect(text).not.toMatch(
         /100,000|quantum-secured|500\+|900,000|maximizes LP yields/
       );
-      expect(text).toContain("four merged pull requests");
+      expect(text).toMatch(/four merged pull requests/i);
     })
   );
 });
@@ -521,7 +521,7 @@ test("original greeting and section hierarchy retain the portfolio character", a
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Hi, I'm Vedant 👋"
+    "Hi, I'm Vedant Anand 👋"
   );
   await expect(
     page.getByRole("heading", {

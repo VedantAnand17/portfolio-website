@@ -1,5 +1,6 @@
 import { ArrowDownIcon, ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Markdown from "react-markdown";
 
 import { BelowFoldSections } from "@/components/below-fold-sections";
@@ -32,7 +33,7 @@ export default function Page() {
                   delay={BLUR_FADE_DELAY}
                   className="font-display text-3xl leading-tight font-semibold tracking-tight sm:text-5xl"
                   yOffset={8}
-                  text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                  text={`Hi, I'm ${DATA.name} 👋`}
                 />
               </h1>
               <BlurFadeText
@@ -85,6 +86,14 @@ export default function Page() {
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-sm text-pretty">
             <Markdown>{DATA.summary}</Markdown>
+            <p>
+              <Link
+                href="/about"
+                className="text-link underline underline-offset-4"
+              >
+                About Vedant Anand
+              </Link>
+            </p>
           </div>
         </BlurFade>
       </section>

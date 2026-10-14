@@ -6,7 +6,7 @@ test("intro actions have distinct surfaces and comfortable touch targets", async
   await page.goto("/");
   const hero = page.locator("#hero");
   await expect(hero.getByRole("heading", { level: 1 })).toHaveText(
-    "Hi, I'm Vedant 👋"
+    "Hi, I'm Vedant Anand 👋"
   );
   const work = hero.getByRole("link", { name: "View work", exact: true });
   const email = hero.getByRole("link", { name: "Email me", exact: true });
