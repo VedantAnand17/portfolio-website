@@ -4,7 +4,7 @@ Audit date: 15 October 2026. Target canonical origin: https://www.vedant-dev.com
 
 ## Evidence and baseline
 
-The authenticated Search Console URL-prefix property for https://vedant-dev.com/ displayed 17 clicks, 1.06K impressions, 1.6% CTR, and average position 10 for 13 July–12 October 2026. Its exact-query filter for `vedant anand` displayed 6 clicks, 157 impressions, 3.8% CTR, and average position 5.4. The unfiltered query table displayed 171 impressions and zero clicks for `vedant`. These are averages for that property, time range, and audience, not a universal ranking or complete data for the www host.
+The authenticated non-www Search Console property showed name-query impressions and clicks, but does not cover the complete canonical www host. The exact dated analytics baseline is retained in the local audit report outside this public repository.
 
 That property had one indexed URL. Its sitemap was last read on 29 December 2025. `/blog` and `/blog/uniswap-guide` had mistakenly been submitted as sitemaps and each showed an error. The www URL-prefix property was absent. It was added and automatically verified using the existing HTML verification tag on 15 October 2026; `/sitemap.xml` was submitted successfully. Google said the new property's reporting data was still processing. Both mistaken HTML-page sitemap submissions were removed from the non-www property. The canonical www sitemap was read successfully on 15 October and initially discovered four existing pages; the new biography and x402 article join it after publishing.
 
