@@ -47,11 +47,12 @@ TEST_BASE_URL=http://127.0.0.1:8787 npm run test:e2e
 
 The canonical domain is https://www.vedant-dev.com. The apex host and both v3dant.com hosts redirect to it and preserve the path. The Cloudflare Worker hostname stays available for independent testing.
 
-- Vercel uses the normal Next.js build.
-- Cloudflare Workers uses `@opennextjs/cloudflare`, `open-next.config.ts`, and `wrangler.jsonc`.
+- Production runs on Cloudflare Workers and uses `@opennextjs/cloudflare`, `open-next.config.ts`, and `wrangler.jsonc`.
 - `npm run build` adapts the output for Workers only when `WORKERS_CI=1`.
 - `npm run preview` builds and runs a local Worker preview. This step verifies the static-assets cache used by blog pages.
 - Workers Builds must deploy the existing build with `npm install && npx opennextjs-cloudflare deploy` on main. Non-production branches upload preview versions.
+
+Vercel analytics and Git deployment integration have been removed. Google Analytics remains enabled.
 
 See `AGENTS.md` for build constraints and the retired Cloudflare Pages project. The EC2 workflow is a separate legacy deployment path.
 

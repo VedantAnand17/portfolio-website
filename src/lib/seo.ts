@@ -41,7 +41,12 @@ export const websiteStructuredData = {
   "@type": "WebSite",
   "@id": PROFILE.websiteId,
   name: DATA.name,
-  alternateName: ["Vedant", "Vedant Anand Portfolio", "vedant-dev.com"],
+  alternateName: [
+    "Vedant",
+    "Vedant Anand Portfolio",
+    "vedant-dev.com",
+    "v3dant.com",
+  ],
   url: `${DATA.url}/`,
   description: PROFILE.description,
   inLanguage: "en",

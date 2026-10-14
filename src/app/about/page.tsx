@@ -57,7 +57,8 @@ export default function AboutPage() {
         </p>
         <p className="text-muted-foreground text-sm">
           Also known as Vedant, VedantAnand17 on GitHub, and @vedantsx on X.
-          Based in {DATA.location}.
+          Based in {DATA.location}. My portfolio is also available at
+          v3dant.com.
         </p>
       </header>
       <div className="prose dark:prose-invert max-w-full">

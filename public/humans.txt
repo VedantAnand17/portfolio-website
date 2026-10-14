@@ -27,7 +27,7 @@ IDE: VS Code
 
 Built with: Next.js 16, React 19, TypeScript
 Styled with: TailwindCSS, shadcn/ui
-Deployed on: Vercel
+Deployed on: Cloudflare Workers
 Domain: vedant-dev.com
 
 /* ABOUT */

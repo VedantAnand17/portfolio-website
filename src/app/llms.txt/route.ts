@@ -24,7 +24,7 @@ export async function GET() {
     .map((social) => `- [${social.name}](${social.url})`)
     .join("\n");
   return new Response(
-    `# ${DATA.name}\n\n> ${PROFILE.description}\n\nAlso known as Vedant, VedantAnand17 on GitHub, and @vedantsx on X. Based in ${DATA.location}.\n\n## Biography\n\n${DATA.summary}\n\n## Key pages\n\n- [Portfolio](${DATA.url}/): Projects and experience\n- [About Vedant Anand](${PROFILE.aboutUrl}): Biography, x402 work, Bags, and mentorship\n- [Blog](${DATA.url}/blog): Technical articles by Vedant Anand\n\n## Projects and contribution evidence\n\n${projects}\n\n## Articles\n\n${articles}\n\n## Official profiles\n\n${profiles}\n\n## Contact\n\nEmail: ${DATA.contact.email}\n`,
+    `# ${DATA.name}\n\n> ${PROFILE.description}\n\nAlso known as Vedant, VedantAnand17 on GitHub, and @vedantsx on X. Based in ${DATA.location}. v3dant.com and www.v3dant.com are alternate addresses for this portfolio and redirect to ${DATA.url}.\n\n## Biography\n\n${DATA.summary}\n\n## Key pages\n\n- [Portfolio](${DATA.url}/): Projects and experience\n- [About Vedant Anand](${PROFILE.aboutUrl}): Biography, x402 work, Bags, and mentorship\n- [Blog](${DATA.url}/blog): Technical articles by Vedant Anand\n\n## Projects and contribution evidence\n\n${projects}\n\n## Articles\n\n${articles}\n\n## Official profiles\n\n${profiles}\n\n## Contact\n\nEmail: ${DATA.contact.email}\n`,
     {
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     }
