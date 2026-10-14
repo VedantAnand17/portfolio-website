@@ -10,6 +10,7 @@ import {
 } from "@/components/structured-data";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { PROFILE } from "@/data/profile";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 
@@ -39,11 +40,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: DATA.url,
   },
-  authors: [{ name: DATA.name, url: "https://github.com/vedantanand17" }],
+  authors: [{ name: DATA.name, url: PROFILE.aboutUrl }],
   category: "Technology",
   creator: DATA.name,
-  description:
-    "Vedant Anand builds payment infrastructure for AI agents. Co-founder of Bags, an agentic commerce platform charging AI agents per API call over x402, backed by Founders Inc. and Superteam. Four merged pull requests to the x402 protocol. Solidity, Next.js and TypeScript. Available now for contract and part-time work.",
+  description: PROFILE.description,
   icons: {
     icon: [{ url: `/favicon.ico` }],
   },
@@ -85,19 +85,18 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL(DATA.url),
   openGraph: {
-    description:
-      "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402, backed by Founders Inc. and Superteam), four merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
+    description: PROFILE.description,
     images: [
       {
-        url: `${DATA.url}/og-image.webp`,
+        url: PROFILE.socialImageUrl,
         width: 1200,
         height: 630,
-        alt: `${DATA.name} - Agentic Payments & x402 Engineer`,
+        alt: `${DATA.name} - x402 and agentic commerce`,
       },
     ],
     locale: "en_US",
-    siteName: `${DATA.name} - Portfolio`,
-    title: `${DATA.name} - Agentic Payments & x402 Engineer`,
+    siteName: DATA.name,
+    title: PROFILE.title,
     type: "website",
     url: DATA.url,
   },
@@ -116,17 +115,16 @@ export const metadata: Metadata = {
     nocache: false,
   },
   title: {
-    default: "Vedant Anand | Payment APIs, x402, and Solidity",
-    template: `%s | ${DATA.name} - Agentic Payments & x402 Engineer`,
+    default: PROFILE.title,
+    template: `%s | ${DATA.name}`,
   },
   twitter: {
     card: "summary_large_image",
     creator: "@vedantsx",
-    description:
-      "I build payment infrastructure for AI agents. Co-founder of Bags (agentic commerce over x402), four merged PRs to the x402 protocol, production Solidity and full-stack TypeScript.",
-    images: [`${DATA.url}/og-image.webp`],
+    description: PROFILE.description,
+    images: [PROFILE.socialImageUrl],
     site: "@vedantsx",
-    title: `${DATA.name} - Agentic Payments & x402 Engineer`,
+    title: PROFILE.title,
   },
   verification: {
     google: "ICMF45n16z_LIoSylPf_GKvDz_ZAk3rD1sw7W73Yqcw", // Add your Google verification code

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { getBlogPosts, postPath } from "@/data/blog";
+import { PROFILE } from "@/data/profile";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
 
@@ -13,12 +14,12 @@ export const metadata: Metadata = {
     title: "Blog | Vedant Anand",
     description: "Notes on DeFi, Uniswap, and payment infrastructure.",
     url: `${DATA.url}/blog`,
-    images: [`${DATA.url}/og-image.webp`],
+    images: [PROFILE.socialImageUrl],
   },
   twitter: {
     title: "Blog | Vedant Anand",
     description: "Notes on DeFi, Uniswap, and payment infrastructure.",
-    images: [`${DATA.url}/og-image.webp`],
+    images: [PROFILE.socialImageUrl],
   },
 };
 

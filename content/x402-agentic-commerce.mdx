@@ -1,0 +1,56 @@
+---
+title: "Building payment APIs for AI agents with x402"
+publishedAt: "2026-10-15"
+summary: "How my work on Bags, AgentPay, and the x402 resource server connects HTTP payments to usable APIs for AI agents."
+---
+
+I'm Vedant Anand, co-founder of Bags and an x402 contributor and maintainer. I build payment infrastructure that lets AI agents buy API responses. This article connects the products I've built with a concrete fix I contributed to x402.
+
+## What agentic commerce needs from an API
+
+An agent needs to discover a service, understand what a request costs, pay, and receive a useful response. A checkout that requires a person to create an account or copy an API key interrupts that flow.
+
+[x402](https://www.x402.org/) uses HTTP payments to make the price part of the request-response interaction. In a typical flow, the service responds with HTTP 402 and payment requirements. A compatible client prepares a payment, retries the request with the payment payload, and receives the resource once payment verification and settlement succeed. The accepted network, asset, amount, and payment scheme depend on the service's configuration.
+
+That transport is one part of the product. The endpoint also needs useful documentation, predictable failures, and clear records of what the buyer paid for.
+
+## From AgentPay to Bags
+
+I built [AgentPay](https://agentpay.vedant-dev.com/) as a prototype for an agent that pays per request for sentiment analysis and trading signals. It made the basic use case concrete: software can purchase a specific API result using USDC rather than rely on a subscription provisioned by a person.
+
+I then co-founded [Bags](https://www.getbags.app/) in February 2026. Bags lets API providers charge AI agents per request over x402. My work includes USDC payment verification, payment records, and tax invoices. Bags is supported by Founders Inc., Canopy, and Superteam.
+
+Payment requirements must match a service's real capabilities. A service that asks for payment but provides no supported way to pay has an integration error, not a working paid endpoint.
+
+## A resource server error that looked like a payment challenge
+
+In [x402 pull request #3051](https://github.com/x402-foundation/x402/pull/3051), I changed the core resource server's handling of an unregistered payment scheme and network.
+
+Previously, `buildPaymentRequirements()` could warn and return an empty array when the required scheme server wasn't registered. The resulting HTTP 402 could have an empty `accepts` list. A client was told to pay without receiving any payment options, and a caller's error handling couldn't catch the configuration problem.
+
+The fix throws an error when that registration is missing. Related tests were updated across the Express, Fastify, Hono, and Next integrations. A misconfigured server now fails explicitly, while tests for a genuine payment challenge register a supported scheme.
+
+For an agent, the distinction matters. A payable request offers concrete requirements it can act on. A server configuration error needs an operator to fix the service.
+
+## Other protocol contributions
+
+My merged contributions also include:
+
+- [EIP-2612 permit-signing tests, PR #2344](https://github.com/x402-foundation/x402/pull/2344).
+- [ERC-20 approval gas constants, PR #2278](https://github.com/x402-foundation/x402/pull/2278).
+- [Extensions documentation, PR #731](https://github.com/x402-foundation/x402/pull/731).
+
+The pull requests contain the implementation and review history. They are more useful evidence of my work than a general claim about expertise.
+
+## Making a paid endpoint understandable
+
+When building an API for agents, I think about four practical questions:
+
+1. Can the client determine what the endpoint does and what inputs it accepts?
+2. Does its payment challenge offer a scheme, network, and asset the server actually supports?
+3. Can the client distinguish payment failures from a server configuration error?
+4. Can the provider trace a payment to the request and response it purchased?
+
+These questions connect protocol correctness with product usability. TypeScript and Solidity are tools for implementing that system; clear interfaces and testable behavior determine whether another developer can use it.
+
+For more about my projects and Google Summer of Code mentorship with OWASP BLT, see [my biography](/about). My [portfolio](/#projects) includes the deployed projects and contribution links.
