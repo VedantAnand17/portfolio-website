@@ -1,6 +1,14 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "portfolio-website",
+  "account_id": "d5addfff98319ee236259e234106087d",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "www.vedant-dev.com", "custom_domain": true },
+    { "pattern": "vedant-dev.com", "custom_domain": true },
+    { "pattern": "v3dant.com", "custom_domain": true },
+    { "pattern": "www.v3dant.com", "custom_domain": true },
+  ],
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-08-27",
   "compatibility_flags": ["nodejs_compat"],
