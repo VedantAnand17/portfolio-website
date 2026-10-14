@@ -22,7 +22,7 @@ The live portfolio and GitHub identify Vedant Anand as an agentic payments devel
 
 ## Consistent profile copy
 
-These drafts are ready to apply to the external profiles. Profile edits and posts were not published as part of the site implementation.
+This copy was applied to GitHub, LinkedIn, and X on 15 October 2026. Website fields use the canonical origin. The GitHub README now introduces Bags, x402, and GSoC mentorship; Timelock work is described as earlier experience.
 
 LinkedIn headline:
 
@@ -46,7 +46,7 @@ GitHub bio:
 
 > Co-founder of Bags. x402 contributor & maintainer. Building agentic commerce and AI payments. GSoC 2026 mentor, OWASP BLT.
 
-Use https://www.vedant-dev.com/ in the website field on each profile. The public GitHub bio/company and README currently describe Timelock work as current, while the portfolio says that role ended in February 2026; update that positioning when applying these drafts. A Bags team/about page and the OWASP BLT mentor listing can strengthen independent attribution by naming Vedant Anand and linking to the biography, where their maintainers agree. Do not create fake reviews, awards, accounts, or mentions.
+Use https://www.vedant-dev.com/ in the website field on each profile. A Bags team/about page and the OWASP BLT mentor listing can strengthen independent attribution by naming Vedant Anand and linking to the biography, where their maintainers agree. Do not create fake reviews, awards, accounts, or mentions.
 
 ## Measurement after publishing
 
@@ -72,3 +72,7 @@ Review results after recrawling and again after four weeks. First-name queries a
 Before implementation, browser tests failed for the missing biography, incomplete homepage identity, absent bylines, stale discovery files, missing article, and a script-like article title that executed through JSON-LD. After implementation, `npm test` passed both Node tests and all 38 production-browser tests; typecheck, lint, formatting, and diff whitespace checks passed. The existing malformed-slug tests still produce Next.js cache-write warnings for null-byte and overlong paths while returning the expected 404s. Lighthouse on the original live homepage scored 100 for technical SEO, accessibility, best practices, and agentic browsing; those scores do not measure name rankings.
 
 Cloudflare verification: `npm run preview` built the Worker and served all new routes. Six browser checks passed against the local Worker, covering identity, author attribution, discovery files, the new article, and share previews. OpenNext emitted three dependency-copy warnings for hast/property-information packages but completed the bundle; the tested public Worker routes returned the expected content. The synthetic mutable-file injection fixture was exercised in the Node/Next production suite, not the bundled Worker.
+
+## Attribution and discovery follow-up
+
+The biography links verified community references from OWASP BLT and OWASP TIET. Those pages are described accurately and included as Person.subjectOf references, rather than sameAs aliases for a single person. The blog index credits and links its author, and the homepage and biography link the x402 engineering article directly. All 43 production browser tests and four Node tests pass; nine identity/navigation checks pass against the Cloudflare preview. These changes improve the clarity and accessibility of the public evidence; they are not proof of a ranking gain.

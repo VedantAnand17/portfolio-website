@@ -10,6 +10,20 @@ export const PROFILE = {
   aboutUrl: `${DATA.url}/about`,
   socialImageUrl: `${DATA.url}/opengraph-image`,
   alternateNames: ["Vedant", "VedantAnand17", "vedantsx"],
+  communityReferences: [
+    {
+      name: "OWASP BLT mentor directory",
+      url: "https://gsoc.owaspblt.org/",
+      description:
+        "Lists Vedant Anand in the Interested Mentors section with a Full Stack and Web3 background.",
+    },
+    {
+      name: "OWASP TIET team",
+      url: "https://www.owasptiet.com/team",
+      description:
+        "Lists Vedant Anand as Joint Secretary of the OWASP student chapter at Thapar.",
+    },
+  ],
   socialProfiles: [
     DATA.contact.social.GitHub,
     DATA.contact.social.LinkedIn,

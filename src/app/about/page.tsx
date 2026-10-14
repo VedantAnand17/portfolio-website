@@ -102,6 +102,21 @@ export default function AboutPage() {
             development and guided participants through the program.
           </p>
         </section>
+        <section aria-labelledby="community-heading">
+          <h2 id="community-heading">Community references</h2>
+          <p>
+            These community pages provide another way to connect my name with my
+            open source work:
+          </p>
+          <ul>
+            {PROFILE.communityReferences.map((reference) => (
+              <li key={reference.url}>
+                <a href={reference.url}>{reference.name}</a>:{" "}
+                {reference.description}
+              </li>
+            ))}
+          </ul>
+        </section>
         <section aria-labelledby="background-heading">
           <h2 id="background-heading">Engineering background</h2>
           <p>
@@ -120,6 +135,14 @@ export default function AboutPage() {
           <p>
             <Link href="/#projects">Explore my projects</Link> or{" "}
             <Link href="/blog">read my technical articles</Link>.
+          </p>
+          <p>
+            My article on{" "}
+            <Link href="/blog/x402-agentic-commerce">
+              Building payment APIs for AI agents with x402
+            </Link>{" "}
+            explains how my work on Bags and AgentPay connects to a
+            resource-server fix I contributed to the protocol.
           </p>
         </section>
         <section aria-labelledby="profiles-heading">
