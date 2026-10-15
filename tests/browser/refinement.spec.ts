@@ -132,9 +132,11 @@ test("press feedback is subtle and reduced motion keeps controls still", async (
   await page.mouse.down();
   await expect
     .poll(() =>
-      action.evaluate((element) => getComputedStyle(element).transform)
+      action.evaluate(
+        (element) => new DOMMatrix(getComputedStyle(element).transform).a
+      )
     )
-    .not.toBe("none");
+    .toBeLessThan(1);
   const scale = await action.evaluate(
     (element) => new DOMMatrix(getComputedStyle(element).transform).a
   );

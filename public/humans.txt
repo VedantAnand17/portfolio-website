@@ -18,14 +18,14 @@ Name: Thapar Institute of Engineering and Technology
 Last update: 2026-10-15
 Language: English
 Standards: HTML5, CSS3, TypeScript
-Components: React, Next.js, TailwindCSS, shadcn/ui
+Components: Astro, React, TailwindCSS, shadcn/ui
 Software: VS Code, Git, Node.js
 Doctype: HTML5
 IDE: VS Code
 
 /* TECHNOLOGY */
 
-Built with: Next.js 16, React 19, TypeScript
+Built with: Astro 7, React 19, TypeScript
 Styled with: TailwindCSS, shadcn/ui
 Deployed on: Cloudflare Workers
 Domain: vedant-dev.com

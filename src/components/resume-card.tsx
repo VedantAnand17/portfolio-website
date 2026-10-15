@@ -1,8 +1,7 @@
 "use client";
 
 import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -29,6 +28,8 @@ export function ResumeCard({
   description,
 }: ResumeCardProps) {
   const [expanded, setExpanded] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const id = useId();
   return (
     <div className="group relative flex min-h-12 gap-4">
@@ -50,14 +51,14 @@ export function ResumeCard({
           <div className="flex min-w-0 flex-wrap items-center gap-2">
             <h3 className="text-sm leading-none font-semibold">
               {href && href !== "#" ? (
-                <Link
+                <a
                   className="hover:underline"
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {title}
-                </Link>
+                </a>
               ) : (
                 title
               )}
@@ -81,6 +82,7 @@ export function ResumeCard({
           <>
             <button
               type="button"
+              disabled={!hydrated}
               aria-label={`Details for ${title}`}
               aria-expanded={expanded}
               aria-controls={id}

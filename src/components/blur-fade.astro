@@ -1,0 +1,20 @@
+---
+interface Props {
+  className?: string;
+  duration?: number;
+  delay?: number;
+  yOffset?: number;
+}
+const { className, duration = 0.24, delay = 0, yOffset = 6 } = Astro.props;
+---
+
+<div
+  class:list={["blur-fade", className]}
+  style={{
+    "--reveal-delay": `${Math.min(delay, 0.08)}s`,
+    "--reveal-duration": `${duration}s`,
+    "--reveal-offset": `${yOffset}px`,
+  }}
+>
+  <slot />
+</div>

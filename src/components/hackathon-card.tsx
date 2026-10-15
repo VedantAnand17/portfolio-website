@@ -1,6 +1,3 @@
-import Link from "next/link";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 
 interface Props {
@@ -27,8 +24,8 @@ export function HackathonCard({
   return (
     <li className="relative ml-10 py-4">
       <div className="absolute top-2 -left-16 flex items-center justify-center rounded-full bg-white">
-        <Avatar className="m-auto size-12 border">
-          <AvatarImage
+        <span className="relative m-auto flex size-12 shrink-0 overflow-hidden rounded-full border">
+          <img
             src={image}
             alt={`${title} hackathon logo and branding`}
             className="object-cover object-center"
@@ -36,8 +33,7 @@ export function HackathonCard({
             height={48}
             loading="lazy"
           />
-          <AvatarFallback>{title[0]}</AvatarFallback>
-        </Avatar>
+        </span>
       </div>
       <div className="flex flex-1 flex-col justify-start gap-1">
         {dates && (
@@ -56,7 +52,7 @@ export function HackathonCard({
       {links && links.length > 0 && (
         <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
           {links?.map((link, idx) => (
-            <Link
+            <a
               href={link.href}
               key={idx}
               target="_blank"
@@ -70,7 +66,7 @@ export function HackathonCard({
                 <span aria-hidden="true">{link.icon}</span>
                 {link.title}
               </Badge>
-            </Link>
+            </a>
           ))}
         </div>
       )}

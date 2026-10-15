@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import Markdown from "react-markdown";
 
 import { Badge } from "@/components/ui/badge";
@@ -29,6 +27,7 @@ interface Props {
   tags: readonly string[];
   link?: string;
   image?: string;
+  imageSrcSet?: string;
   video?: string;
   links?: readonly {
     icon: React.ReactNode;
@@ -47,13 +46,14 @@ export function ProjectCard({
   tags,
   link,
   image,
+  imageSrcSet,
   video,
   links,
   className,
 }: Props) {
   return (
     <Card className="flex h-full flex-col overflow-hidden rounded-xl border transition-shadow duration-200 ease-out hover:shadow-md">
-      <Link
+      <a
         href={href || links?.[0]?.href || "/#projects"}
         aria-label={`View ${title}`}
         className={`relative block aspect-video cursor-pointer bg-black ${className ?? ""}`}
@@ -71,18 +71,18 @@ export function ProjectCard({
           />
         )}
         {image && (
-          <Image
+          <img
             src={image}
+            srcSet={imageSrcSet}
             alt={`${title} project screenshot showing the application interface and features`}
-            fill
-            className="object-contain object-center"
+            width={600}
+            height={338}
+            className="h-full w-full object-contain object-center"
             sizes="(max-width: 639px) calc(100vw - 32px), 300px"
             loading="lazy"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
         )}
-      </Link>
+      </a>
       <CardHeader className="px-4 pt-4">
         <div className="space-y-1.5">
           <CardTitle className="text-base leading-snug sm:min-h-12">
@@ -116,7 +116,7 @@ export function ProjectCard({
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-2">
             {links?.map((link, idx) => (
-              <Link
+              <a
                 href={link?.href}
                 aria-label={actionLabel(link.type, title)}
                 title={link.label ? link.type : undefined}
@@ -129,7 +129,7 @@ export function ProjectCard({
                   <span aria-hidden="true">{link.icon}</span>
                   {link.label ?? link.type}
                 </span>
-              </Link>
+              </a>
             ))}
           </div>
         )}

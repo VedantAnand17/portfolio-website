@@ -54,3 +54,8 @@ pnpm-lock.yaml
 skills/
 /test-results/
 /playwright-report/
+
+# Astro
+/.astro/
+/dist/
+cloudflare-env.d.ts

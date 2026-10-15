@@ -6,8 +6,6 @@ import {
   NotebookIcon,
   SendIcon,
 } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Dock, DockIcon } from "@/components/magicui/dock";
@@ -26,8 +24,7 @@ const items = [
   { label: "Contact", href: "/#contact", icon: SendIcon },
 ];
 
-export default function Navbar() {
-  const pathname = usePathname();
+export default function Navbar({ pathname }: { pathname: string }) {
   const [hash, setHash] = useState("");
   useEffect(() => {
     const update = () => setHash(window.location.hash);
@@ -55,7 +52,7 @@ export default function Navbar() {
             <DockIcon key={item.href}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
+                  <a
                     aria-label={item.label}
                     href={item.href}
                     onClick={() =>
@@ -69,7 +66,7 @@ export default function Navbar() {
                     className={`pressable inline-flex size-full min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full ${active ? "bg-muted" : "hover:bg-muted"}`}
                   >
                     <item.icon className="size-4" aria-hidden="true" />
-                  </Link>
+                  </a>
                 </TooltipTrigger>
                 <TooltipContent>{item.label}</TooltipContent>
               </Tooltip>

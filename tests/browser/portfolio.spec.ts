@@ -7,7 +7,8 @@ test("missing articles return a useful 404 for visitors and crawlers", async ({
   const response = await request.get("/blog/does-not-exist");
   expect(response.status()).toBe(404);
   const malformed = await request.get("/blog/%00");
-  expect(malformed.status()).toBe(404);
+  // Cloudflare may reject null bytes at the edge before the Worker sees them.
+  expect([400, 404]).toContain(malformed.status());
   const longSlug = await request.get(`/blog/${"a".repeat(260)}`);
   expect(longSlug.status()).toBe(404);
   await page.goto("/blog/does-not-exist");

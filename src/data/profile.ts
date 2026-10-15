@@ -8,7 +8,7 @@ export const PROFILE = {
   personId: `${DATA.url}/#person`,
   websiteId: `${DATA.url}/#website`,
   aboutUrl: `${DATA.url}/about`,
-  socialImageUrl: `${DATA.url}/opengraph-image`,
+  socialImageUrl: `${DATA.url}/opengraph-image.png`,
   alternateNames: ["Vedant", "VedantAnand17", "vedantsx"],
   communityReferences: [
     {

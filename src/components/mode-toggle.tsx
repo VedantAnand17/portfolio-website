@@ -1,16 +1,18 @@
 "use client";
 
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/lib/theme";
 
 export const ModeToggle = React.forwardRef<
   HTMLButtonElement,
   React.ComponentPropsWithoutRef<"button">
 >(({ onClick, ...props }, ref) => {
   const { theme, setTheme } = useTheme();
+  const [hydrated, setHydrated] = React.useState(false);
+  React.useEffect(() => setHydrated(true), []);
 
   return (
     <Button
@@ -27,6 +29,7 @@ export const ModeToggle = React.forwardRef<
         onClick?.(e);
       }}
       {...props}
+      disabled={!hydrated || props.disabled}
     >
       <SunIcon className="h-[1.2rem] w-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
       <MoonIcon className="hidden h-[1.2rem] w-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />

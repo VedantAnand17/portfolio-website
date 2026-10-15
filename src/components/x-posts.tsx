@@ -1,9 +1,8 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import Image from "next/image";
-import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
+
+import { useTheme } from "@/lib/theme";
 
 interface Post {
   id: string;
@@ -35,6 +34,34 @@ export function XPosts({
   const { resolvedTheme } = useTheme();
   const [ready, setReady] = useState(false);
   const [loaded, setLoaded] = useState<Set<string>>(new Set());
+  useEffect(() => {
+    const existing =
+      document.querySelector<HTMLScriptElement>("#x-post-widgets");
+    if ((window as Window & { twttr?: { widgets?: Widgets } }).twttr?.widgets) {
+      setReady(true);
+      return;
+    }
+    const script = existing ?? document.createElement("script");
+    const ready = () => setReady(true);
+    script.addEventListener("load", ready);
+    const load = () => {
+      if (!existing) {
+        script.id = "x-post-widgets";
+        script.src = "https://platform.twitter.com/widgets.js";
+        script.async = true;
+        document.body.append(script);
+      }
+    };
+    if (document.readyState === "complete") {
+      load();
+    } else {
+      window.addEventListener("load", load, { once: true });
+    }
+    return () => {
+      script.removeEventListener("load", ready);
+      window.removeEventListener("load", load);
+    };
+  }, []);
   const targets = useRef<(HTMLDivElement | null)[]>([]);
   useEffect(() => {
     const widgets = (window as Window & { twttr?: { widgets?: Widgets } }).twttr
@@ -72,75 +99,67 @@ export function XPosts({
     };
   }, [posts, ready, resolvedTheme]);
   return (
-    <>
-      <Script
-        id="x-post-widgets"
-        src="https://platform.twitter.com/widgets.js"
-        strategy="lazyOnload"
-        onReady={() => setReady(true)}
-      />
-      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {posts.map((post, index) => (
-          <li
-            key={post.id}
-            className={`bg-card min-w-0 rounded-xl ${loaded.has(post.id) ? "" : "border p-4 transition-shadow duration-300 hover:shadow-lg"}`}
+    <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {posts.map((post, index) => (
+        <li
+          key={post.id}
+          className={`bg-card min-w-0 rounded-xl ${loaded.has(post.id) ? "" : "border p-4 transition-shadow duration-300 hover:shadow-lg"}`}
+        >
+          <div
+            hidden={loaded.has(post.id)}
+            className="mb-3 flex items-center gap-3"
           >
-            <div
-              hidden={loaded.has(post.id)}
-              className="mb-3 flex items-center gap-3"
-            >
-              <Image
-                src={avatar}
-                alt=""
-                width={40}
-                height={40}
-                loading="lazy"
-                className="size-10 rounded-full"
-              />
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-semibold">{name}</p>
-                <p className="text-muted-foreground text-xs">@vedantsx</p>
-              </div>
-              <span aria-hidden="true" className="text-lg">
-                𝕏
-              </span>
-            </div>
-            <div
-              ref={(element) => {
-                targets.current[index] = element;
-              }}
-              className="min-w-0 [&_iframe]:max-w-full"
+            <img
+              src={avatar}
+              alt=""
+              width={40}
+              height={40}
+              loading="lazy"
+              className="size-10 rounded-full"
             />
-            <p
-              hidden={loaded.has(post.id)}
-              className="text-muted-foreground text-sm"
-            >
-              Learning Journey
-            </p>
-            <time
-              hidden={loaded.has(post.id)}
-              dateTime={post.date}
-              className="text-muted-foreground mt-2 block text-xs"
-            >
-              {new Intl.DateTimeFormat("en-GB", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-                timeZone: "UTC",
-              }).format(new Date(post.date))}
-            </time>
-            <a
-              hidden={loaded.has(post.id)}
-              href={post.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link mt-2 inline-flex min-h-11 cursor-pointer items-center text-sm underline underline-offset-4"
-            >
-              Read post on X
-            </a>
-          </li>
-        ))}
-      </ul>
-    </>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold">{name}</p>
+              <p className="text-muted-foreground text-xs">@vedantsx</p>
+            </div>
+            <span aria-hidden="true" className="text-lg">
+              𝕏
+            </span>
+          </div>
+          <div
+            ref={(element) => {
+              targets.current[index] = element;
+            }}
+            className="min-w-0 [&_iframe]:max-w-full"
+          />
+          <p
+            hidden={loaded.has(post.id)}
+            className="text-muted-foreground text-sm"
+          >
+            Learning Journey
+          </p>
+          <time
+            hidden={loaded.has(post.id)}
+            dateTime={post.date}
+            className="text-muted-foreground mt-2 block text-xs"
+          >
+            {new Intl.DateTimeFormat("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+              timeZone: "UTC",
+            }).format(new Date(post.date))}
+          </time>
+          <a
+            hidden={loaded.has(post.id)}
+            href={post.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link mt-2 inline-flex min-h-11 cursor-pointer items-center text-sm underline underline-offset-4"
+          >
+            Read post on X
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }

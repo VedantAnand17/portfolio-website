@@ -118,13 +118,19 @@ test("articles credit the same author and keep JSON-LD inert", async ({
 });
 
 test("article JSON-LD keeps a script-like headline inert", async ({ page }) => {
+  test.skip(
+    Boolean(process.env.TEST_BASE_URL),
+    "Source fixtures require a local development server or test build"
+  );
   const slug = "seo-jsonld-escape-fixture";
   const filename = new URL(`../../content/${slug}.mdx`, import.meta.url);
   const title = "</script><script>window.seoInjection=true</script>";
-  await writeFile(
-    filename,
-    `---\ntitle: '${title}'\npublishedAt: "2026-10-15"\nsummary: "Escaping regression fixture"\n---\n\nA temporary test article.\n`
-  );
+  if (process.env.PLAYWRIGHT_SERVER !== "production") {
+    await writeFile(
+      filename,
+      `---\ntitle: '${title}'\npublishedAt: "2026-10-15"\nsummary: "Escaping regression fixture"\n---\n\nA temporary test article.\n`
+    );
+  }
   try {
     await page.goto(`/blog/${slug}`);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(title);
@@ -139,7 +145,9 @@ test("article JSON-LD keeps a script-like headline inert", async ({ page }) => {
       );
     expect(headline).toBe(title);
   } finally {
-    await unlink(filename);
+    if (process.env.PLAYWRIGHT_SERVER !== "production") {
+      await unlink(filename);
+    }
   }
 });
 

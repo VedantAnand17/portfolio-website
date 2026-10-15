@@ -1,12 +1,8 @@
-<!-- BEGIN:nextjs-agent-rules -->
+## Astro
 
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+- Articles are rendered at build time from `content/*.mdx` by `src/data/blog.ts`; publishing a content change requires a new build.
+- Keep browser state shared across React islands in `src/lib/theme.ts`; React context does not cross island boundaries.
+- Astro's current checker supports TypeScript 5/6. Check its peer range before upgrading TypeScript.
 
 ## Dependency upgrades
 
@@ -15,11 +11,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Cloudflare deployment
 
-- Cloudflare deploys this site as a Worker via `@opennextjs/cloudflare` (`wrangler.jsonc`, `open-next.config.ts`). Do not use `@cloudflare/next-on-pages`: it only supports Next.js 13/14 (peer range `next <=15.5.2`) and cannot build this Next.js 16 app.
-- Workers Builds trigger semantics (Cloudflare dashboard, Workers Builds Configuration): the "Deploy command" runs only on production-branch (`main`) builds and must promote to production traffic - it is set to `npm install && npx opennextjs-cloudflare deploy`. The "Version command" (`npx wrangler versions upload`) runs on non-production branches and only uploads a preview version; green PR-branch checks therefore never update production. Historical pitfall: the deploy command was `npx wrangler versions upload` at one point, which let builds pass while production stayed on a 10-month-old deployment. Deploy-only, never rebuild: the Build command (`npm run build`) already runs the full OpenNext build, so a deploy command that rebuilds (`npm run deploy` = `opennextjs-cloudflare build && deploy`) runs the build a second time over the existing `.open-next/` output, corrupting `.open-next/cloudflare/next-env.mjs` with duplicate `development`/`test` exports and failing the wrangler bundle. When touching build settings, confirm what a `main` build will actually run.
-- Production uses Cloudflare Workers for all four portfolio hosts declared in `wrangler.jsonc`. `www.vedant-dev.com` is canonical; the apex and both v3dant.com hosts redirect to it. Vercel Git integration is disconnected.
-- The legacy Cloudflare Pages project "portfolio-website" (account `d5addfff98319ee236259e234106087d`) is retired: its Git integration has `deployments_enabled: false` (set via the Pages API) so it no longer builds or posts failing PR checks. If it ever needs to go away, delete the project in the dashboard; do not re-enable its builds.
-- The `src/data/blog.ts` data layer reads `content/*.mdx` with Node `fs` at request time, so the worker needs the static-assets incremental cache and its cache assets (copied into `.open-next/assets` by `scripts/opennext-workers-build.mjs` or by `opennextjs-cloudflare deploy/preview/upload`). Verify with `npm run preview` before deploying.
+- Deploy the static Astro output through `wrangler.jsonc` and `src/worker.ts`. Alias redirects must run before asset lookup (`run_worker_first`); all four production hosts stay on this Worker.
+- Workers Builds uses `npm run build`, then `npx wrangler deploy` on main or `npx wrangler versions upload` on preview branches. Build settings are external to the repo.
+- `scripts/preview.mjs` disables Wrangler's origin inference so local alias tests preserve the incoming hostname. The CLI otherwise rewrites every request to the first configured domain.
+- The legacy Cloudflare Pages project `portfolio-website` (account `d5addfff98319ee236259e234106087d`) has `deployments_enabled: false`; keep its builds disabled. Vercel Git integration and the legacy EC2 workflow are retired.
+- `npm test` generates a temporary security fixture in `dist/`; deploy with `npm run deploy` to rebuild from actual content first. See README.md for verification and deployment commands.
 
 ## Maintaining this file
 
