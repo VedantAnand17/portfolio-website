@@ -1,0 +1,14 @@
+---
+import BlurFade from "./blur-fade.astro";
+
+interface Props {
+  text: string;
+  className?: string;
+  duration?: number;
+  delay?: number;
+  yOffset?: number;
+}
+const { text, ...props } = Astro.props;
+---
+
+<BlurFade {...props}>{text}</BlurFade>

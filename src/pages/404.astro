@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/layout.astro";
+---
+
+<Layout title="Page not found" noindex>
+  <main id="main-content" tabindex={-1} class="space-y-6">
+    <h1 class="text-3xl font-bold">Page not found</h1>
+    <p>This page is missing or the address has changed.</p>
+    <div class="flex flex-wrap gap-4">
+      <a class="text-link inline-flex min-h-11 items-center underline" href="/">
+        Go home
+      </a>
+      <a
+        class="text-link inline-flex min-h-11 items-center underline"
+        href="/blog"
+      >
+        Read the blog
+      </a>
+    </div>
+  </main>
+</Layout>

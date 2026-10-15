@@ -1,0 +1,144 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/navigation";
+import {
+  StructuredData,
+  WebsiteStructuredData,
+} from "@/components/structured-data";
+import { PROFILE } from "@/data/profile";
+import { DATA } from "@/data/resume";
+
+interface Props {
+  title?: string;
+  socialTitle?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  type?: "website" | "profile" | "article";
+  publishedAt?: string;
+  updatedAt?: string;
+  noindex?: boolean;
+}
+const pathname = Astro.url.pathname
+  .replace(/\/index\.html$/, "/")
+  .replace(/\.html$/, "");
+const {
+  title,
+  socialTitle,
+  description = PROFILE.description,
+  canonical = new URL(pathname, DATA.url).href,
+  image = PROFILE.socialImageUrl,
+  type = "website",
+  publishedAt,
+  updatedAt,
+  noindex = false,
+} = Astro.props;
+const pageTitle = title ? `${title} | ${DATA.name}` : PROFILE.title;
+const gaId =
+  import.meta.env.PUBLIC_GA_ID ||
+  import.meta.env.NEXT_PUBLIC_GA_ID ||
+  "G-L2R4MNTEYH";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={DATA.name} />
+    <meta name="creator" content={DATA.name} />
+    <meta name="publisher" content={DATA.name} />
+    <meta name="category" content="Technology" />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, follow" : "index, follow"}
+    />
+    {!noindex && (
+      <meta
+        name="googlebot"
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      />
+    )}
+    <meta
+      name="google-site-verification"
+      content="ICMF45n16z_LIoSylPf_GKvDz_ZAk3rD1sw7W73Yqcw"
+    />
+    <link rel="canonical" href={canonical} />
+    <link rel="author" href={PROFILE.aboutUrl} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preload" href="/vedantpfp.webp" as="image" />
+    <meta property="og:title" content={socialTitle ?? pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={DATA.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content={`${DATA.name} - x402 and agentic commerce`}
+    />
+    {type === "profile" && (
+      <>
+        <meta property="profile:first_name" content="Vedant" />
+        <meta property="profile:last_name" content="Anand" />
+        <meta property="profile:username" content="vedantsx" />
+      </>
+    )}
+    {type === "article" && (
+      <meta property="article:author" content={PROFILE.aboutUrl} />
+    )}
+    {publishedAt && (
+      <meta property="article:published_time" content={publishedAt} />
+    )}
+    {updatedAt && <meta property="article:modified_time" content={updatedAt} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@vedantsx" />
+    <meta name="twitter:site" content="@vedantsx" />
+    <meta name="twitter:title" content={socialTitle ?? pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <script is:inline>
+      try {
+        const dark = localStorage.getItem("theme") === "dark";
+        document.documentElement.classList.toggle("dark", dark);
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      } catch {
+        /* Light is the default when storage is unavailable. */
+      }
+    </script>
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`}
+    ></script>
+    <script is:inline define:vars={{ gaId }}>
+      window.dataLayer ||= [];
+      window.gtag = function gtag(...args) {
+        window.dataLayer.push(args);
+      };
+      window.gtag("js", new Date());
+      window.gtag("config", gaId, { page_path: window.location.pathname });
+    </script>
+    <StructuredData />
+    <WebsiteStructuredData />
+  </head>
+  <body class="bg-background mx-auto min-h-screen max-w-2xl px-4 pt-10 pb-28 font-sans antialiased sm:px-6 sm:pt-20">
+    <a
+      href="#main-content"
+      class="bg-background fixed top-3 left-3 z-50 -translate-y-20 rounded-md border p-3 focus:translate-y-0"
+    >
+      Skip to content
+    </a>
+    <slot />
+    <Navigation pathname={pathname} client:load />
+    <script>
+      import "@/scripts/reveal";
+    </script>
+  </body>
+</html>

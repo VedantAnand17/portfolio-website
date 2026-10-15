@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import React from "react";
 
 interface ErrorBoundaryState {
@@ -52,12 +51,12 @@ class ErrorBoundary extends React.Component<
             >
               Try again
             </button>
-            <Link
+            <a
               href="/"
               className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md px-4 py-2 transition-colors"
             >
               Go Home
-            </Link>
+            </a>
           </div>
         </div>
       );

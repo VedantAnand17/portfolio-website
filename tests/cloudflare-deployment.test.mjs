@@ -23,6 +23,6 @@ test("all portfolio hosts deploy to the correct Cloudflare account", async () =>
 test("the production app has no Vercel analytics dependency or mount", async () => {
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));
   assert.equal(pkg.dependencies["@vercel/analytics"], undefined);
-  const layout = await readFile("src/app/layout.tsx", "utf-8");
+  const layout = await readFile("src/layouts/layout.astro", "utf-8");
   assert.doesNotMatch(layout, /AnalyticsWrapper|@vercel/);
 });

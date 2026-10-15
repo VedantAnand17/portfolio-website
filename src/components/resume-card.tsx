@@ -1,7 +1,6 @@
 "use client";
 
 import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
 import { useId, useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -50,14 +49,14 @@ export function ResumeCard({
           <div className="flex min-w-0 flex-wrap items-center gap-2">
             <h3 className="text-sm leading-none font-semibold">
               {href && href !== "#" ? (
-                <Link
+                <a
                   className="hover:underline"
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {title}
-                </Link>
+                </a>
               ) : (
                 title
               )}

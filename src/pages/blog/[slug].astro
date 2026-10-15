@@ -1,0 +1,90 @@
+---
+import Layout from "@/layouts/layout.astro";
+import { BlogBreadcrumb } from "@/components/breadcrumb";
+import { JsonLd } from "@/components/structured-data";
+import { getBlogPosts, postPath } from "@/data/blog";
+import { PROFILE } from "@/data/profile";
+import { DATA } from "@/data/resume";
+import { formatDate } from "@/lib/utils";
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts();
+  return posts.map((post) => ({
+    params: { slug: encodeURIComponent(post.slug) },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+const canonical = `${DATA.url}${postPath(post.slug)}`;
+const image = post.metadata.image
+  ? `${DATA.url}${post.metadata.image}`
+  : PROFILE.socialImageUrl;
+---
+
+<Layout
+  title={post.metadata.title}
+  socialTitle={post.metadata.title}
+  description={post.metadata.summary}
+  canonical={canonical}
+  image={image}
+  type="article"
+  publishedAt={post.metadata.publishedAt}
+  updatedAt={post.metadata.updatedAt}
+>
+  <main id="main-content" tabindex="-1">
+    <BlogBreadcrumb title={post.metadata.title} />
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": `${canonical}#article`,
+        author: {
+          "@type": "Person",
+          "@id": PROFILE.personId,
+          name: DATA.name,
+          url: PROFILE.aboutUrl,
+        },
+        publisher: { "@id": PROFILE.personId },
+        mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+        isPartOf: { "@id": PROFILE.websiteId },
+        inLanguage: "en",
+        dateModified: post.metadata.updatedAt || post.metadata.publishedAt,
+        datePublished: post.metadata.publishedAt,
+        description: post.metadata.summary,
+        headline: post.metadata.title,
+        image,
+        url: canonical,
+      }}
+    />
+    <h1 class="title max-w-[650px] text-2xl font-medium tracking-tighter">
+      {post.metadata.title}
+    </h1>
+    <div class="mt-2 mb-8 flex max-w-[650px] items-center justify-between text-sm">
+      <p class="text-sm text-neutral-600 dark:text-neutral-400">
+        By{" "}
+        <a
+          href="/about"
+          rel="author"
+          class="text-link underline underline-offset-4"
+        >
+          {DATA.name}
+        </a>{" "}
+        ·
+        <time datetime={post.metadata.publishedAt}>
+          {formatDate(post.metadata.publishedAt)}
+        </time>{" "}
+        · {post.readingMinutes} min read
+        {post.metadata.updatedAt && (
+          <>
+            {" "}
+            · Updated{" "}
+            <time datetime={post.metadata.updatedAt}>
+              {formatDate(post.metadata.updatedAt)}
+            </time>
+          </>
+        )}
+      </p>
+    </div>
+    <article class="prose dark:prose-invert" set:html={post.source} />
+  </main>
+</Layout>

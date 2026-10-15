@@ -1,6 +1,5 @@
 import { defineConfig } from "oxlint";
 import core from "ultracite/oxlint/core";
-import next from "ultracite/oxlint/next";
 import react from "ultracite/oxlint/react";
 
 // This security-pinned preset still names the removed React Compiler rule.
@@ -12,8 +11,13 @@ const reactRules = Object.fromEntries(
 );
 
 export default defineConfig({
-  extends: [core, { ...react, rules: reactRules }, next],
-  ignorePatterns: core.ignorePatterns,
+  extends: [core, { ...react, rules: reactRules }],
+  ignorePatterns: [
+    ...(core.ignorePatterns ?? []),
+    "cloudflare-env.d.ts",
+    "dist/**",
+    ".astro/**",
+  ],
   rules: {
     "array-callback-return": "off",
     "class-methods-use-this": "off",

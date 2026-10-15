@@ -16,8 +16,8 @@ export default defineConfig({
     : {
         command:
           process.env.PLAYWRIGHT_SERVER === "production"
-            ? "npm run start -- --hostname 127.0.0.1 --port 3100"
-            : "npm run dev -- --hostname 127.0.0.1 --port 3100",
+            ? "npm run start"
+            : "npm run dev -- --ignore-lock --host 127.0.0.1 --port 3100",
         url: "http://127.0.0.1:3100",
         reuseExistingServer:
           process.env.PLAYWRIGHT_SERVER !== "production" && !process.env.CI,

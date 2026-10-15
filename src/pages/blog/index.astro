@@ -1,0 +1,58 @@
+---
+import Layout from "@/layouts/layout.astro";
+import { getBlogPosts, postPath } from "@/data/blog";
+import { formatDate } from "@/lib/utils";
+
+const allPosts = await getBlogPosts();
+const posts = allPosts.sort(
+  (a, b) =>
+    new Date(b.metadata.publishedAt).getTime() -
+    new Date(a.metadata.publishedAt).getTime(),
+);
+---
+
+<Layout
+  title="Blog"
+  description="Technical articles by Vedant Anand on x402, AI agent payments, Uniswap, and DeFi."
+>
+  <main id="main-content" tabindex="-1" class="space-y-6">
+    <h1 class="text-3xl font-bold">Blog</h1>
+    <p class="text-muted-foreground">
+      Technical articles on x402, AI agent payments, Uniswap, and DeFi by{" "}
+      <a href="/about" class="text-link underline underline-offset-4">
+        Vedant Anand
+      </a>
+      .
+    </p>
+    {posts.length === 0 ? (
+      <p>
+        No articles yet.{" "}
+        <a href="/" class="text-link underline">
+          Go home
+        </a>
+      </p>
+    ) : (
+      <ul class="divide-y">
+        {posts.map((post) => (
+          <li>
+            <a
+              class="hover:bg-muted block space-y-2 rounded-lg py-5"
+              href={postPath(post.slug)}
+            >
+              <h2 class="text-lg font-semibold [overflow-wrap:anywhere]">
+                {post.metadata.title}
+              </h2>
+              <p class="text-muted-foreground text-sm">
+                <time datetime={post.metadata.publishedAt}>
+                  {formatDate(post.metadata.publishedAt)}
+                </time>{" "}
+                · {post.readingMinutes} min read
+              </p>
+              <p class="text-muted-foreground">{post.metadata.summary}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Layout>

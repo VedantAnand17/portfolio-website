@@ -6,21 +6,21 @@ import { createServer } from "node:net";
 import { after, test } from "node:test";
 import { setTimeout as delay } from "node:timers/promises";
 
-let nextServer;
+let previewServer;
 
 after(async () => {
-  if (!nextServer || nextServer.exitCode !== null) {
+  if (!previewServer || previewServer.exitCode !== null) {
     return;
   }
 
-  nextServer.kill("SIGTERM");
-  await Promise.race([once(nextServer, "exit"), delay(5000)]);
+  previewServer.kill("SIGTERM");
+  await Promise.race([once(previewServer, "exit"), delay(5000)]);
 });
 
 async function requestHomepage(port, attemptsRemaining, serverOutput) {
-  if (nextServer.exitCode !== null) {
+  if (previewServer.exitCode !== null) {
     throw new Error(
-      `Next.js exited before serving the homepage:\n${serverOutput}`
+      `Astro exited before serving the homepage:\n${serverOutput}`
     );
   }
 
@@ -37,7 +37,7 @@ async function requestHomepage(port, attemptsRemaining, serverOutput) {
 
   if (attemptsRemaining === 0) {
     throw new Error(
-      `Next.js did not start the production server:\n${serverOutput}`
+      `Astro did not start the production server:\n${serverOutput}`
     );
   }
 
@@ -55,12 +55,12 @@ test("portfolio pages list all four merged x402 pull requests", async () => {
   socket.close();
   await closed;
 
-  nextServer = spawn(
+  previewServer = spawn(
     process.execPath,
     [
-      "node_modules/next/dist/bin/next",
-      "start",
-      "--hostname",
+      "node_modules/wrangler/bin/wrangler.js",
+      "dev",
+      "--ip",
       "127.0.0.1",
       "--port",
       String(port),
@@ -69,10 +69,10 @@ test("portfolio pages list all four merged x402 pull requests", async () => {
   );
 
   let serverOutput = "";
-  nextServer.stdout
+  previewServer.stdout
     .setEncoding("utf-8")
     .on("data", (chunk) => (serverOutput += chunk));
-  nextServer.stderr
+  previewServer.stderr
     .setEncoding("utf-8")
     .on("data", (chunk) => (serverOutput += chunk));
 
@@ -121,10 +121,10 @@ test("portfolio pages list all four merged x402 pull requests", async () => {
   const { dependencies } = JSON.parse(
     await readFile(new URL("../package.json", import.meta.url), "utf-8")
   );
-  const nextMajor = dependencies.next.match(/\d+/)?.[0];
+  const astroMajor = dependencies.astro.match(/\d+/)?.[0];
   const reactMajor = dependencies.react.match(/\d+/)?.[0];
   assert.ok(
-    humans.includes(`Built with: Next.js ${nextMajor}, React ${reactMajor}`),
+    humans.includes(`Built with: Astro ${astroMajor}, React ${reactMajor}`),
     "humans.txt should match the installed framework majors"
   );
 });
