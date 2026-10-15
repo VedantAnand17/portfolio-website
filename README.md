@@ -54,13 +54,13 @@ The Cloudflare Worker serves `dist/` using the `ASSETS` binding in `wrangler.jso
 npm run deploy
 ```
 
-For **Cloudflare Workers Builds**, configure these commands before merging the Astro migration:
+**Cloudflare Workers Builds** uses these commands:
 
 - Build command: `npm run build`
 - Deploy command (main): `npx wrangler deploy`
 - Version command (other branches): `npx wrangler versions upload`
 
-The deploy/version commands consume the existing `dist/` output. Replace the previous `npm install && npx opennextjs-cloudflare deploy` command in the dashboard; dashboard build settings are not controlled by `wrangler.jsonc`.
+The deploy/version commands consume the existing `dist/` output. Dashboard build settings are not controlled by `wrangler.jsonc`.
 
 OpenNext, Next.js runtime image optimization, and runtime article filesystem access have been removed. Project previews use Astro's build-time image pipeline to generate responsive WebP sources; their original public URLs remain available. Fonts and the PNG social card are generated or bundled at build time. `/opengraph-image` redirects to `/opengraph-image.png`.
 

@@ -12,7 +12,7 @@
 ## Cloudflare deployment
 
 - Deploy the static Astro output through `wrangler.jsonc` and `src/worker.ts`. Alias redirects must run before asset lookup (`run_worker_first`); all four production hosts stay on this Worker.
-- Workers Builds uses `npm run build`, then `npx wrangler deploy` on main or `npx wrangler versions upload` on preview branches. The dashboard's former OpenNext deploy command must be replaced before merging the Astro migration. Build settings are external to the repo.
+- Workers Builds uses `npm run build`, then `npx wrangler deploy` on main or `npx wrangler versions upload` on preview branches. Build settings are external to the repo.
 - `scripts/preview.mjs` disables Wrangler's origin inference so local alias tests preserve the incoming hostname. The CLI otherwise rewrites every request to the first configured domain.
 - The legacy Cloudflare Pages project `portfolio-website` (account `d5addfff98319ee236259e234106087d`) has `deployments_enabled: false`; keep its builds disabled. Vercel Git integration and the legacy EC2 workflow are retired.
 - `npm test` generates a temporary security fixture in `dist/`; deploy with `npm run deploy` to rebuild from actual content first. See README.md for verification and deployment commands.
