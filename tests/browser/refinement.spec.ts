@@ -57,6 +57,7 @@ test("section and project typography keep a consistent readable hierarchy", asyn
 test("tooltips wait for intent then appear promptly across navigation", async ({
   page,
 }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
   await page.goto("/");
   const details = page.getByRole("button", {
     name: "Details for Timelock Protocol",
@@ -64,10 +65,13 @@ test("tooltips wait for intent then appear promptly across navigation", async ({
   });
   await details.click();
   await expect(details).toHaveAttribute("aria-expanded", "true");
+  // Freeze browser time so a busy runner cannot overshoot the hover delay.
+  await page.clock.pauseAt(new Date("2026-01-01T01:00:00Z"));
   const nav = page.getByRole("navigation", { name: "Main navigation" });
   await nav.getByRole("link", { name: "Home", exact: true }).hover();
-  await page.waitForTimeout(120);
+  await page.clock.runFor(120);
   await expect(page.getByRole("tooltip")).toBeHidden();
+  await page.clock.runFor(230);
   await expect(page.getByRole("tooltip")).toHaveText("Home");
   await nav.getByRole("link", { name: "Work", exact: true }).hover();
   await expect(page.getByRole("tooltip")).toHaveText("Work", { timeout: 200 });
