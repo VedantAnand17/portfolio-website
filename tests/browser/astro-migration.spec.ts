@@ -48,3 +48,25 @@ test("theme preferences stay in sync across open pages", async ({
     .click();
   await expect(page.locator("html")).not.toHaveClass(/dark/);
 });
+
+test("island buttons wait for hydration instead of accepting inactive clicks", async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    baseURL,
+    javaScriptEnabled: false,
+  });
+  const page = await context.newPage();
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "Switch to dark theme" })
+  ).toBeDisabled();
+  await expect(
+    page.getByRole("button", {
+      name: "Details for Timelock Protocol",
+      exact: true,
+    })
+  ).toBeDisabled();
+  await context.close();
+});
