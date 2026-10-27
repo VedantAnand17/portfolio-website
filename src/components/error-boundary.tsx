@@ -2,6 +2,8 @@
 
 import React from "react";
 
+import { reportBrowserError } from "@/lib/browser-error-monitoring";
+
 interface ErrorBoundaryState {
   hasError: boolean;
   error?: Error;
@@ -27,6 +29,7 @@ class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error("Error caught by boundary:", error, errorInfo);
+    reportBrowserError(error);
   }
 
   render() {

@@ -64,6 +64,8 @@ The deploy/version commands consume the existing `dist/` output. Dashboard build
 
 OpenNext, Next.js runtime image optimization, and runtime article filesystem access have been removed. Project previews use Astro's build-time image pipeline to generate responsive WebP sources; their original public URLs remain available. Fonts and the PNG social card are generated or bundled at build time. `/opengraph-image` redirects to `/opengraph-image.png`.
 
+Browser error reporting and Workers Issues are described in `docs/error-monitoring.md`.
+
 GitHub Actions verifies changes. Cloudflare Workers Builds owns deployment; the legacy EC2 deploy workflow is retired. The old Cloudflare Pages project remains disabled, and Vercel Git deployment remains disconnected.
 
 ## Contact
