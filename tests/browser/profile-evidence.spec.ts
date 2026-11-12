@@ -63,3 +63,29 @@ test("homepage gives readers a direct path to original x402 writing", async ({
     .click();
   await expect(page).toHaveURL(/\/blog\/x402-agentic-commerce$/);
 });
+
+test("hackathons lead with the ETHGlobal Mumbai win and its showcase", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const hackathons = page.locator("#hackathons");
+  const firstEntry = hackathons.locator("li").first();
+  await expect(firstEntry).toContainText("ETHGlobal Mumbai 2026 (Winner)");
+  await expect(firstEntry).toContainText("GTMmaxing");
+  await expect(
+    firstEntry.locator(
+      'a[href="https://ethglobal.com/showcase/gtmmaxing-com-b61fq"]'
+    )
+  ).toBeVisible();
+});
+
+test("posts section leads with the ETHGlobal Mumbai win tweet", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const posts = page.locator("#posts");
+  await expect(
+    posts.locator('a[href$="/status/2119469968970625032"]').first()
+  ).toBeAttached();
+  await expect(posts).not.toContainText("from June 2025");
+});
