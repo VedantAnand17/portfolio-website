@@ -57,6 +57,26 @@ export const DATA = {
   ],
   hackathons: [
     {
+      title: "ETHGlobal Mumbai 2026 (Winner)",
+      dates: "5–7 November 2026",
+      location: "Mumbai, India",
+      description:
+        "Won at ETHGlobal Mumbai with GTMmaxing.com, taking the Uniswap Foundation - Build with Uniswap prize and the Arc Studio Continuity Track: Bring Your Project to Arc. GTMmaxing is an OpenRouter for GTM tools: one account and credit balance that lets people and AI agents use contact enrichment, lead lists, web research, and social listening from the browser, MCP, CLI, or API. At the event we added agent payments from their own wallets through Uniswap, a public ENS-based kill switch to stop an agent's paid work, and USDC checkout on Arc.",
+      image: "/ethglobal.png",
+      links: [
+        {
+          title: "Showcase",
+          href: "https://ethglobal.com/showcase/gtmmaxing-com-b61fq",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          title: "Website",
+          href: "https://gtmmaxing.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+    },
+    {
       title: "ETH HackMoney 2026 (Winner)",
       dates: "12 February 2026",
       location: "Remote",
@@ -322,6 +342,10 @@ export const DATA = {
   summary:
     "I'm Vedant Anand, co-founder of [Bags](https://www.getbags.app/) and an x402 contributor and maintainer. I build agentic commerce infrastructure: payment APIs that let AI agents pay per request in USDC. My work spans full-stack TypeScript and Solidity smart contracts.\n\nI mentored OWASP BLT contributors in Google Summer of Code 2026. I study Electrical and Computer Engineering at Thapar Institute and expect to graduate in 2027.",
   tweets: [
+    {
+      id: "2119469968970625032",
+      title: "Won at ETHGlobal Mumbai",
+    },
     {
       id: "1935588888300359901",
       title: "Learning Journey",
