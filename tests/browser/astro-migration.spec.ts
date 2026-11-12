@@ -4,8 +4,9 @@ test("static hackathon cards retain their logo images without hydration", async 
   page,
 }) => {
   await page.goto("/");
-  const logo = page.locator('#hackathons img[src="/ethglobal.png"]');
-  await expect(logo).toHaveCount(1);
+  const logos = page.locator('#hackathons img[src="/ethglobal.png"]');
+  await expect(logos).toHaveCount(2);
+  const logo = logos.first();
   await logo.scrollIntoViewIfNeeded();
   await expect(logo).toHaveJSProperty("complete", true);
   expect(

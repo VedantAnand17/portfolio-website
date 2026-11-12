@@ -604,7 +604,10 @@ test("selected X posts keep rich cards and readable fallbacks when widgets are b
   const posts = page.locator("#posts");
   await expect(
     posts.getByRole("link", { name: "Read post on X", exact: true })
-  ).toHaveCount(4);
+  ).toHaveCount(5);
+  await expect(
+    posts.getByText("8 November 2026", { exact: true })
+  ).toBeVisible();
   await expect(posts.getByText("19 June 2025", { exact: true })).toBeVisible();
   await expect(posts.getByText("22 June 2025", { exact: true })).toBeVisible();
   expect(
@@ -675,13 +678,13 @@ test("X widgets load once and follow the selected theme", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 740 });
   await page.goto("/");
   const frames = page.locator('#posts iframe[title^="X post"]');
-  await expect(frames).toHaveCount(4);
+  await expect(frames).toHaveCount(5);
   expect(scriptRequests).toBe(1);
   await expect(page.locator("#posts").getByRole("link")).toHaveCount(0);
-  await expect(page.getByText(/^Development notes [1-4]$/)).toHaveCount(0);
+  await expect(page.getByText(/^Development notes [1-5]$/)).toHaveCount(0);
   await expect(frames.first()).toHaveAttribute("data-theme", "light");
   await page.getByRole("button", { name: "Switch to dark theme" }).click();
-  await expect(frames).toHaveCount(4);
+  await expect(frames).toHaveCount(5);
   await expect(frames.first()).toHaveAttribute("data-theme", "dark");
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth)
